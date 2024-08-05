@@ -248,17 +248,17 @@
                   <ul data-v-26153660="" class="nav-list">
                     <li data-v-26153660="" class="nav-item left-section-item">
                       <a data-v-26153660="" href="/category-home?from=web_gnb"
-                        ><span data-v-26153660="">교환글</span></a
+                        ><span data-v-26153660=""><router-link to="expostlist">교환글</router-link></span></a
                       >
                     </li>
                     <li data-v-26153660="" class="nav-item left-section-item">
                       <a data-v-26153660="" href="/search/pro?from=web_gnb"
-                        ><span data-v-26153660="">나눔글</span></a
+                        ><span data-v-26153660=""><router-link to="shpostlist">나눔글</router-link></span></a
                       >
                     </li>
                     <li data-v-26153660="" class="nav-item left-section-item">
                       <a data-v-26153660="" href="/market/"
-                        ><span data-v-26153660="">나의글</span></a
+                        ><span data-v-26153660=""><router-link to="emsimypage">나의글</router-link></span></a
                       >
                     </li>
                   </ul>
