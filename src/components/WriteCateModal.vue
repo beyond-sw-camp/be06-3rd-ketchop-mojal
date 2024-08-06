@@ -463,7 +463,7 @@
 </script>
 
 
-<style>
+<style scoped>
 /* 기본 */
 
 :root {

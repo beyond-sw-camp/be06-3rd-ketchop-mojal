@@ -225,12 +225,12 @@ template {
 }
 
 /* <div id="app"> */
-
+/* 
 .bbodyy.hide-mobile-global-header #app {
     height: 100%;
-}
+} */
 
-#app[data-is-loaded=true], 
+/* #app[data-is-loaded=true], 
 #app[data-is-loaded=true] #app-body, 
 #app[data-is-loaded=true] #app-header, 
 #app[data-is-loaded=true] #app-sticky-nav {
@@ -246,11 +246,11 @@ template {
     justify-content: space-between;
     opacity: 0;
     min-height: 100%;
-}
+} */
 
 /* <div id="app-sticky-nav" class="vue-portal-target"> */
 
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
     #app #app-sticky-nav {
         top: 4.5rem;
     }
@@ -263,11 +263,11 @@ template {
     right: 0;
     z-index: 2;
     transform: translateY(-100%);
-}
+} */
 
 /* <div id="app-body"> */
 
-#app #app-body {
+/* #app #app-body {
     height: 100%;
     position: relative;
     flex-grow: 1;
@@ -282,7 +282,7 @@ template {
     .post-edit #app-body, .post-write #app-body {
         height: auto !important;
     }
-}
+} */
 
 /* <div data-v-c05eb1ae="" class="community-container container"> */
 

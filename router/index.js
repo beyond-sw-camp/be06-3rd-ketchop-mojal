@@ -1,13 +1,13 @@
 import {createRouter, createWebHistory} from "vue-router";
 
 import LoginPage from "@/pages/LoginPage.vue";
-import SignupPage from "@/pages/LoginPage.vue";
+import SignupPage from "@/pages/SignupPage.vue";
 import ChatListPage from "@/pages/ChatListPage.vue";
 import ChatRoomPage from "@/pages/ChatRoomPage.vue";
 import MyPage from "@/pages/MyPage.vue";
 import EmsiMyPageComponent from "@/pages/EmsiMyPageComponent.vue";
 import ExPostCreateComponent from "@/pages/ExPostCreateComponent.vue";
-import ShPoatCreateComponent from "@/pages/ShPostCreateComponent.vue";
+import PoatCreate from "@/pages/PostCreat.vue";
 import WriteCateModal from "@/components/WriteCateModal.vue";
 import ExPostListComponent from "@/pages/ExPostListComponent.vue";
 import ShPostListComponent from "@/pages/ShPostListComponent.vue";
@@ -20,11 +20,11 @@ const router = createRouter({
         {path:"/login", component: LoginPage},
         {path:"/signup", component: SignupPage},
         {path:"/chat", component: ChatListPage},
-        {path:"/chat-room", component: ChatRoomPage},
+        {name: "chat-room", path:"/chat-room/:roomIdx", component: ChatRoomPage},
         {path:"/mypage", component: MyPage},
         {path:"/emsimypage", component: EmsiMyPageComponent},
         {path:"/expostcreate", component: ExPostCreateComponent},
-        {path:"/shpostcreate", component: ShPoatCreateComponent},
+        {name: "postcreate", path:"/postcreate/:postType", component: PoatCreate},
         {path:"/writecate", component: WriteCateModal},
         {path:"/expostlist", component: ExPostListComponent},
         {path:"/shpostlist", component: ShPostListComponent},

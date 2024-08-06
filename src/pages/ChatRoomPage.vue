@@ -2,8 +2,8 @@
     <div data-v-abea0528="" class="row no-gutters">
         <section data-v-abea0528="" class="chatbody-section col">
             <ChatHeader/>
-            <ChatMessages/>
-            <ChatMessageInput/>
+            <ChatMessages :roomIdx="roomIdx"/>
+            <ChatMessageInput :roomIdx="roomIdx"/>
         </section>
     </div>
 </template>
@@ -11,14 +11,20 @@
 import ChatHeader from '../components/ChatHeader.vue'
 import ChatMessageInput from '../components/ChatMessageInput.vue'
 import ChatMessages from '../components/ChatMessages.vue'
+// import { useRoute } from 'vue-router';
+
 
 export default {
     components:{
         ChatHeader,
         ChatMessageInput,
-        ChatMessages
+        ChatMessages,
+    },
+    data(){
+        return{
+            roomIdx : 1,
+        }
     }
-    
 }
 </script>
 <style scoped>

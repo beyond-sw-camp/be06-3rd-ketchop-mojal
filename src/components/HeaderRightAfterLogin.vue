@@ -26,18 +26,14 @@
                 <div data-v-35a09b99="" data-name="user-info">
                     <h4 data-v-35a09b99="" data-name="name">{{memberStore.userName}} 고객님</h4>
                 </div>
-                <ul data-v-35a09b99="" data-name="usermenu-control">
-                    <li data-v-35a09b99="" class="row">
-                        <div data-v-35a09b99="" class="col">
-                            <router-link to="mypage" @click="mypage">
-                                <span>마이페이지</span>
-                            </router-link>
-                        </div>
-                    </li>
-                    <li data-v-35a09b99="" class="row" @click="logout">
-                        <div data-v-35a09b99="" class="col">로그아웃</div>
-                    </li>
-                </ul>
+                <div data-v-35a09b99="" data-name="usermenu-control">
+                    <div data-v-35a09b99="" class="col">
+                        <router-link to="mypage" @click="mypage">
+                            <span>마이페이지</span>
+                        </router-link>
+                    </div>
+                    <div data-v-35a09b99="" class="col" @click="logout">로그아웃</div>
+                </div>
             </div>
         </div>
     </div>
@@ -54,6 +50,7 @@ export default {
         logout() {
             this.memberStore.logout();
             this.isUserMenuOn=false;
+            //세션 삭제 코드 추가하기
             this.$router.push("/");
         },
         mypage(){
@@ -163,7 +160,7 @@ button{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.usermenu-dropdown ul[data-name=usermenu-control][data-v-35a09b99] {
+.usermenu-dropdown div[data-name=usermenu-control][data-v-35a09b99] {
     border-bottom: .0625rem solid #e1e1e1;
     padding-bottom: 1.3125rem;
     padding-left: 0;
@@ -174,9 +171,12 @@ button{
     font-weight: 400;
     letter-spacing: -.0125rem;
 }
-.usermenu-dropdown ul[data-name=usermenu-control] li[data-v-35a09b99] {
+.usermenu-dropdown div[data-name=usermenu-control] div[data-v-35a09b99] {
     padding: .65625rem 0;
     cursor: pointer;
+}
+.usermenu-dropdown div[data-name=usermenu-control]{
+    margin-top: 1rem;
 }
 .row {
     display: flex;
@@ -187,7 +187,7 @@ button{
 ul li {
     list-style: none;
 }
-.usermenu-dropdown ul[data-name=usermenu-control] li div[class*=col][data-v-35a09b99] {
+.usermenu-dropdown div[data-name=usermenu-control] div[class*=col][data-v-35a09b99] {
     color: #323232;
 }
 

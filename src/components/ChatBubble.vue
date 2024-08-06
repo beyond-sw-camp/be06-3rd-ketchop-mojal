@@ -5,7 +5,8 @@
                 <div data-v-5f4bf9cb="" data-v-d703b70c="" data-type="text" data-name="content-body">
                     <div data-v-5f4bf9cb="" data-name="content">
                         <div data-v-5f4bf9cb="">
-                            <span data-v-5f4bf9cb="">안녕하세요 5년차 개발자 서준형입니다.프로젝트 관련하여 편하게 문의주시고 경력 및 포트폴리오는 파일로 첨부하였으니 확인해주시면 감사하겠습니다. 금액은 임시로 작성해 놓은 것이며 협의 후 결정합니다.
+                            <span data-v-5f4bf9cb="">
+                                {{content}}
                             </span>
                         </div>
                     </div>
@@ -21,7 +22,12 @@
 </template>
 <script>
 export default {
-    
+    props: {
+        content: {
+            type: String,
+            required: true
+        }
+    },
 }
 </script>
 <style scoped>
@@ -44,7 +50,7 @@ div[class*=col][data-v-d703b70c] {
 .order-2 {
     order: 2;
 }
-.col, .modal .modal-footer .btn {
+.col{
     flex-basis: 0;
     flex-grow: 1;
     max-width: 100%;

@@ -11,9 +11,14 @@
         <div data-v-31ad20b6="" class="page-body">
             <div data-v-31ad20b6="" class="container container">
                 <ul data-v-31ad20b6="" class="chat-list">
-                    <li>
+                    <!-- <li>
                         <router-link to="chat-room">
                             <span><ChatElement/></span>
+                        </router-link>
+                    </li>  -->
+                    <li v-for="chat in chatList" :key="chat.idx">
+                        <router-link :to="{ name: 'chat-room', params: { roomIdx: chat.idx } }">
+                            <span><ChatElement :idx="chat.idx" :nickname="chat.nickname" :title="chat.title"/></span>
                         </router-link>
                     </li> 
                 </ul>
@@ -23,17 +28,47 @@
 </template>
 <script>
 import ChatElement from '../components/ChatElement.vue';
+import { mapStores } from 'pinia';
+import {useChatRoomStore} from '@/store/useChatRoomStore';
 
 export default {
     components:{
         ChatElement
+    },
+    data(){
+        return{
+            chatList: [
+                { idx : 1, nickname: "User1", title: "Chat Title 1" },
+                { idx : 2, nickname: "User2", title: "Chat Title 2" },
+                { idx : 3, nickname: "User3", title: "Chat Title 3" },
+                { idx : 4, nickname: "User4", title: "Chat Title 4" },
+                { idx : 5, nickname: "User5", title: "Chat Title 5" },
+                { idx : 6, nickname: "User6", title: "Chat Title 6" },
+                { idx : 7, nickname: "User7", title: "Chat Title 7" },
+                { idx : 8, nickname: "User8", title: "Chat Title 8" },
+                { idx : 9, nickname: "User9", title: "Chat Title 9" },
+                { idx : 10, nickname: "User10", title: "Chat Title 10" }
+            ]
+        }
+    },
+    computed:{
+        ...mapStores(useChatRoomStore)
+    },
+    mounted() {
+        this.getChatList();
+    },
+    methods: {
+        getChatList() {
+            // const response = this.useChatRoomStore.getChatList();
+            // this.chatList = response.data;
+        }
     }
 };
 </script>
 <style scoped>
     .chat-list-container[data-v-31ad20b6] {
         /* padding-top: 7.5rem; */
-        padding: 7.5rem 2.5rem;
+        padding: .5rem 2.5rem;
     }
     .chat-list-container .container[data-v-31ad20b6] {
         max-width: 37.5rem;

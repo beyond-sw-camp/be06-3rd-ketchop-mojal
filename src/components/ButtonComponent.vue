@@ -1,13 +1,18 @@
 <template lang="">
     <div data-v-157a9d34="" class="custom-button">
         <div data-v-083eade8="" data-v-157a9d34="" class="nudge chat-button-nudge-wrap">
-            <button data-v-cbc4fb12="" data-v-157a9d34="" glock="" type="button" class="btn soomgo-pay-btn btn-primary btn-sm btn-block sg-button" data-v-083eade8=""> 거래하기 </button>
+            <button data-v-cbc4fb12="" data-v-157a9d34="" glock="" type="button" class="btn soomgo-pay-btn btn-primary btn-sm btn-block sg-button" data-v-083eade8=""> {{buttonName}} </button>
         </div>
     </div>
 </template>
 <script>
 export default {
-    
+    props:{
+        buttonName:{
+            type: String,
+            required: true
+        }
+    }
 }
 </script>
 <style scoped>
