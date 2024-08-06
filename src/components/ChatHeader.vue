@@ -38,7 +38,7 @@
             </div>
         </div>
         <div data-v-157a9d34="" class="button-area">
-            <ButtonComponent/>
+            <ButtonComponent :buttonName="buttonName"/>
         </div>
     </div>
 </template>
@@ -57,6 +57,7 @@ export default {
     data(){
         return{
             isMenuOn:false,
+            buttonName:"교환 확정하기"
         }
     }
 };
@@ -80,7 +81,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     height: auto;
-    padding: 4.5rem 1.75rem .5rem;
+    padding: .5rem 1.75rem .5rem;
     background-color: #fff;
     border-bottom: .0625rem solid #f2f2f2;
 }

@@ -27,22 +27,18 @@
                 <a data-v-e20527e2="" href="/mypage/coupon" class="btn coupon-btn btn-secondary btn-block" target="_self">쿠폰함</a>
             </div>
             <div data-v-23177e17="" data-v-64335656="" class="my-page-menu">
-                <ul data-v-23177e17="" class="underline">
-                    <li data-v-23177e17="" class="main-menu">
-                        <div data-v-a9f85b62="" data-v-713cd9e8="" class="main-pro-locations">
-                            <div style="margin-bottom : 20px">내 재능</div>
-                            <ul data-v-a9f85b62="" class="location-list" id="category-list">
-                                <li class="location-item">IT/Programming</li>
-                                <li class="location-item">IT/Programming</li>
-                            </ul>
+                <div data-v-a9f85b62="" data-v-713cd9e8="" class="main-pro-locations">
+                    <div style="margin-bottom : 20px" class="my-category">
+                        <div>내재능</div>
+                        <div data-v-523b347f="" data-v-e20527e2="" class="account-setting">
+                            <button data-v-523b347f="" data-v-e20527e2="" type="button" class="btn btn-account-setting btn-secondary">카테고리 편집</button>
                         </div>
-                    </li>
-                </ul>
-                <ul data-v-23177e17="" class="underline">
-                    <li data-v-23177e17="" class="main-menu"> 설정 
-                        <a data-v-23177e17="" role="button"></a>
-                    </li>
-                </ul>
+                    </div>
+                    <ul data-v-a9f85b62="" class="location-list" id="category-list">
+                        <li class="location-item">IT/Programming</li>
+                        <li class="location-item">IT/Programming</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -58,6 +54,20 @@ export default {
 }
 </script>
 <style scoped>
+.my-category{
+    display: flex;
+    justify-content: auto;
+    margin-top: 2rem;
+}
+.my-category > div:nth-of-type(1){
+    margin-right: auto;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #323232;
+}
+.my-category > div:nth-of-type(2){
+    margin-left: auto;
+}
  .main-pro-locations .location-item{
         position: relative;
         float: left;
@@ -91,12 +101,10 @@ export default {
     margin-left: auto;
 }
 .mypage-container .mypage-title[data-v-64335656] {
-    font-weight: 500;
     line-height: 1.41;
     letter-spacing: -.0462rem;
     color: #323232;
     margin: 0;
-    font-size: 1.5rem;
     padding: 1.875rem 0;
 }
 .underline[data-v-e20527e2] {
@@ -184,7 +192,7 @@ img, svg {
 img {
     border-style: none;
 }
-.profile-container .account-setting .btn-account-setting[data-v-e20527e2] {
+.account-setting .btn-account-setting[data-v-e20527e2] {
     border: none;
     border-radius: 12px;
     background-color: #f2f2f2;
@@ -210,12 +218,13 @@ img {
     border-color: #f2f2f2;
 }
 .my-page-menu .main-menu[data-v-23177e17] {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     padding: .75rem 0;
     font-size: 1.125rem;
     font-weight: 700;
     color: #323232;
+    width: 100%;
 }
 a:not([href]), a:not([href]):hover {
     color: inherit;
@@ -229,14 +238,6 @@ a:not([href]), a:not([href]):hover {
     border-bottom: none;
     padding-bottom: 0;
     margin-bottom: 2.53125rem;
-}
-.my-page-menu .main-menu[data-v-23177e17] {
-    display: flex;
-    align-items: center;
-    padding: .75rem 0;
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #323232;
 }
 
 </style>

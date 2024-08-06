@@ -13,7 +13,7 @@
                         <div data-v-84c28776="" class="user-info">
                             <div data-v-84c28776="" class="user-status-wrapper">
                                 <div data-v-84c28776="" class="user-status">
-                                    <h5 data-v-ac555544="" data-v-84c28776="" title="이효진" class="prisma-typography body2:semibold primary"> 이효진 </h5>
+                                    <h5 data-v-ac555544="" data-v-84c28776="" title="이효진" class="prisma-typography body2:semibold primary"> {{nickname}} </h5>
                                 </div>
                             </div>
                             <div data-v-84c28776="" class="service-info">
@@ -23,7 +23,7 @@
                     </div>
                     <div data-v-84c28776="" class="chat-msg-wrapper">
                         <div data-v-5fd8df5a="" data-v-84c28776="" class="notice">
-                            <span data-v-ac555544="" data-v-5fd8df5a="" title="상대방이 채팅방을 나갔습니다." class="prisma-typography body3:regular primary"> 상대방이 채팅방을 나갔습니다. </span>
+                            <span data-v-ac555544="" data-v-5fd8df5a="" title="상대방이 채팅방을 나갔습니다." class="prisma-typography body3:regular primary"> {{title}} </span>
                         </div>
                         <div data-v-84c28776="" class="chat-msg-info">
                             <div data-v-84c28776="" class="dot"></div>
@@ -40,7 +40,23 @@
     </div>
 </template>
 <script>
-export default {};
+export default {
+    name: 'ChatElement',
+    props: {
+        idx:{
+            type: Number,
+            required : true
+        },
+        title: {
+            type: String,
+            required: true
+        },
+        nickname: {
+            type: String,
+            required: true
+        }
+    }
+};
 </script>
 <style scoped>
 .chat-item[data-v-84c28776] {

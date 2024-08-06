@@ -4,13 +4,12 @@
             <div data-v-c96edda4="" class="row message-input-form no-gutters align-items-center">
                 <div data-v-c96edda4="" class="col">
                     <div data-v-c96edda4="" class="message-input-placeholder">
-                        <p data-v-c96edda4="" class="text-rolling text-truncate slide-down" style="display: none;"> 지금 고수님과 상담해보세요. </p>
                         <p data-v-c96edda4="" style="">메시지를 입력하세요.</p>
                     </div>
-                    <textarea data-v-c96edda4="" name="message-input" rows="1" wrap="soft" class="message-input form-control is-valid" maxlength="1000" state="true" style="resize: none; height: 37px; overflow: hidden;" id="__BVID__79">
-                        </textarea>
+                    <textarea v-model="message" data-v-c96edda4="" name="message-input" rows="1" wrap="soft" class="message-input form-control is-valid" maxlength="1000" state="true" style="resize: none; height: 37px; overflow: hidden;" id="__BVID__79">
+                    </textarea>
                 </div>
-                <div data-v-c96edda4="" class="col-auto">
+                <div @click="sendMessage(message)" data-v-c96edda4="" class="col-auto">
                     <img data-v-c96edda4="" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDMwIDMwIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjMDBDN0FFIiBzdHJva2Utd2lkdGg9IjEuNSI+CiAgICAgICAgICAgIDxnPgogICAgICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTc1OCAtMTkzKSB0cmFuc2xhdGUoNTAgMTc5KSB0cmFuc2xhdGUoNzA4IDE0KSI+CiAgICAgICAgICAgICAgICAgICAgPGNpcmNsZSBjeD0iMTUiIGN5PSIxNSIgcj0iMTQuMjUiLz4KICAgICAgICAgICAgICAgICAgICA8ZyBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMCA2TDYgMCAxMiA2TTYgLjVMNiAxNS41IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5IDcpIi8+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K" alt="" class="img-fluid btn-submit">
                 </div>
             </div>
@@ -18,8 +17,30 @@
     </div>
 </template>
 <script>
+import { mapStores } from 'pinia';
+import {useChatMessageStore} from '@/store/useChatMessageStore';
+
 export default {
-    
+    props: {
+        roomIdx: {
+            type: String,
+            required: true
+        }
+    },
+    data() {
+        return {
+            message: ''
+        };
+    },
+    computed:{
+        ...mapStores(useChatMessageStore)
+    },
+    methods: {
+        sendMessage(message){
+            console.log(message);
+            // useChatMessageStore.sendChatMessage(message);
+        }
+    }
 }
 </script>
 <style scoped>

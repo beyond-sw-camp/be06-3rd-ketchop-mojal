@@ -1,8 +1,8 @@
 <template>
     <div id="main">
         <h1> 나의 글 ~~~~~~~~ 페이지</h1>
-        <div><router-link to="expostcreate">교환글쓰기  |</router-link></div>
-        <div><router-link to="shpostcreate">|  나눔글쓰기</router-link></div>
+        <div><router-link :to="{ name: 'postcreate', params: { postType: 'exchange' } }">교환글쓰기  |</router-link></div>
+        <div><router-link :to="{ name: 'postcreate', params: { postType: 'share' } }">| 나눔글쓰기</router-link></div>
     </div>
     
 </template>

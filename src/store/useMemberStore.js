@@ -14,7 +14,7 @@ export const useMemberStore = defineStore('member', {
     },
     actions:{
         async login(member){
-            let url = `http://localhost:8080/member/login`;
+            let url = `api/member/login`;
 
             let response = await axios.post(url, member); //응답 받아서 저장
             console.log(response);
@@ -26,9 +26,9 @@ export const useMemberStore = defineStore('member', {
             }
         },
         async signup(member){
-            let url = 'http://localhost:8080/member/signup';
+            let url = 'api/member/signup';
 
-            let response = await axios.post(url, member);
+            let response = await axios.post(url, member, {withCredentials:false});
             console.log(response);
         },
         logout() {
