@@ -2,24 +2,6 @@
   <div id="app-body">
     <div data-v-c05eb1ae class="community-container container">
       <div data-v-0352d1b6 data-v-05eb1ae class="soomgo-life-container">
-        <form>
-          <h4>email</h4>
-          <input
-            type="email"
-            id="email"
-            placeholder="아이디를 입력해주세요"
-            v-model="email"
-          />
-          <h4>password</h4>
-          <input
-            type="password"
-            id="password"
-            placeholder="비밀번호를 입력해주세요"
-            v-model="password"
-          /><br />
-          <button type="button" @click="login">제출</button>
-          l
-        </form>
         <section
           data-v-4b40be3a=""
           data-v-0352d1b6=""
@@ -151,7 +133,7 @@
           <!---------------------------------------------- 레이아웃 ------------------------------------------------------->
           <div data-v-4b40be3a="" class="community-layout">
             <!------------------------------------------- 레이아웃 왼쪽 카테고리 ----------------------------------------------------------------------->
-            <CategorySidebarComponent></CategorySidebarComponent>
+            <SidebarComponent></SidebarComponent>
 
             <!----------------------------------------- 레이아웃 오른쪽 리스트  -------------------------------------------------------------->
             <div
@@ -169,7 +151,6 @@
                   id="observer-e5774ab7-33f8-4f41-b55d-72c81f973aee"
                 ></div>
               </div>
-              <h3 style="padding-bottom: 30px">내가 작성한 글목록</h3>
 
               <MyPostsShareListComponent />
               <MyPostsExchangeListComponent />
@@ -199,15 +180,14 @@
 </template>
 
 <script>
-import CategorySidebarComponent from "@/components/sidebar/CategorySidebarComponent.vue";
+import SidebarComponent from "@/components/sidebar/SidebarComponent.vue";
 import MyPostsExchangeListComponent from "@/components/list/MyPostsExchangeListComponent.vue";
 import MyPostsShareListComponent from "@/components/list/MyPostsShareListComponent.vue";
-import axios from "axios";
 
 export default {
   name: "MyPostPage",
   components: {
-    CategorySidebarComponent,
+    SidebarComponent,
     MyPostsShareListComponent,
     MyPostsExchangeListComponent,
   },
@@ -227,17 +207,6 @@ export default {
     },
     scrollUp() {
       window.scrollTo(0, 0);
-    },
-    async login() {
-      let url = `http://localhost:8080/member/login`;
-      let info = {
-        email: this.email,
-        password: this.password,
-      };
-
-      let response = await axios.post(url, info, { withCredentials: true }); //응답 받아서 저장
-      this.token = response.data.accessToken;
-      console.log("done!!");
     },
   },
   props: {

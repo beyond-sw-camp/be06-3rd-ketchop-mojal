@@ -9,15 +9,21 @@
     <h4>나눔글</h4>
     <ul data-v-fbeed1e4="" class="feed-list">
       <MyPostShareItemComponent
-        v-for="items in getshareList"
+        v-for="items in this.myPostStore.myJoinShareListAll"
         v-bind:key="items.postIdx"
         :item="items"
       >
       </MyPostShareItemComponent>
-      <div v-if="getshareList.length == 0" class="item-none">
+      <div
+        v-if="this.myPostStore.myJoinShareListAll.length == 0"
+        class="item-none"
+      >
         작성한 글이 존재하지 않습니다
       </div>
-      <a v-if="getshareList.length !== 0" href="/myPostExchange.html">
+      <a
+        v-if="this.myPostStore.myJoinShareListAll.length !== 0"
+        href="/myPostExchange.html"
+      >
         <p style="text-align: center; cursor: pointer">
           <span>더보기 ></span>
         </p>
@@ -41,7 +47,7 @@ import MyPostShareItemComponent from "@/components/item/MyPostShareItemComponent
 import axios from "axios";
 
 export default {
-  name: "MyPostsJoinListComponent",
+  name: "MyPostsJoinShareListComponent",
   components: {
     MyPostShareItemComponent,
   },
@@ -56,27 +62,12 @@ export default {
       getshareList: [],
     };
   },
-  created() {
+  mounted() {
     this.getMySharedList();
   },
   methods: {
-    paging(arr) {
-      let limitedArray = [];
-      for (let i = 0; i < arr.length && i < 4; i++) {
-        limitedArray.push(arr[i]);
-      }
-      return limitedArray;
-    },
     async getMySharedList() {
-      try {
-        let url = `http://localhost:8080/share/my/list`;
-        let response = await axios.get(url, { withCredentials: true });
-        this.getshareList = this.paging(response.data.result);
-        console.log(this.getshareList);
-        console.log("응답왔다");
-      } catch (error) {
-        console.log(error);
-      }
+      await this.myPostStore.getMyJoinShareListAll();
     },
   },
 };
