@@ -26,21 +26,27 @@
           data-testid="community-main"
           class="community-title2"
         >
-          총 {{ getexchangeListAll.length }} 개의 글
+          총 {{ this.exchangePostStore.exchangeListAll.length }} 개의 글
         </h3>
       </section>
     </div>
     <ul data-v-fbeed1e4="" class="feed-list">
       <MyPostExchangeItemComponent
-        v-for="items in getexchangeListAll"
-        v-bind:key="items.postIdx"
+        v-for="items in this.exchangePostStore.exchangeListAll"
+        :key="items.postIdx"
         :item="items"
       >
       </MyPostExchangeItemComponent>
-      <div v-if="getexchangeListAll.length == 0" class="item-none">
+      <div
+        v-if="this.exchangePostStore.exchangeListAll.length == 0"
+        class="item-none"
+      >
         작성한 글이 존재하지 않습니다
       </div>
-      <a v-if="getexchangeListAll.length !== 0" href="/myPostExchange.html">
+      <a
+        v-if="this.exchangePostStore.exchangeListAll.length !== 0"
+        href="/myPostExchange.html"
+      >
         <p style="text-align: center; cursor: pointer">
           <span>더보기 ></span>
         </p>
@@ -60,8 +66,10 @@
 </template>
 
 <script>
+import { mapStores } from "pinia";
 import MyPostExchangeItemComponent from "../item/MyPostExchangeItemComponent.vue";
-import axios from "axios";
+import { useSharePostStore } from "@/store/useSharePostStore";
+import { useExchangePostStore } from "@/store/useExchangePostStore";
 
 export default {
   name: "ExchangePostListComponent",
@@ -72,25 +80,25 @@ export default {
     return {
       active: false,
       getexchangeListAll: [],
+      postLength: 0,
     };
   },
-  created() {
-    this.getExchangedListAll();
+  computed: {
+    ...mapStores(useSharePostStore),
+    ...mapStores(useExchangePostStore),
+  },
+  mounted() {
+    this.getData();
   },
   methods: {
     toggle() {
       this.active = !this.active;
     },
-    async getExchangedListAll() {
-      try {
-        let url = `http://localhost:8080/exchange/list`;
-        let response = await axios.get(url);
-        this.getexchangeListAll = response.data.result;
-        console.log("리스트:", this.getexchangeListAll);
-        console.log("응답왔다");
-      } catch (error) {
-        console.log(error);
-      }
+    async getData() {
+      await this.exchangePostStore.getExchangeListAll();
+
+      console.log("와라와라ㅏㅏㅏㅏㅏexchange");
+      console.log(this.exchangePostStore.exchangeListAll);
     },
   },
 };

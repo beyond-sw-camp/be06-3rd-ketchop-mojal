@@ -5,18 +5,23 @@
     class="community-feed-list"
     topic-id="all"
   >
+    <h3 style="padding-bottom: 30px">내가 작성한 글목록</h3>
+
     <h4>나눔글</h4>
     <ul data-v-fbeed1e4="" class="feed-list">
       <MyPostShareItemComponent
-        v-for="items in getshareList"
-        v-bind:key="items.postIdx"
+        v-for="items in this.myPostStore.myShareListAll"
+        :key="items.postIdx"
         :item="items"
       >
       </MyPostShareItemComponent>
-      <div v-if="getshareList.length == 0" class="item-none">
+      <div v-if="this.myPostStore.myShareListAll.length == 0" class="item-none">
         작성한 글이 존재하지 않습니다
       </div>
-      <a v-if="getshareList.length !== 0" href="/myPostExchange.html">
+      <a
+        v-if="this.myPostStore.myShareListAll.length !== 0"
+        href="/myPostExchange.html"
+      >
         <p style="text-align: center; cursor: pointer">
           <span>더보기 ></span>
         </p>
@@ -37,7 +42,8 @@
 
 <script>
 import MyPostShareItemComponent from "@/components/item/MyPostShareItemComponent.vue";
-import axios from "axios";
+import { useMyPostStore } from "@/store/useMyPostStore";
+import { mapStores } from "pinia";
 
 export default {
   name: "MyPostsShareListComponent",
@@ -52,30 +58,18 @@ export default {
       active: false,
       share: false,
       exchange: false,
-      getshareList: [],
     };
   },
-  created() {
-    this.getMySharedList();
+  computed: {
+    ...mapStores(useMyPostStore),
+  },
+  created() {},
+  mounted() {
+    this.getMyPostShare();
   },
   methods: {
-    paging(arr) {
-      let limitedArray = [];
-      for (let i = 0; i < arr.length && i < 4; i++) {
-        limitedArray.push(arr[i]);
-      }
-      return limitedArray;
-    },
-    async getMySharedList() {
-      try {
-        let url = `http://localhost:8080/share/my/list`;
-        let response = await axios.get(url, { withCredentials: true });
-        this.getshareList = this.paging(response.data.result);
-        console.log(this.getshareList);
-        console.log("응답왔다");
-      } catch (error) {
-        console.log(error);
-      }
+    getMyPostShare() {
+      this.myPostStore.getMyShareListAll();
     },
   },
 };

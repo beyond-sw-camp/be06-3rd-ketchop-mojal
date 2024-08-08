@@ -26,7 +26,7 @@
           data-testid="community-main"
           class="community-title2"
         >
-          총 {{ getshareListAll.length }} 개의 글
+          총 {{ this.sharePostStore.shareListAll.length }} 개의 글
         </h3>
         <!---------------------------------- 글쓰기 버튼------------------------------------------>
         <div data-v-74db39ba="" data-v-71844fb9="">
@@ -93,15 +93,18 @@
     </div>
     <ul data-v-fbeed1e4="" class="feed-list">
       <MyPostShareItemComponent
-        v-for="items in getshareListAll"
-        v-bind:key="items.postIdx"
+        v-for="items in this.sharePostStore.shareListAll"
+        :key="items.postIdx"
         :item="items"
       >
       </MyPostShareItemComponent>
-      <div v-if="getshareListAll.length == 0" class="item-none">
+      <div
+        v-if="this.sharePostStore.shareListAll.length == 0"
+        class="item-none"
+      >
         작성한 글이 존재하지 않습니다
       </div>
-      <a v-if="getshareListAll.length !== 0" href="/myPostExchange.html">
+      <a href="/myPostExchange.html">
         <p style="text-align: center; cursor: pointer">
           <span>더보기 ></span>
         </p>
@@ -122,9 +125,9 @@
 
 <script>
 import { mapStores } from "pinia";
-import { useCategoryStore } from "@/stores/useCategoryStore";
+import { useCategoryStore } from "../../store/useCategoryStore";
+import { useSharePostStore } from "@/store/useSharePostStore";
 import MyPostShareItemComponent from "@/components/item/MyPostShareItemComponent.vue";
-import axios from "axios";
 
 export default {
   name: "SharePostListComponent",
@@ -134,30 +137,26 @@ export default {
   data() {
     return {
       active: false,
-      getshareListAll: [],
+      postLength: 0,
     };
   },
   computed: {
     ...mapStores(useCategoryStore),
+    ...mapStores(useSharePostStore),
   },
-  created() {
-    this.getSharedListAll();
+  mounted() {
+    this.getData();
   },
   methods: {
     toggle() {
       this.active = !this.active;
     },
-
-    async getSharedListAll() {
-      try {
-        let url = `http://localhost:8080/share/list`;
-        let response = await axios.get(url);
-        this.getshareListAll = response.data.result;
-        console.log("나눔글리스트:", this.getshareListAll);
-        console.log("응답왔다");
-      } catch (error) {
-        console.log(error);
-      }
+    async getData() {
+      await this.sharePostStore.getShareListAll();
+      // this.getshareListAll = this.sharePostStore.shareListAll;
+      // this.postLength = this.sharePostStore.shareListAll.length;
+      console.log("와라와라ㅏㅏㅏㅏㅏ");
+      console.log(this.sharePostStore.shareListAll);
     },
   },
 };

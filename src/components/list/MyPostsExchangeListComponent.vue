@@ -38,10 +38,11 @@
 
 <script>
 import MyPostExchangeItemComponent from "@/components/item/MyPostExchangeItemComponent.vue";
-import axios from "axios";
+import { useMyPostStore } from "@/store/useMyPostStore";
+import { mapStores } from "pinia";
 
 export default {
-  name: "MyPostsListComponent",
+  name: "MyPostsExchangeListComponent",
   components: {
     MyPostExchangeItemComponent,
   },
@@ -56,26 +57,15 @@ export default {
       getexchangeList: [],
     };
   },
+  computed: {
+    ...mapStores(useMyPostStore),
+  },
   created() {
     this.getMyExchangedList();
   },
   methods: {
-    paging(arr) {
-      let limitedArray = [];
-      for (let i = 0; i < arr.length && i < 4; i++) {
-        limitedArray.push(arr[i]);
-      }
-      return limitedArray;
-    },
-    async getMyExchangedList() {
-      try {
-        let url = `http://localhost:8080/exchange/my/list`;
-        let response = await axios.get(url, { withCredentials: true });
-        this.getexchangeList = this.paging(response.data.result);
-        console.log("exchange:", this.getexchangeList);
-      } catch (error) {
-        console.log(error);
-      }
+    getMyExchangedList() {
+      this.myPostStore.getMyExchangeListAll();
     },
   },
 };
