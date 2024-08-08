@@ -16,7 +16,7 @@ export const useExchangeStore = defineStore('exchange', {
     }),
     actions:{
         async createExchangePost() {
-            const url = 'http://localhost:8082/api/exchange/create';
+            const url = '/proxy/exchange/create';
 
             const req = {
                 // giveCategoryIdx: this.request.giveCategoryIdx,

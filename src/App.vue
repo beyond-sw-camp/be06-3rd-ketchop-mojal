@@ -1,7 +1,4 @@
 <template>
-hello mojal
-<router-link to="select-category">gogo</router-link>
-  <!-- <HeaderComponent/> -->
   <router-view></router-view>
 </template>
 

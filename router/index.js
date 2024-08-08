@@ -14,7 +14,7 @@ import MyPostPage from "@/pages/post/MyPostPage.vue";
 import MainPage from "@/pages/MainPage.vue";
 import ExPostListComponent from "@/components/post/ExPostListComponent.vue";
 import ShPostListComponent from "@/components/post/ShPostListComponent.vue";
-import SelectCategory from "@/pages/SelectCategory.vue"
+import RedirectPage from "@/pages/RedirectPage.vue"
 
 
 const router = createRouter({
@@ -38,7 +38,7 @@ const router = createRouter({
                 { path:"/shpostlist", component: ShPostListComponent},
             ]
         },
-        { path:"/select-category", component: SelectCategory},
+        { path:"/redirect", component: RedirectPage},
     ],
 });
 

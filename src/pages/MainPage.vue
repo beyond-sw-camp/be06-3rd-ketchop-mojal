@@ -1,5 +1,5 @@
 <template>
-  <HeaderComponent/>
+ <div class="custom-header"> <HeaderComponent/></div>
   <router-view></router-view>
 </template>
 
@@ -34,6 +34,14 @@ export default {
 </script>
 
 <style>
+.custom header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: white;
+}
 a{
   color: black;
   text-decoration: none;
