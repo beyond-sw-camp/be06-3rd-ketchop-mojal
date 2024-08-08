@@ -9,7 +9,6 @@ import { useMemberStore } from '@/store/useMemberStore';
 export const useChatRoomStore = defineStore('chatRoom', {
     state: () => ({
         stompClient : null, //WebSocket 클라이언트 인스턴스
-        //currentRoomIdx : null, //사용자가 현재 입장한 채팅방의 ID
         userIdx : null, //사용자idx
         //subscription : null, //채팅방 메시지를 관리하기 위한 WebSocket 구독 객체
 
@@ -18,6 +17,7 @@ export const useChatRoomStore = defineStore('chatRoom', {
         reconnectDelay : 5000, // 재시도 대기 시간 (밀리초 단위)
 
         chatRooms: [],
+
     }),
     // persist:{
     //     storage: sessionStorage,
@@ -50,6 +50,8 @@ export const useChatRoomStore = defineStore('chatRoom', {
                 .then((data) => {
                     // console.log(data); // 서버에서 보낸 JSON 데이터를 바로 사용
                     this.chatRooms = data;
+                    console.log(this.chatRooms);
+                    
                 })
                 .catch((error) => {
                     console.error('There was a problem with the axios operation:', error);
