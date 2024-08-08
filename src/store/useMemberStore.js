@@ -6,7 +6,9 @@ export const useMemberStore = defineStore('member', {
         userIdx : "",
         userName : "",
         userEmail : "",
-        isLogined : false
+        isLogined : false,
+
+        userCategories:[]
     }),
     // persist: true,
     persist:{
@@ -34,5 +36,12 @@ export const useMemberStore = defineStore('member', {
         logout() {
             this.isLogined = false;
         },
+        async getUserCategories(){
+            let url = `/proxy/my/category`;
+
+            let response = await axios.get(url); 
+            console.log(response);
+            this.userCategories = response.data.result;
+        }
     }
 })

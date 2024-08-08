@@ -34,17 +34,26 @@
             <div class="category-title">카테고리 검색</div>
             <div data-v-a9f85b62="" data-v-713cd9e8="" class="main-pro-locations">
                 <ul data-v-a9f85b62="" class="location-list" id="category-list">
-                    <li class="location-item">IT/Programming</li>
-                    <li class="location-item">IT/Programming</li>
+                    <li v-for="category in this.categoryStore.categories" :key="category.idx" @click="searchByCategory" class="location-item">{{category.name}}</li>
                 </ul>
             </div>
         </div>
     </div>
 </template>
 <script>
+import { useCategoryStore } from '@/store/useCategoryStore'; 
+import { mapStores } from 'pinia';
+
 export default {
     name:"SearchComponent",
-    emits:['searchOff']
+    emits:['searchOff'],
+    data(){
+        return{
+        };
+    },
+    computed: {
+        ...mapStores(useCategoryStore),
+    },
     
 }
 </script>

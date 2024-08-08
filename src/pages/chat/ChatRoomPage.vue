@@ -8,9 +8,9 @@
     </div>
 </template>
 <script>
-import ChatHeader from '../components/ChatHeader.vue'
-import ChatMessageInput from '../components/ChatMessageInput.vue'
-import ChatMessages from '../components/ChatMessages.vue'
+import ChatHeader from '../../components/chat/ChatHeader.vue'
+import ChatMessageInput from '../../components/chat/ChatMessageInput.vue'
+import ChatMessages from '../../components/chat/ChatMessages.vue'
 import { useRoute } from 'vue-router';
 
 

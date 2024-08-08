@@ -43,7 +43,7 @@
     </div>
 </template>
 <script>
-import ButtonComponent from './ButtonComponent.vue';
+import ButtonComponent from '@/components/ButtonComponent.vue';
 
 export default {
     components:{
@@ -66,7 +66,6 @@ export default {
 .menu-off{
     display: none;
 }
-
 @media (min-width: 576px) {
     .chat-header[data-v-157a9d34] {
         height: 3.625rem;
