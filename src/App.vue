@@ -1,27 +1,43 @@
 <template>
-  <HeaderComponent/>
+hello mojal
+<router-link to="select-category">gogo</router-link>
+  <!-- <HeaderComponent/> -->
   <router-view></router-view>
 </template>
 
 <script>
-import HeaderComponent from './components/HeaderComponent.vue'
+// import HeaderComponent from '@/components/header/HeaderComponent.vue'
+import { useCategoryStore } from '@/store/useCategoryStore'; 
+import { mapStores } from 'pinia';
 
 export default {
   name: 'App',
   components: {
-    HeaderComponent,
+    // HeaderComponent,
   },
+  computed: {
+        ...mapStores(useCategoryStore),
+    },
   created(){
     console.log("      ██╗ ██╗      ███║   ████║        ████╗     ██╗");
     console.log("     ██║██ ██║   ██║  ██║  ██║        ██║ ██║    ██║");
     console.log("    ██║ ██║ ██║  ██║  ██║  ██║ ███╗  ██ ██ ██║   ██║");
     console.log("   ██║       ██║   ███║     ████║   ██║     ██║  ██████║");
+  },
+  mounted(){
+    this.getCategories();
+  },
+  methods:{
+    async getCategories(){
+      await this.categoryStore.getCategories();
+    }
   }
 }
 </script>
 
 <style>
 a{
+  color: black;
   text-decoration: none;
 }
 li, ul{

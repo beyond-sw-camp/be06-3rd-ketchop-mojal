@@ -65,7 +65,7 @@
                       v-if="active"
                     >
                       <li data-v-32970c25="" role="presentation">
-                        <a
+                        <router-link :to="{ name: 'postcreate', params: { postType: 'share' } }"
                           role="menuitem"
                           href="/writeSharePage"
                           target="_self"
@@ -92,10 +92,10 @@
                               class="dropdown-menu-item-icon"
                             ></i>
                           </div>
-                        </a>
+                        </router-link>
                       </li>
                       <li data-v-32970c25="" role="presentation">
-                        <a
+                        <router-link :to="{ name: 'postcreate', params: { postType: 'exchange' } }"
                           role="menuitem"
                           href="/writeExchange"
                           target="_self"
@@ -122,7 +122,7 @@
                               class="dropdown-menu-item-icon"
                             ></i>
                           </div>
-                        </a>
+                        </router-link>
                       </li>
                     </ul>
                   </div>
@@ -450,9 +450,10 @@ img {
 }
 
 .soomgo-life-container[data-v-0352d1b6] {
-  /* width: 60.625rem; */
+  width: 60.625rem;
   max-width: 100%;
   height: 100%;
+  margin: auto;
 }
 
 .soomgo-life-container[data-v-0352d1b6][data-v-45ac653f] {

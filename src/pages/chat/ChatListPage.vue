@@ -27,7 +27,7 @@
     </div>
 </template>
 <script>
-import ChatElement from '../components/ChatElement.vue';
+import ChatElement from '../../components/chat/ChatElement.vue';
 import { mapStores } from 'pinia';
 import {useChatRoomStore} from '@/store/useChatRoomStore';
 

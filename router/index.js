@@ -1,19 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import LoginPage from "@/pages/LoginPage.vue";
-import SignupPage from "@/pages/SignupPage.vue";
-import ChatListPage from "@/pages/ChatListPage.vue";
-import ChatRoomPage from "@/pages/ChatRoomPage.vue";
-import MyPage from "@/pages/MyPage.vue";
-import ExPostCreateComponent from "@/pages/ExPostCreateComponent.vue";
-import PoatCreate from "@/pages/PostCreat.vue";
-import WriteCateModal from "@/components/WriteCateModal.vue";
-import ExPostReadComponent from "@/pages/ExPostReadComponent.vue";
-import ShPostReadComponent from "@/pages/ShPostReadComponent.vue";
-import SharePage from "@/pages/SharePage.vue";
-import ExchangePage from "@/pages/ExchangePage.vue";
-import MyPostPage from "@/pages/MyPostPage.vue";
+import LoginPage from "@/pages/member/LoginPage.vue";
+import SignupPage from "@/pages/member/SignupPage.vue";
+import ChatListPage from "@/pages/chat/ChatListPage.vue";
+import ChatRoomPage from "@/pages/chat/ChatRoomPage.vue";
+import MyPage from "@/pages/member/MyPage.vue";
+import PoatCreate from "@/pages/post/PostCreat.vue";
+import ExPostReadComponent from "@/components/post/ExPostReadComponent.vue";
+import ShPostReadComponent from "@/components/post/ShPostReadComponent.vue";
+import SharePage from "@/pages/post/SharePage.vue";
+import ExchangePage from "@/pages/post/ExchangePage.vue";
+import MyPostPage from "@/pages/post/MyPostPage.vue";
 import MainPage from "@/pages/MainPage.vue";
+import ExPostListComponent from "@/components/post/ExPostListComponent.vue";
+import ShPostListComponent from "@/components/post/ShPostListComponent.vue";
+import SelectCategory from "@/pages/SelectCategory.vue"
 
 
 const router = createRouter({
