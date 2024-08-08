@@ -20,25 +20,20 @@ import SelectCategory from "@/pages/SelectCategory.vue"
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        {   path: "/", 
-            component: MainPage,
-            children:[
-                { path: "/login", component: LoginPage },
-                { path: "/signup", component: SignupPage },
-                { path: "/chat", component: ChatListPage },
-                { name: "chat-room", path: "/chat-room/:roomIdx", component: ChatRoomPage },
-                { path: "/mypage", component: MyPage },
-                { path: "/myposts", component: MyPostPage },
-                { name: "postcreate", path: "/postcreate/:postType", component: PoatCreate },
-                { path: "/exchange", component: ExchangePage },
-                { path: "/share", component: SharePage },
-                { path: "/expostread", component: ExPostReadComponent },
-                { path: "/shpostread", component: ShPostReadComponent },
-                { path:"/expostlist", component: ExPostListComponent},
-                { path:"/shpostlist", component: ShPostListComponent},
-            ]
-        },
-        { path:"/select-category", component: SelectCategory},
+        { path: "/login", component: LoginPage },
+        { path: "/", component: MainPage },
+        { path: "/signup", component: SignupPage },
+        { path: "/chat", component: ChatListPage },
+        { name: "chat-room", path: "/chat-room/:roomIdx", component: ChatRoomPage }, //props: route => ({ roomTitle: route.params.roomTitle })
+        { path: "/mypage", component: MyPage },
+        { path: "/myposts", component: MyPostPage },
+        { path: "/expostcreate", component: ExPostCreateComponent },
+        { name: "postcreate", path: "/postcreate/:postType", component: PoatCreate },
+        { path: "/writecate", component: WriteCateModal },
+        { path: "/exchange", component: ExchangePage },
+        { path: "/share", component: SharePage },
+        { name: "/expostread", path:"/expostread/:postIdx", component: ExPostReadComponent },
+        { path: "/shpostread", component: ShPostReadComponent },
     ],
 });
 

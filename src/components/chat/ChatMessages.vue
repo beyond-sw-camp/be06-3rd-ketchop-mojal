@@ -40,7 +40,7 @@ export default {
         ...mapStores(useMemberStore)
     },
     async mounted() {
-        await this.joinRoomAndGetChatMessages(this.roomIdx.roomIdx);
+        await this.joinRoomAndGetChatMessages(this.roomIdx);
     },
     methods: {
         async joinRoomAndGetChatMessages(roomIdx) {
@@ -49,7 +49,7 @@ export default {
                 await this.chatMessageStore.getChatMessages(roomIdx);
                 this.messages = this.chatMessageStore.messages;
                 console.log("Messages fetched successfully");
-                console.log(this.messages);
+                // console.log(this.messages);
                 
             } catch (error) {
                 console.error("Error joining room and fetching messages:", error);
