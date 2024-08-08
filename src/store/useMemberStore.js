@@ -14,7 +14,7 @@ export const useMemberStore = defineStore('member', {
     },
     actions:{
         async login(member){
-            let url = `api/member/login`;
+            let url = `/proxy/member/login`;
 
             let response = await axios.post(url, member); //응답 받아서 저장
             console.log(response);
@@ -26,7 +26,7 @@ export const useMemberStore = defineStore('member', {
             }
         },
         async signup(member){
-            let url = 'api/member/signup';
+            let url = '/proxy/member/signup';
 
             let response = await axios.post(url, member, {withCredentials:false});
             console.log(response);

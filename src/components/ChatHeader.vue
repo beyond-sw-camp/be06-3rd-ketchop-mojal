@@ -66,9 +66,7 @@ export default {
 .menu-off{
     display: none;
 }
-.chat-header {
 
-}
 @media (min-width: 576px) {
     .chat-header[data-v-157a9d34] {
         height: 3.625rem;
