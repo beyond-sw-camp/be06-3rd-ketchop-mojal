@@ -6,13 +6,13 @@
                     <div data-v-5f4bf9cb="" data-name="content">
                         <div data-v-5f4bf9cb="">
                             <span data-v-5f4bf9cb="">
-                                {{content}}
+                                {{msg.message}}
                             </span>
                         </div>
                     </div>
                     <p data-v-d703b70c="" data-v-5f4bf9cb="" data-name="message-status">
                         <span data-v-d703b70c="" data-v-5f4bf9cb="" data-name="success-status">
-                            <span data-v-d703b70c="" data-v-5f4bf9cb="" data-name="created-at">오전 11:28</span>
+                            <span data-v-d703b70c="" data-v-5f4bf9cb="" data-name="created-at">{{msg.timeStamp}}</span>
                         </span>
                     </p>
                 </div>
@@ -23,8 +23,26 @@
 <script>
 export default {
     props: {
-        content: {
-            type: String,
+        // msg : {
+        //     idx : {
+        //         type: Number,
+        //         required: true
+        //     },
+        //     senderIdx : {
+        //         type: Number,
+        //         required: true
+        //     },
+        //     message: {
+        //         type: String,
+        //         required: true
+        //     },
+        //     timeStamp: {
+        //         type: String,
+        //         required: true
+        //     }
+        // },
+        msg: {
+            type: Object,
             required: true
         }
     },

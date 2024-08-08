@@ -11,7 +11,7 @@
 import ChatHeader from '../components/ChatHeader.vue'
 import ChatMessageInput from '../components/ChatMessageInput.vue'
 import ChatMessages from '../components/ChatMessages.vue'
-// import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';
 
 
 export default {
@@ -22,10 +22,16 @@ export default {
     },
     data(){
         return{
-            roomIdx : 1,
+            roomIdx : useRoute().params
+        }
+    },
+    methods: {
+        isSender(senderIdx) {
+            return this.memberStore.userIdx === senderIdx;
         }
     }
 }
+
 </script>
 <style scoped>
 .no-gutters{
