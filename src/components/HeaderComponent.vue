@@ -4,17 +4,13 @@
     class="bbodyy post-write hide-mobile-global-header"
     style="padding-right: 0px"
   > -->
-    <!-- <div id="app" data-browser="Chrome" data-is-loaded="true" class=""> -->
+  <!-- <div id="app" data-browser="Chrome" data-is-loaded="true" class=""> -->
   <header
     id="app-header"
     class="global-header hide-border-bottom"
     data-v-8cc44300=""
   >
-    <div
-      data-v-26153660=""
-      data-v-8cc44300=""
-      class="global-navigation-bar"
-    >
+    <div data-v-26153660="" data-v-8cc44300="" class="global-navigation-bar">
       <section data-v-26153660="" class="mobile-header d-lg-none d-xl-none">
         <div
           data-v-26153660=""
@@ -203,7 +199,11 @@
                       ></a
                     ><!---->
                   </li>
-                  <li data-v-4c0deb88="" class="nav-item">
+                  <li
+                    v-if="memberStore.isLogined"
+                    data-v-4c0deb88=""
+                    class="nav-item"
+                  >
                     <a
                       data-v-4c0deb88=""
                       href="/market/?location=mobile_web_hamburger"
@@ -235,29 +235,55 @@
               <ul data-v-26153660="" class="nav-list">
                 <li data-v-26153660="" class="nav-item left-section-item">
                   <a data-v-26153660="" href="/category-home?from=web_gnb"
-                    ><span data-v-26153660=""><router-link to="expostlist">교환글</router-link></span></a
+                    ><span data-v-26153660=""
+                      ><router-link to="exchange">교환글</router-link></span
+                    ></a
                   >
                 </li>
                 <li data-v-26153660="" class="nav-item left-section-item">
                   <a data-v-26153660="" href="/search/pro?from=web_gnb"
-                    ><span data-v-26153660=""><router-link to="shpostlist">나눔글</router-link></span></a
+                    ><span data-v-26153660=""
+                      ><router-link to="share">나눔글</router-link></span
+                    ></a
                   >
                 </li>
-                <li data-v-26153660="" class="nav-item left-section-item">
+                <li
+                  v-if="memberStore.isLogined"
+                  data-v-26153660=""
+                  class="nav-item left-section-item"
+                >
                   <a data-v-26153660="" href="/market/"
-                    ><span data-v-26153660=""><router-link to="emsimypage">나의글</router-link></span></a
+                    ><span data-v-26153660=""
+                      ><router-link to="myposts">나의글</router-link></span
+                    ></a
                   >
                 </li>
               </ul>
             </nav>
           </div>
           <div data-v-26153660="" class="center-section">
-            <div data-v-deb28fc4="" data-v-26153660="" @click="searchClick" class="service-searcher-desktop service-search-container is-located-gnb">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#323232" class="css-14be4in e4jlfpt1">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M16.509 17.018a8.512 8.512 0 1 1 1.057-1.064l4.455 4.455a.75.75 0 1 1-1.06 1.06l-4.452-4.45Zm1.523-6.506a7.012 7.012 0 1 1-14.023 0 7.012 7.012 0 0 1 14.023 0Z"
-                    fill="currentColor"
-                  ></path>
-                </svg>
+            <div
+              data-v-deb28fc4=""
+              data-v-26153660=""
+              @click="searchClick"
+              class="service-searcher-desktop service-search-container is-located-gnb"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                color="#323232"
+                class="css-14be4in e4jlfpt1"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M16.509 17.018a8.512 8.512 0 1 1 1.057-1.064l4.455 4.455a.75.75 0 1 1-1.06 1.06l-4.452-4.45Zm1.523-6.506a7.012 7.012 0 1 1-14.023 0 7.012 7.012 0 0 1 14.023 0Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
               <!-- <form data-v-215f2a28="" data-v-deb28fc4="" class="global-search-bar">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#B5B5B5" class="css-14be4in e4jlfpt1">
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M16.509 17.018a8.512 8.512 0 1 1 1.057-1.064l4.455 4.455a.75.75 0 1 1-1.06 1.06l-4.452-4.45Zm1.523-6.506a7.012 7.012 0 1 1-14.023 0 7.012 7.012 0 0 1 14.023 0Z" fill="currentColor">
@@ -285,9 +311,11 @@
                                 </form> -->
             </div>
             <div data-v-26153660="" class="right-section">
-                <div v-if="!memberStore.isLogined"><HeaderRightBeforeLogin/></div>
-                <div v-else><HeaderRightAfterLogin/></div>
-                <!-- <nav data-v-26153660="">
+              <div v-if="!memberStore.isLogined">
+                <HeaderRightBeforeLogin />
+              </div>
+              <div v-else><HeaderRightAfterLogin /></div>
+              <!-- <nav data-v-26153660="">
               <ul data-v-26153660="" class="nav-list">
                 <li
                   data-v-26153660=""
@@ -312,7 +340,7 @@
                 </li>
               </ul>
             </nav> -->
-                <!-- <div data-v-4c66cf88="" data-v-26153660="" class="notification-counter notification-counter right-section-item has-badge">
+              <!-- <div data-v-4c66cf88="" data-v-26153660="" class="notification-counter notification-counter right-section-item has-badge">
                 <button data-v-4c66cf88="" type="button" class="btn btn-clear btn-none">
                     <span data-v-0d243f1a="" data-v-4c66cf88="" class="sg-icon-v1 alarm fill"
                         style="
@@ -338,7 +366,7 @@
                     </span>
                 </button>
             </div> -->
-                <!-- <div data-v-35a09b99="" data-v-26153660="" class="usermenu user-menu right-section-item">
+              <!-- <div data-v-35a09b99="" data-v-26153660="" class="usermenu user-menu right-section-item">
                 <div data-v-35a09b99="" class="usermenu-button">
                     <div data-v-29d5164e="" data-v-35a09b99="" class="user-profile-picture" >
                         <div data-v-29d5164e="" data-name="image" class=""
@@ -384,62 +412,65 @@
                     </div>
                 </div>
             </div> -->
-              </div>
+            </div>
           </div>
         </div>
       </section>
     </div>
     <!----><!---->
   </header>
-    <!-- </div>
+  <!-- </div>
   </div> -->
-  <div :class="{'search-off': !isSearchOn}"><SearchComponent @searchOff="searchOff"/></div>
+  <div :class="{ 'search-off': !isSearchOn }">
+    <SearchComponent @searchOff="searchOff" />
+  </div>
 </template>
 
 <script>
-import HeaderRightAfterLogin from './HeaderRightAfterLogin.vue';
+import HeaderRightAfterLogin from "./HeaderRightAfterLogin.vue";
 import HeaderRightBeforeLogin from "./HeaderRightBeforeLogin.vue";
-import SearchComponent from './SearchComponent.vue';
-import { mapStores } from 'pinia';
-import {useMemberStore} from '@/store/useMemberStore';
+import SearchComponent from "./SearchComponent.vue";
+import { mapStores } from "pinia";
+import { useMemberStore } from "@/store/useMemberStore";
 
 export default {
   name: "HeaderComponent",
   data() {
-    return { 
+    return {
       message: "test",
-      isSearchOn : false,
-      isLogined : false,
+      isSearchOn: false,
+      isLogined: false,
     };
   },
-  computed:{
-      ...mapStores(useMemberStore)
+  created() {
+    console.log(this.memberStore.isLogined);
+  },
+  computed: {
+    ...mapStores(useMemberStore),
   },
   components: {
     HeaderRightBeforeLogin,
     HeaderRightAfterLogin,
-    SearchComponent
+    SearchComponent,
   },
-  methods:{
-    searchClick(){
-      this.isSearchOn=true;
+  methods: {
+    searchClick() {
+      this.isSearchOn = true;
     },
-    searchOff(){
+    searchOff() {
       this.isSearchOn = false;
     },
-    isLogin(){
-
-    }
-  }
+    isLogin() {},
+  },
 };
 </script>
 
 <style scoped>
 /* 필수 css? */
-.before-login{
+.before-login {
   display: none;
 }
-.search-off{
+.search-off {
   display: none;
 }
 element.style {
@@ -540,11 +571,9 @@ template {
 
 /* <div id="app"> */
 
-
 /* 여기까지 */
 
 /*  */
-
 
 .global-header[data-v-8cc44300] {
   z-index: 1020;
@@ -1300,7 +1329,7 @@ ul li {
 }
 
 /*  */
-.d-xl-block{
+.d-xl-block {
   width: 60%;
 }
 
@@ -1379,11 +1408,11 @@ ul li {
 
 /*  */
 
-.center-section{
+.center-section {
   display: flex;
   align-items: center;
 }
-.service-search-container{
+.service-search-container {
   margin-right: 1rem;
 }
 .desktop-header .center-section .service-search-container[data-v-26153660] {
