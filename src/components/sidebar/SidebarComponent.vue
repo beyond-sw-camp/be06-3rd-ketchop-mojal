@@ -25,100 +25,17 @@
           class="observer-container topic-chip-observer"
         >
           <li
+            v-for="items in this.list"
+            :key="items.id"
             data-v-4763e57b=""
             data-v-71844fb9=""
             data-observe="topic-all"
-            class="selected"
             id="topic-all"
+            @click="selectCategory(items.idx)"
+            :class="{ selected: selectedId === items.idx }"
           >
-            <a
-              data-v-4763e57b=""
-              href="/myPost.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 작성한 글
-            </a>
-          </li>
-          <li
-            data-v-4763e57b=""
-            data-v-71844fb9=""
-            data-observe="topic-ask-provider"
-            class=""
-            id="topic-ask-provider"
-          >
-            <a
-              data-v-4763e57b=""
-              href="/myPostShare.html"
-              class=""
-              data-v-71844fb9=""
-              style="font-size: small"
-            >
-              나눔
-            </a>
-          </li>
-          <li
-            data-v-4763e57b=""
-            data-v-71844fb9=""
-            data-observe="topic-pro-knowhow"
-            class=""
-            id="topic-pro-knowhow"
-          >
-            <a
-              data-v-4763e57b=""
-              href="/myPostExchange.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              교환
-            </a>
-          </li>
-          <li
-            data-v-4763e57b=""
-            data-v-71844fb9=""
-            data-observe="topic-together"
-            class=""
-            id="topic-together"
-          >
-            <a
-              data-v-4763e57b=""
-              href="/myParticipated.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 참여한 글
-            </a>
-          </li>
-          <li
-            data-v-4763e57b=""
-            data-v-71844fb9=""
-            data-observe="topic-provider-news"
-            class=""
-            id="topic-provider-news"
-          >
-            <a
-              data-v-4763e57b=""
-              href="/myParticipatedShare.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              나눔
-            </a>
-          </li>
-          <li
-            data-v-4763e57b=""
-            data-v-71844fb9=""
-            data-observe="topic-soomgo-story"
-            class=""
-            id="topic-soomgo-story"
-          >
-            <a
-              data-v-4763e57b=""
-              href="/myParticipatedExchange.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              교환
+            <a data-v-4763e57b="" class="" data-v-71844fb9="">
+              {{ items.name }}
             </a>
           </li>
         </div>
@@ -136,115 +53,18 @@
           class="observer-container topic-tab-observer"
         >
           <li
-            data-v-f7ed0496=""
-            data-v-71844fb9=""
-            data-observe="topic-all"
-            class="selected"
-            id="topic-all"
-          >
-            <a
-              data-v-f7ed0496=""
-              href="/myPost.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              전체
-            </a>
-          </li>
-          <li
-            data-v-f7ed0496=""
-            data-v-71844fb9=""
-            data-observe="topic-ask-provider"
-            class=""
-            id="topic-ask-provider"
-          >
-            <a
-              data-v-f7ed0496=""
-              href="/myPost.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 작성한 글전체
-            </a>
-          </li>
-          <li
-            data-v-f7ed0496=""
-            data-v-71844fb9=""
-            data-observe="topic-pro-knowhow"
-            class=""
-            id="topic-pro-knowhow"
-          >
-            <a
-              data-v-f7ed0496=""
-              href="/myPostShare.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 작성한 나눔글
-            </a>
-          </li>
-          <li
-            data-v-f7ed0496=""
-            data-v-71844fb9=""
-            data-observe="topic-together"
-            class=""
-            id="topic-together"
-          >
-            <a
-              data-v-f7ed0496=""
-              href="/myPostExchange.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 작성한 교환글
-            </a>
-          </li>
-          <li
-            data-v-f7ed0496=""
-            data-v-71844fb9=""
-            data-observe="topic-provider-news"
-            class=""
-            id="topic-provider-news"
-          >
-            <a
-              data-v-f7ed0496=""
-              href="/myParticipated.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 참여한 전체글
-            </a>
-          </li>
-          <li
+            v-for="items in this.list"
+            :key="items.id"
             data-v-f7ed0496=""
             data-v-71844fb9=""
             data-observe="topic-soomgo-story"
             class=""
             id="topic-soomgo-story"
+            @click="selectCategory(items.idx)"
+            :class="{ selected: selectedId === items.idx }"
           >
-            <a
-              data-v-f7ed0496=""
-              href="/myParticipatedShare.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 참여한 나눔글
-            </a>
-          </li>
-          <li
-            data-v-f7ed0496=""
-            data-v-71844fb9=""
-            data-observe="topic-soomgo-story"
-            class=""
-            id="topic-soomgo-story"
-          >
-            <a
-              data-v-f7ed0496=""
-              href="/myParticipatedExchange.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 참여한 교환글
+            <a data-v-f7ed0496="" class="" data-v-71844fb9="">
+              {{ items.name }}
             </a>
           </li>
         </div>
@@ -256,55 +76,14 @@
       class="topic-list-menu d-none d-sm-block"
     >
       <ul data-v-8aaac69a="">
-        <li data-v-8aaac69a="" class="selected">
-          <a data-v-8aaac69a="" href="/myPost.html" class="topic-link-item">
-            내가 작성한 글
-          </a>
-        </li>
-        <li data-v-8aaac69a="" class="">
-          <a
-            data-v-8aaac69a=""
-            href="/myPostShare.html"
-            class="topic-link-item"
-          >
-            나눔
-          </a>
-        </li>
-        <li data-v-8aaac69a="" class="">
-          <a
-            data-v-8aaac69a=""
-            href="/myPostExchange.html"
-            class="topic-link-item"
-          >
-            교환
-          </a>
-        </li>
-        <li data-v-8aaac69a="" class="">
-          <a
-            data-v-8aaac69a=""
-            href="/myParticipated.html"
-            class="topic-link-item"
-          >
-            내가 참여한 글
-          </a>
-        </li>
-        <li data-v-8aaac69a="" class="">
-          <a
-            data-v-8aaac69a=""
-            href="/myParticipatedShare.html"
-            class="topic-link-item"
-          >
-            나눔
-          </a>
-        </li>
-        <li data-v-8aaac69a="" class="">
-          <a
-            data-v-8aaac69a=""
-            href="/myParticipatedExchange.html"
-            class="topic-link-item"
-          >
-            교환
-          </a>
+        <li
+          v-for="items in this.list"
+          :key="items.id"
+          data-v-8aaac69a=""
+          @click="selectCategory(items.idx)"
+          :class="{ selected: selectedId === items.idx }"
+        >
+          <a data-v-8aaac69a="" class="topic-link-item">{{ items.name }}</a>
         </li>
       </ul>
     </section>
@@ -312,10 +91,54 @@
 </template>
 
 <script>
+import { mapStores } from "pinia";
+import { useMyPostStore } from "@/store/useMyPostStore";
+
 export default {
   name: "SidebarComponent",
-  data() {},
-  methods: {},
+  components: {},
+  data() {
+    return {
+      selectedId: null,
+      list: [
+        {
+          id: 0,
+          name: "내가 작성한 글",
+        },
+        {
+          id: 1,
+          name: "나눔",
+        },
+        {
+          id: 2,
+          name: "교환",
+        },
+        {
+          id: 3,
+          name: "내가 참여한 글",
+        },
+        {
+          id: 4,
+          name: "나눔",
+        },
+        {
+          id: 5,
+          name: "교환",
+        },
+      ],
+    };
+  },
+  computed: {
+    ...mapStores(useMyPostStore),
+  },
+  methods: {
+    selectCategory(idx) {
+      this.selectedId = idx;
+    },
+    isSelect(Idx) {
+      return this.myPostStore.selectedCategoryIdx === Idx;
+    },
+  },
 };
 </script>
 

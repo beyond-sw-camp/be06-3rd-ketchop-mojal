@@ -25,13 +25,15 @@
           class="observer-container topic-chip-observer"
         >
           <li
-            v-for="items in categories"
+            v-for="items in this.categoryStore.categoryAll"
             :key="items.idx"
             data-v-4763e57b=""
             data-v-71844fb9=""
             data-observe="topic-all"
             class=" "
             id="topic-all"
+            @click="selectCategory(items.idx)"
+            :class="{ selected: selectedId === items.idx }"
           >
             <a data-v-4763e57b="" href="/" class="" data-v-71844fb9="">
               {{ items.name }}
@@ -52,137 +54,18 @@
           class="observer-container topic-tab-observer"
         >
           <li
-            v-for="items in categories"
+            v-for="items in this.categoryStore.categoryAll"
             :key="items.idx"
             data-v-4763e57b=""
             data-v-71844fb9=""
             data-observe="topic-all"
             class=""
             id="topic-all"
-            :style="style"
-            @click="changeStyle"
+            @click="selectCategory(items.idx)"
+            :class="{ selected: selectedId === items.idx }"
           >
-            <router-link
-              :to="{ name: 'Params', params: { name: 'dog', age: 4 } }"
-              data-v-4763e57b=""
-              class=""
-              data-v-71844fb9=""
-            >
-              {{ items.name }}
-            </router-link>
+            {{ items.name }}
           </li>
-          <!-- <li
-            data-v-f7ed0496=""
-            data-v-71844fb9=""
-            data-observe="topic-all"
-            class="selected"
-            id="topic-all"
-          >
-            <a
-              data-v-f7ed0496=""
-              href="/myPost.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              전체
-            </a>
-          </li>
-          <li
-            data-v-f7ed0496=""
-            data-v-71844fb9=""
-            data-observe="topic-ask-provider"
-            class=""
-            id="topic-ask-provider"
-          >
-            <a
-              data-v-f7ed0496=""
-              href="/myPost.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 작성한 글전체
-            </a>
-          </li>
-          <li
-            data-v-f7ed0496=""
-            data-v-71844fb9=""
-            data-observe="topic-pro-knowhow"
-            class=""
-            id="topic-pro-knowhow"
-          >
-            <a
-              data-v-f7ed0496=""
-              href="/myPostShare.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 작성한 나눔글
-            </a>
-          </li>
-          <li
-            data-v-f7ed0496=""
-            data-v-71844fb9=""
-            data-observe="topic-together"
-            class=""
-            id="topic-together"
-          >
-            <a
-              data-v-f7ed0496=""
-              href="/myPostExchange.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 작성한 교환글
-            </a>
-          </li>
-          <li
-            data-v-f7ed0496=""
-            data-v-71844fb9=""
-            data-observe="topic-provider-news"
-            class=""
-            id="topic-provider-news"
-          >
-            <a
-              data-v-f7ed0496=""
-              href="/myParticipated.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 참여한 전체글
-            </a>
-          </li>
-          <li
-            data-v-f7ed0496=""
-            data-v-71844fb9=""
-            data-observe="topic-soomgo-story"
-            class=""
-            id="topic-soomgo-story"
-          >
-            <a
-              data-v-f7ed0496=""
-              href="/myParticipatedShare.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 참여한 나눔글
-            </a>
-          </li>
-          <li
-            data-v-f7ed0496=""
-            data-v-71844fb9=""
-            data-observe="topic-soomgo-story"
-            class=""
-            id="topic-soomgo-story"
-          >
-            <a
-              data-v-f7ed0496=""
-              href="/myParticipatedExchange.html"
-              class=""
-              data-v-71844fb9=""
-            >
-              내가 참여한 교환글
-            </a>
-          </li> -->
         </div>
       </ul>
     </section>
@@ -193,21 +76,17 @@
     >
       <ul data-v-8aaac69a="">
         <li
-          v-for="items in categories"
-          :key="items.idx"
+          v-for="items in this.categoryStore.categoryAll"
+          :key="items.id"
           data-v-4763e57b=""
           data-v-71844fb9=""
           data-observe="topic-all"
           class=""
           id="topic-all"
           @click="selectCategory(items.idx)"
+          :class="{ selected: selectedId === items.idx }"
         >
-          <a
-            data-v-4763e57b=""
-            href="/"
-            class="topic-link-item"
-            data-v-71844fb9=""
-          >
+          <a data-v-4763e57b="" class="topic-link-item" data-v-71844fb9="">
             {{ items.name }}
           </a>
         </li>
@@ -217,30 +96,42 @@
 </template>
 
 <script>
-import { useCategoryStore } from "@/stores/useCategoryStore";
+import { useCategoryStore } from "../../store/useCategoryStore";
+import { useSharePostStore } from "@/store/useSharePostStore";
+import { useExchangePostStore } from "@/store/useExchangePostStore";
 import { mapStores } from "pinia";
 
 export default {
   name: "CategorySidebarComponent",
   data() {
     return {
-      categories: [],
-      idx: 0,
+      categoryAll: [],
+      categorySharePosts: [],
+      categoryExchangePosts: [],
+      isClick: false,
+      selectedId: null,
     };
   },
   computed: {
     ...mapStores(useCategoryStore),
+    ...mapStores(useSharePostStore),
+    ...mapStores(useExchangePostStore),
   },
 
-  created() {
-    this.selectCategory();
-    console.log("카테고리:", this.categories);
+  created() {},
+  mounted() {
+    this.categoryStore.getCategoryAll();
+    this.categoryAll = this.categoryStore.categoryAll;
   },
-  mounted() {},
   methods: {
+    categoryClick() {},
     selectCategory(idx) {
-      this.categoryStore.getCategory(idx);
-      // this.idx = idx;
+      this.selectedId = idx;
+      this.sharePostStore.getSharePostByCategory(idx);
+      this.exchangePostStore.getExchangePostByCategory(idx);
+    },
+    isSelect(Idx) {
+      return this.sharePostStore.selectedCategoryIdx === Idx;
     },
   },
 };
@@ -330,7 +221,13 @@ a {
   margin: 0;
 }
 
-.topic-list-menu ul li.selected[data-v-4763e57b] {
+.selected {
+  border-radius: 8px;
+  background-color: #eafaf9;
+  font-weight: 700;
+}
+
+.topic-list-menu ul li .selected[data-v-4763e57b] {
   border-radius: 8px;
   background-color: #eafaf9;
   font-weight: 700;
@@ -345,14 +242,14 @@ a {
   font-size: 0.875rem;
 }
 
-/* .topic-list-menu ul li .topic-link-item[data-v-8aaac69a] {
+.topic-list-menu ul li .topic-link-item[data-v-8aaac69a] {
   display: flex;
   align-items: center;
   padding: 0 1.25rem;
   height: 3.5rem;
   color: #2d2d2d;
   font-size: 0.875rem;
-} */
+}
 
 /*******************************중간사이즈랑 모바일 사이즈 2번째 section***************************************/
 @media (min-width: 768px) {
@@ -381,7 +278,7 @@ a {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-.topic-list-tab ul .topic-tab-observer li.selected[data-v-f7ed0496] {
+.topic-list-tab ul .topic-tab-observer li .selected[data-v-f7ed0496] {
   padding-bottom: 0.75rem;
   border-bottom: 0.125rem solid #323232;
   font-weight: 500;
@@ -393,6 +290,20 @@ a {
   font-size: 0.875rem;
 }
 .topic-list-tab ul .topic-tab-observer > li[data-v-f7ed0496] {
+  flex: 0 0 auto;
+}
+
+.topic-list-chip ul .topic-chip-observer li[data-v-4763e57b]:not(:first-child) {
+  margin-left: 0.5rem;
+}
+.topic-list-chip ul .topic-chip-observer li[data-v-4763e57b] {
+  height: 2rem;
+  border-radius: 20px;
+  border: 0.0625rem solid #e1e1e1;
+  font-size: 0.875rem;
+}
+
+.topic-list-chip ul .topic-chip-observer > li[data-v-4763e57b] {
   flex: 0 0 auto;
 }
 </style>
