@@ -36,6 +36,7 @@ const router = createRouter({
                 { path: "/shpostread", component: ShPostReadComponent },
                 { path:"/expostlist", component: ExPostListComponent},
                 { path:"/shpostlist", component: ShPostListComponent},
+                kj
             ]
         },
         { path:"/select-category", component: SelectCategory},
