@@ -4,12 +4,12 @@
 </template>
 
 <script>
-import HeaderComponent from '@/components/header/HeaderComponent.vue'
+import HeaderComponent from './components/header/HeaderComponent.vue'
 import { useCategoryStore } from '@/store/useCategoryStore'; 
 import { mapStores } from 'pinia';
 
 export default {
-  name: 'App',
+  name: 'Home',
   components: {
     HeaderComponent,
   },

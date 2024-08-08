@@ -39,17 +39,20 @@
                             </div>
                         </div>
                         <div data-v-5467bada="" class="col-12">
-                            <button data-v-3998184b="" data-v-5467bada="" type="button" class="btn kakao-login-btn btn-secondary">
-                                <img data-v-3998184b="" src="https://assets.cdn.soomgo.com/icons/icon-login-kakaotalk-btn.svg" alt="카카오 로그인">
-                                <span data-v-3998184b="">카카오로 시작</span>
-                            </button>
+                            <!-- <button data-v-3998184b="" data-v-5467bada="" @click="kakaoLogin" type="button" class="btn kakao-login-btn btn-secondary"> -->
+                                <a id="kakao-login-btn" href="http://localhost:8080/oauth2/authorization/kakao">
+                                    <img data-v-3998184b="" src="https://assets.cdn.soomgo.com/icons/icon-login-kakaotalk-btn.svg" alt="카카오 로그인">
+                                    <span data-v-3998184b="">카카오로 시작</span>
+                                </a>
+                            <!-- </button> -->
+                            <p id="token-result"></p>
                         </div>
-                        <div data-v-5467bada="" class="col-12">
+                        <!-- <div data-v-5467bada="" class="col-12">
                             <button data-v-d2f0a4f0="" data-v-5467bada="" type="button" class="btn naver-id-login btn-secondary">
                                 <img data-v-d2f0a4f0="" src="https://assets.cdn.soomgo.com/icons/icon-login-naver-btn.svg">
                                 <span data-v-d2f0a4f0=""> 네이버로 시작 </span>
                             </button>
-                        </div>                      
+                        </div>                       -->
                     </div>
                 </form>
             </div> 

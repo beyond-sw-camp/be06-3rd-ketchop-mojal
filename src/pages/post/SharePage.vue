@@ -1,12 +1,7 @@
 <template>
   <div id="app-body">
     <div data-v-c05eb1ae class="community-container container">
-      <div
-        data-v-4963761a=""
-        data-v-0352d1b6=""
-        data-v-6eb1ae=""
-        class="soomgo-life-container"
-      >
+      <div data-v-0352d1b6="" data-v-4963761a="" class="soomgo-life-container">
         <section
           data-v-4b40be3a=""
           data-v-0352d1b6=""
@@ -34,7 +29,7 @@
                 data-testid="community-main"
                 class="community-title"
               >
-                교환글
+                나눔글
               </h1>
               <!---------------------------------- 글쓰기 버튼------------------------------------------>
             </section>
@@ -42,7 +37,7 @@
           <!---------------------------------------------- 레이아웃 ------------------------------------------------------->
           <div data-v-4b40be3a="" class="community-layout">
             <!------------------------------------------- 레이아웃 왼쪽 카테고리 ----------------------------------------------------------------------->
-            <CategoryListComponent></CategoryListComponent>
+            <CategorySidebarComponent></CategorySidebarComponent>
 
             <!----------------------------------------- 레이아웃 오른쪽 리스트  -------------------------------------------------------------->
             <div
@@ -60,7 +55,8 @@
                   id="observer-e5774ab7-33f8-4f41-b55d-72c81f973aee"
                 ></div>
               </div>
-              <ExchangePostListComponent />
+
+              <SharePostListComponent />
             </div>
           </div>
           <!----------------------------------------- 위로올라가기 버튼-------------------------------------------------------------->
@@ -87,14 +83,14 @@
 </template>
 
 <script>
-import CategoryListComponent from "@/components/sidebar/CategorySidebarComponent.vue";
-import ExchangePostListComponent from "@/components/list/ExchangePostListComponent.vue";
+import CategorySidebarComponent from "@/components/sidebar/CategorySidebarComponent.vue";
+import SharePostListComponent from "@/components/list/SharePostListComponent.vue";
 
 export default {
-  name: "MyPostPage",
+  name: "SharePage",
   components: {
-    CategoryListComponent,
-    ExchangePostListComponent,
+    CategorySidebarComponent,
+    SharePostListComponent,
   },
   data() {
     return {
@@ -105,9 +101,6 @@ export default {
     };
   },
   methods: {
-    toggle() {
-      this.active = !this.active;
-    },
     scrollUp() {
       window.scrollTo(0, 0);
     },
@@ -336,20 +329,26 @@ a {
 }
 
 .soomgo-life-container[data-v-0352d1b6] {
-  /* width: 60.625rem; */
+  width: 60.625rem;
   max-width: 100%;
   height: 100%;
 }
 
-.soomgo-life-container[data-v-0352d1b6][data-v-45ac653f] {
+.soomgo-life-container[data-v-0352d1b6][data-v-4963761a][data-v-4963761a] {
   width: 60.625rem;
   max-width: 100%;
   height: 100%;
   margin: auto;
 }
 
-.community[data-v-4b40be3a] {
-  /* width: 60.625rem; */
+.soomgo-life-container[data-v-0352d1b6][data-v-4963761a] {
+  width: 60.625rem;
+  max-width: 100%;
+  height: 100%;
+}
+
+.community[data-v-4b40be3a][data-v-0352d1b6] {
+  width: 60.625rem;
   padding-bottom: 5rem;
   margin: auto;
 }
@@ -365,6 +364,15 @@ a {
 
 .community-header .community-title[data-v-74db39ba] {
   font-size: 2.125rem;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: normal;
+  margin: 0;
+  color: #323232;
+}
+
+.community-header .community-title2[data-v-74db39ba] {
+  font-size: 1rem;
   font-weight: 500;
   line-height: normal;
   letter-spacing: normal;
@@ -390,9 +398,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 7.5rem;
+  width: 1.5rem;
   height: 2.75rem;
-  background-color: #00c7ae;
+  background-color: #000;
   border: none;
   border-radius: 6px;
 }
@@ -512,10 +520,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 7.5rem;
-  height: 2.75rem;
-  background-color: #00c7ae;
-  border: none;
+  width: 4.5rem;
+  height: 1.75rem;
+  background-color: #fff;
+  border: 1px solid #363636;
+  color: #000;
   border-radius: 6px;
 }
 

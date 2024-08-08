@@ -1,16 +1,23 @@
 <template>
     <div data-v-4e6a8560="" data-v-3437dfdd="" class="service-region-wrapper">
-        <button data-v-4e6a8560="" class="category-select-box" @click="modalOnGive">
-            <span data-v-4e6a8560="" class="text">{{selectedGiveCategory}}</span>
+        <button data-v-4e6a8560="" class="category-select-box" @click="modalOn">
+            <span data-v-4e6a8560="" class="text">{{selectedCategory}}</span>
         </button>
-        <input placeholder="하위카테고리 입력"/>
+        <input v-model="shareStore.request.btmCategory" placeholder="하위카테고리 입력"/>
     </div>
     <div data-v-3437dfdd="" class="divider-wrapper" data-v-c05ff7d0=""><hr data-v-3437dfdd="" class="hr-divider" data-v-c05ff7d0=""></div>
     <div data-v-4e6a8560="" data-v-3437dfdd="" class="service-region-wrapper">
-        <button data-v-4e6a8560="" class="category-select-box" @click="modalOnTake">
-            <span data-v-4e6a8560="" class="text">{{selectedTakeCategory}}</span>
+        <button data-v-4e6a8560="" class="time-select-box">
+            <span data-v-4e6a8560="" class="text">마감 : </span>
+            <select v-model="shareStore.request.deadline">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <span data-v-4e6a8560="" class="text">시간</span>
         </button>
-        <input placeholder="하위카테고리 입력"/>
+        <input v-model="shareStore.request.capacity" placeholder="마감 인원 입력"/>
     </div>
     <div class="category-container" :class="{'modal-close':!isModalClick}">
         <div class="modal-background">
@@ -19,8 +26,8 @@
                     <button @click="modalOff" ata-testid="search-pro-filter-modal-close" type="button" class="btn close-button btn-none"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYSIgZD0iTTkgNy44NjlMMTYuNDM0LjQzNGwxLjEzMiAxLjEzMkwxMC4xMyA5bDcuNDM1IDcuNDM0LTEuMTMyIDEuMTMyTDkgMTAuMTNsLTcuNDM0IDcuNDM1LTEuMTMyLTEuMTMyTDcuODcgOSAuNDM0IDEuNTY2IDEuNTY2LjQzNCA5IDcuODd6Ii8+CiAgICA8L2RlZnM+CiAgICA8dXNlIGZpbGw9IiMzMjMyMzIiIGZpbGwtcnVsZT0ibm9uemVybyIgeGxpbms6aHJlZj0iI2EiLz4KPC9zdmc+Cg==" alt="모달 닫기"></button></div>
                 <div>
                     <ul>
-                        <li v-for="category in categoryList" :key="category" @click="isGiveCategory ? selectGiveCategory(category) : selectTakeCategory(category)">
-                            {{ category }}
+                        <li v-for="category in memberStore.userCategories" :key="category.idx" @click="selectCategory(category)">
+                            {{ category.name }}
                         </li>
                     </ul>
                 </div>
@@ -29,39 +36,40 @@
     </div>
 </template>
 <script>
+import { useShareStore } from '@/store/useShareStore'; 
+import { useMemberStore } from '@/store/useMemberStore'; 
+import { mapStores } from 'pinia';
+
 export default {
     data() {
         return { 
             isModalClick:false,
-            selectedGiveCategory:"제공할 상위 카테고리 선택",
-            selectedTakeCategory:"제공 받을 상위 카테고리 선택",
-            categoryList: [
-                "IT/프로그래밍", "역사와 문화", "미술과 예술","음악","미분과 적분", "생명과학", "반도체와 재료 공학","운영체제","신소재 공학","자바 프로그래밍", "자료구조 및 실습"
-            ] 
+            selectedCategory:"상위 카테고리 선택",
          }
     },
+    computed: {
+        ...mapStores(useShareStore, useMemberStore),
+    },
+    mounted(){
+        this.getUserCategories
+    },
     methods:{
-        modalOff() {
-            this.isModalClick = false;
+        modalOff(){
+            this.isModalClick=false;
         },
-        modalOn() {
-            this.isModalClick = true;
+        modalOn(){
+            this.isModalClick=true;
         },
-        modalOnGive() {
-            this.isGiveCategory = true;
-            this.modalOn();
+        getData(){
+            //categorylist
         },
-        modalOnTake() {
-            this.isGiveCategory = false;
-            this.modalOn();
-        },
-        selectGiveCategory(category) {
-            this.selectedGiveCategory = category;
+        selectCategory(category) {
+            this.selectedCategory = category.name;
+            this.shareStore.request.categoryIdx = category.idx;
             this.modalOff();
         },
-        selectTakeCategory(category) {
-            this.selectedTakeCategory = category;
-            this.modalOff();
+        async getUserCategories(){
+            await this.memberStore.getUserCategories();
         }
     }
 }
@@ -91,7 +99,7 @@ input::placeholder{
 .service-region-wrapper .category-select-box[data-v-4e6a8560] {
     display: flex;
     align-items: center;
-    width: 14rem;
+    width: 11.5rem;
     padding: 1.25rem 2rem 1.25rem 0;
     margin-right: 2rem;
     border: 0;
