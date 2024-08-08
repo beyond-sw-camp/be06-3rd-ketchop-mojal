@@ -4,9 +4,9 @@
             <div data-v-c96edda4="" class="row message-input-form no-gutters align-items-center">
                 <div data-v-c96edda4="" class="col">
                     <div data-v-c96edda4="" class="message-input-placeholder">
-                        <p data-v-c96edda4="" style="">메시지를 입력하세요.</p>
+                        <p data-v-c96edda4="" style=""></p>
                     </div>
-                    <textarea v-model="message" data-v-c96edda4="" name="message-input" rows="1" wrap="soft" class="message-input form-control is-valid" maxlength="1000" state="true" style="resize: none; height: 37px; overflow: hidden;" id="__BVID__79">
+                    <textarea v-model="message" placeholder="메세지 췤~" data-v-c96edda4="" name="message-input" rows="1" wrap="soft" class="message-input form-control is-valid" maxlength="1000" state="true" style="resize: none; height: 37px; overflow: hidden;" id="__BVID__79">
                     </textarea>
                 </div>
                 <div @click="sendMessage" data-v-c96edda4="" class="col-auto">

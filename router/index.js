@@ -23,7 +23,7 @@ const router = createRouter({
         { path: "/", component: MainPage },
         { path: "/signup", component: SignupPage },
         { path: "/chat", component: ChatListPage },
-        { name: "chat-room", path: "/chat-room/:roomIdx", component: ChatRoomPage },
+        { name: "chat-room", path: "/chat-room/:roomIdx", component: ChatRoomPage }, //props: route => ({ roomTitle: route.params.roomTitle })
         { path: "/mypage", component: MyPage },
         { path: "/myposts", component: MyPostPage },
         { path: "/expostcreate", component: ExPostCreateComponent },
@@ -31,7 +31,7 @@ const router = createRouter({
         { path: "/writecate", component: WriteCateModal },
         { path: "/exchange", component: ExchangePage },
         { path: "/share", component: SharePage },
-        { path: "/expostread", component: ExPostReadComponent },
+        { name: "/expostread", path:"/expostread/:postIdx", component: ExPostReadComponent },
         { path: "/shpostread", component: ShPostReadComponent },
     ],
 });
