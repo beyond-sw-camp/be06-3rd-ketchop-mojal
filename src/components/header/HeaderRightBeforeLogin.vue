@@ -6,28 +6,23 @@
     <span>
         <router-link to="signup">회원가입</router-link>
     </span>
-    <!-- <button data-v-26153660="" type="button" class="btn pro-signup-btn right-section-item btn-primary">
-      <a data-v-26153660="" href="" class="">로그인</a>
-    </button>
-    <button data-v-26153660="" type="button" class="btn pro-signup-btn right-section-item btn-primary">
-      <a data-v-26153660="" href="" class="">회원가입</a>
-    </button> -->
   </div>
 </template>
 <script>
-export default {};
+import { mapStores } from "pinia";
+import { useMemberStore } from "@/store/useMemberStore";
+
+export default {
+    computed:{
+      ...mapStores(useMemberStore)
+  },
+};
 </script>
 <style scoped>
 span{
     margin-left: 1rem;
 }
 
-.pro-signup-btn[data-v-26153660] {
-    width: 5rem;
-    padding: .40625rem 0;
-    font-size: .875rem;
-    border-radius: 6px;
-}
 .right-section-item[data-v-26153660] {
     margin-left: 1rem;
 }
@@ -53,5 +48,11 @@ span{
     user-select: none;
     border: .0625rem solid transparent;
     line-height: 1.5;
+}
+.before-login-color{
+    color: #FFF;
+}
+.button-container{
+    font-size: 22px;
 }
 </style>

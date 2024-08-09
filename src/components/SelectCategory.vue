@@ -13,11 +13,13 @@
                 </li>
             </ul>
         </div>
+        <button @click="saveCategories">카테고리 선택 완료</button>
     </div>
 </template>
 <script>
 import { useCategoryStore } from '@/store/useCategoryStore'; 
 import { mapStores } from 'pinia';
+import axios from 'axios';
 
 export default {
     computed: {
@@ -42,6 +44,18 @@ export default {
             } else {
                 // Notify user if more than 5 selected
                 alert('카테고리는 5개까지만 선택 가능합니다.');
+            }
+        },
+        async saveCategories(){
+            console.log(this.selected);
+
+            let url = "/proxy/member/add/category";
+            let requestData = { categories: this.selected };
+            try {
+                let response = await axios.post(url, requestData);
+                console.log(response.data); // 서버 응답 출력
+            } catch (error) {
+                console.error('Error:', error);
             }
         }
     }

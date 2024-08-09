@@ -24,6 +24,18 @@
                             </fieldset>
                         </div>
                         <div data-v-5467bada="" class="col-12">
+                            <fieldset data-v-5467bada="" class="form-group email-verify-container" :class="{'is-invalid': !emailValid}" id="__BVID__361">
+                                <div>
+                                    <div class="email-verify">
+                                        <input v-model="member.uuid" @blur="validateEmail" data-v-5467bada="" name="email" type="text" placeholder="인증 번호" autocomplete="off" class="text-input form-control is-invalid invalid" data-testid="login-email" x-autocompletetype="off" autocorrect="off" spellcheck="false" autocapitalize="off" data-vv-validate-on="blur" aria-invalid="true" id="__BVID__362">
+                                        <button v-if="!isMailSended" @click="sendEmail">코드받기</button>
+                                        <button v-else @click="verify">인증하기</button>
+                                    </div>
+                                    <div v-if="!emailValid" data-v-5467bada="" class="invalid-feedback">이메일 인증을 해주세요</div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div data-v-5467bada="" class="col-12">
                             <fieldset :class="{'is-invalid': !passwordValid}" data-v-5467bada="" class="form-group password" id="__BVID__363">
                                 <legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0 left-align" id="__BVID__363__BV_label_">비밀번호</legend>
                                 <div>
@@ -34,8 +46,17 @@
                         </div>
                         <div data-v-5467bada="" class="col-12">
                             <button data-v-5467bada="" data-testid="btn-login" type="submit" class="btn-login btn-primary">
-                                <span data-v-5467bada="">이메일 로그인</span>
+                                <span data-v-5467bada="">회원가입</span>
                             </button>
+                        </div>
+                        <div data-v-5467bada="" class="col-12">
+                            <!-- <button data-v-3998184b="" data-v-5467bada="" @click="kakaoLogin" type="button" class="btn kakao-login-btn btn-secondary"> -->
+                                <a id="kakao-login-btn" href="http://localhost:8080/oauth2/authorization/kakao">
+                                    <img data-v-3998184b="" src="https://assets.cdn.soomgo.com/icons/icon-login-kakaotalk-btn.svg" alt="카카오 로그인">
+                                    <span data-v-3998184b="">카카오로 회원가입</span>
+                                </a>
+                            <!-- </button> -->
+                            <p id="token-result"></p>
                         </div>                    
                     </div>
                 </form>
@@ -59,8 +80,11 @@ export default {
             member:{
                 email:"",
                 password:"",
-                nickname:""
-            }
+                nickname:"",
+                uuid:""
+            },
+            isMailSended:false,
+            isVerified:false
         };
     },
     computed:{
@@ -93,12 +117,39 @@ export default {
             }
         },
         signup(){
-            const result = this.memberStore.signup(this.member);
-            if (result) {
-                // window.location.href = "/";
-                //회원가입 알림
-                this.$router.push("/");
-            }
+            const response = this.memberStore.signup(this.member);
+            console.log(response);
+            alert("회원가입 성공.")
+            this.$router.push("/redirect");
+            // if (response.status==200) {
+            //     alert("회원가입 성공.")
+            //     this.$router.push("/redirect");
+            // }
+        },
+        async sendEmail(){
+            const response = await this.memberStore.sendEmail(this.member.email);
+            console.log(response);
+            this.isMailSended=true;
+                alert("인증 메일 전송 성공.");
+            // if(response){
+            //     this.isMailSended=true;
+            //     alert("인증 메일 전송 성공.");
+            // }else{
+            //     alert("인증 메일 전송에 실패했습니다.");
+            // }
+            
+        },
+        async verify(){
+            const response = await this.memberStore.verify(this.member);
+console.log(response);
+            alert("이메일 인증 성공");
+                this.isVerified=true;
+            // if(response.status==200){
+            //     alert("이메일 인증 성공");
+            //     this.isVerified=true;
+            // }else{
+            //     alert("이메일 인증 실패. 인증 코드를 다시 확인해주세요.");
+            // }
         }
     }
     
@@ -207,7 +258,7 @@ export default {
 .login-form .text-input[data-v-5467bada] {
     padding: .75rem;
     border: .0625rem solid #e1e1e1;
-    border-radius: 4px;
+    border-radius: 5rem;
 }
 .login-form .btn[data-v-5467bada] {
     width: 100%;
@@ -380,15 +431,15 @@ input {
 }
 .btn-primary {
     color: #fff;
-    background-color: #00c7ae;
-    border-color: #00c7ae;
+    background : linear-gradient(65deg, #B69CE5, #0066D5);
+    border-radius: 5rem;
+    /* background-color: #00c7ae; */
+    border: none;
     width: 100%;
     text-align: center;
     vertical-align: middle;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: .25rem;
-    border: .0625rem solid transparent;
     padding: .6875rem .75rem;
     margin-bottom: .75rem;
     margin-top: 1.5rem;
@@ -455,5 +506,28 @@ button[data-v-27635330] {
 
 .left-align {
     text-align: left;
+}
+.email-verify-container{
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+}
+.email-verify{
+    display: flex;
+}
+.email-verify button{
+    color: #fff;
+    /* background : linear-gradient(65deg, #B69CE5, #0066D5); */
+    background : #0066D5;
+    border-radius: 5rem;
+    border: none;
+    width: 40%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: .6875rem .75rem;
+    margin-bottom: .75rem;
+    margin-left: .3rem;
+    /* padding-block-end: 0; */
 }
 </style>

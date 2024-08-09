@@ -53,6 +53,7 @@ button{
 }
 #app{
   width: 100%;
+  height: 100vh;
 }
 :root {
     --blue: #4785ff;
