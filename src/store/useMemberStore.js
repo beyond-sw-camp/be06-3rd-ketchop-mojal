@@ -29,6 +29,7 @@ export const useMemberStore = defineStore('member', {
                 this.member.userIdx=response.data.idx;
                 this.member.userName=response.data.nickname;
                 this.member.userEmail=response.data.email;
+                member.isLogined=true;
             }
         },
         async signup(member){

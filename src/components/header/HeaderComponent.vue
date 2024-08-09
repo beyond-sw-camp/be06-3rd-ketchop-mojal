@@ -236,11 +236,11 @@
                 </svg>
             </div>
             <div data-v-26153660="" class="right-section">
-              <div v-if="!memberStore.isLogined">
+              <div v-if="!memberStore.member.isLogined">
                 <HeaderRightBeforeLogin />
               </div>
               <div v-else><HeaderRightAfterLogin /></div>
-              </div>
+            </div>
           </div>
         </div>
       </section>
