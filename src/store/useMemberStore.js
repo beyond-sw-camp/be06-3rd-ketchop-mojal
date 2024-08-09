@@ -3,10 +3,14 @@ import axios from "axios";
 
 export const useMemberStore = defineStore('member', {
     state: () => ({
-        userIdx : "",
-        userName : "",
-        userEmail : "",
-        isLogined : false,
+        member : {
+            userIdx : "",
+            userName : "",
+            password:"",
+            userEmail : "",
+            isLogined : false,
+            uuid:""
+        },
 
         userCategories:[]
     }),
@@ -21,16 +25,42 @@ export const useMemberStore = defineStore('member', {
             let response = await axios.post(url, member); //응답 받아서 저장
             console.log(response);
             if(response.data.isSuccess){
-                this.isLogined=true;
-                this.userIdx=response.data.idx;
-                this.userName=response.data.nickname;
-                this.userEmail=response.data.email;
+                this.member.isLogined=true;
+                this.member.userIdx=response.data.idx;
+                this.member.userName=response.data.nickname;
+                this.member.userEmail=response.data.email;
             }
         },
         async signup(member){
             let url = '/proxy/member/signup';
 
             let response = await axios.post(url, member, {withCredentials:false});
+            console.log(response);
+        },
+        async sendEmail(email){
+            
+            let emailAuthReq={
+                email:email,
+                uuid:""
+            };
+
+            // console.log(emailAuthReq);
+
+            let url = `/proxy/email/send`
+
+            let response = await axios.post(url, emailAuthReq);
+            console.log(response);
+        },
+        async verify(member){
+
+            let emailAuthReq={
+                email:member.email,
+                uuid:member.uuid
+            }
+
+            let url = `/proxy/email/verify`;
+
+            let response = await axios.post(url, emailAuthReq);
             console.log(response);
         },
         logout() {

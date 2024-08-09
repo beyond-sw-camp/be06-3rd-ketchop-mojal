@@ -15,6 +15,7 @@ import MainPage from "@/pages/MainPage.vue";
 import ExPostListComponent from "@/components/post/ExPostListComponent.vue";
 import ShPostListComponent from "@/components/post/ShPostListComponent.vue";
 import RedirectPage from "@/pages/RedirectPage.vue"
+import HomePage from '@/pages/HomePage.vue'
 
 
 const router = createRouter({
@@ -23,6 +24,7 @@ const router = createRouter({
         {   path: "/", 
             component: MainPage,
             children:[
+                { path: "", component: HomePage}, 
                 { path: "/login", component: LoginPage },
                 { path: "/signup", component: SignupPage },
                 { path: "/chat", component: ChatListPage },
