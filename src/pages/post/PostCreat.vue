@@ -11,7 +11,7 @@
                                 <option data-v-d87b96c8="" value="share" selected> 나눔글 </option>
                                 <option data-v-d87b96c8="" value="exchange" > 교환글 </option>
                             </select>
-                            <button  @click="createPost" data-v-d87b96c8="" type="button" class="btn btn-secondary disabled write-post-submit">등록</button>
+                            <button  @click="createPost" data-v-d87b96c8="" type="button" class="btn btn-secondary write-post-submit">등록</button>
                         </div>
                     </div>
                 </div>
@@ -238,7 +238,7 @@ input::placeholder{
 }
 /* 포스트작성 css */
 .community-container{
-    padding-top: 4.5rem;
+    padding-top: 8rem;
     /* width: 100vw; */
 }
 .bbodyy {
@@ -368,6 +368,7 @@ template {
 
 .container {
     width: 100%;
+    height: 100vh;
     padding-right: .9375rem;
     padding-left: .9375rem;
     margin-right: auto;
@@ -392,7 +393,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 .select-subject-header[data-v-d87b96c8] {
     height: 3.5rem;
     padding: 1rem 4rem;
-    background-color: #fff;
+    background: transparent;
 }
 
 /* <div data-v-d87b96c8="" class="subject-header-wrapper"> */
@@ -515,7 +516,7 @@ option {
 /* <button data-v-d87b96c8="" type="button" */
 
 .select-subject-header .subject-header-wrapper .write-post-submit[data-v-d87b96c8] {
-    padding: 0 1rem 0 0;
+    /* padding: 0 1rem 0 0;
     font-weight: 500;
     color: #c5c5c5;
     text-align: center;
@@ -524,7 +525,21 @@ option {
     -moz-user-select: none;
     user-select: none;
     background: #fff;
-    border: 0;
+    border: 0; */
+
+    color: #fff;
+    background : linear-gradient(65deg, #B69CE5, #0066D5);
+    border-radius: 30%;
+    border: none;
+    width: 5rem;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: .6875rem .75rem;
+    margin-bottom: .75rem;
+    margin-top: 1.5rem;
+
 }
 
 .btn.btn-outline-secondary, .btn.btn-secondary {
