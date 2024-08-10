@@ -29,12 +29,12 @@
                             </div>
                             <div data-v-a9bcd63a="" data-v-27cb0b18="" class="post-header-title-wrapper has-service">
                                 <div class="give-and-take-category-div">
-                                    <p data-v-a9bcd63a="" class="post-service-name">줄 재능 : 교육 > 영어 과외</p>
-                                    <p data-v-a9bcd63a="" class="post-service-name">받을 재능 : 돌보기 > 식물</p>
+                                    <p data-v-a9bcd63a="" class="post-service-name">줄 재능 : {{ this.post.giveCategory }} > {{ this.post.giveBtmCategory }}</p>
+                                    <p data-v-a9bcd63a="" class="post-service-name">받을 재능 : {{ this.post.takeCategory }} > {{ this.post.takeBtmCategory }}</p>
                                 </div>
                                 <h1 data-v-746dd3c0="" data-v-a9bcd63a="" data-testid="soomgo-life-post-title"
                                     class="post-header-title legacy-typography display-display3 gray-900 text-align-left">
-                                    저희 집에서 영어 공부 하면서 식물 관리법 알려줄 사람 </h1>
+                                    {{ this.post.title }} </h1>
                             </div>
                             <div data-v-5bbf4b7a="" data-v-27cb0b18="" class="user-profile-bar-container">
                                 <div data-v-5bbf4b7a="" class="ambassador-badge" style="display: none;">
@@ -59,14 +59,16 @@
                                             <div data-v-5bbf4b7a="" data-v-71844fb9="" class="profile-post-info">
                                                 <span data-v-746dd3c0="" data-v-5bbf4b7a=""
                                                     class="user-name legacy-typography headline-subhead5 gray-900 text-align-left"
-                                                    data-v-71844fb9="">집에 오는 식물은 다 죽이는 사람</span>
+                                                    data-v-71844fb9="">{{ this.post.memberNickname }}</span>
                                                 <span data-v-746dd3c0="" data-v-5bbf4b7a=""
                                                     class="post-created-at legacy-typography interface-description gray-900 text-align-left"
                                                     data-v-71844fb9="">44분 전 · 조회 15</span>
                                             </div>
                                         </div>
                                         <div data-v-5bbf4b7a="" data-v-71844fb9="" class="post-actions">
-                                            <button><router-link to="chatroomopen">채팅하기</router-link></button>
+                                            <button @click="createChatRoom(this.postIdx)">
+                                                    채팅하기
+                                            </button>
                                             <img data-v-5bbf4b7a="" data-v-71844fb9=""
                                                 src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0yMC43NyAxNS4xNzRjLjM3IDAgLjY3NS4yNzYuNzIzLjYzNGwuMDA3LjA5OXY1Ljg2YzAgLjM3MS0uMjc1LjY3OC0uNjMyLjcyNmwtLjA5OS4wMDdIMy4yMzFhLjczMi43MzIgMCAwIDEtLjcyNC0uNjMzbC0uMDA3LS4xdi01Ljg2YS43MzIuNzMyIDAgMCAxIDEuNDU1LS4xbC4wMDcuMXY1LjEyOGgxNi4wNzZ2LTUuMTI4YzAtLjM3LjI3NS0uNjc3LjYzMi0uNzI2bC4xLS4wMDd6TTEyLjQxMiAxLjYyOGwuMDkuMDcyIDYuMzc3IDYuMDVhLjczNC43MzQgMCAwIDEgLjAyOCAxLjAzNi43My43MyAwIDAgMS0uOTQ5LjA5OGwtLjA4NC0uMDY5LTUuMTQ1LTQuODgxdjExLjk3M2EuNzMyLjczMiAwIDAgMS0xLjQ1NC4xbC0uMDA3LS4xVjMuOTMzTDYuMTI1IDguODE1YS43My43MyAwIDAgMS0uOTUzLjA0NWwtLjA4LS4wNzRhLjczNC43MzQgMCAwIDEtLjA0NS0uOTU1bC4wNzMtLjA4IDYuMzc4LTYuMDUuMDQ2LS4wMzlhLjczNC43MzQgMCAwIDEgLjAxNC0uMDFsLS4wNi4wNDhhLjczLjczIDAgMCAxIC4yMTMtLjE0Yy4wMDUgMCAuMDA5LS4wMDIuMDEzLS4wMDRhLjcyNC43MjQgMCAwIDEgLjY5LjA3MnoiIGZpbGw9IiMyRDJEMkQiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4K"
                                                 alt="공유하기" class="icon">
@@ -98,8 +100,7 @@
                             <div data-v-e21cd7d0="" class="body-contents">
                                 <p data-v-746dd3c0="" data-v-e21cd7d0=""
                                     class="text legacy-typography interface-body1 gray-900 text-align-left">
-                                    <span data-v-e21cd7d0="" data-v-746dd3c0="">나는 영어! 너는 식물 살려내기! 교환하자!!!!!!!!!!!!!!!!
-                                        문의사항은 채팅으로 해라!!!
+                                    <span data-v-e21cd7d0="" data-v-746dd3c0="">{{ this.post.contents }}
                                     </span>
                                 </p>
                             </div>
@@ -1176,6 +1177,7 @@
                         </section>
                         -->
                         <!--조회수..넣는다면 조회수 별 인기글 세개 보여주는 기능으로 바꾸기-->
+                        <!--
                         <section data-v-9fd2e7dc="" data-v-1c31fdd0="" class="popular-post">
                             <div data-v-9fd2e7dc="" class="popular-post-heading">
                                 <h2 data-v-746dd3c0="" data-v-9fd2e7dc=""
@@ -1250,6 +1252,7 @@
                                 </ul>
                             </div>
                         </section>
+                        -->
                     </div>
                 </section>
             </div>
@@ -1259,14 +1262,70 @@
 </template>
 
 <script>
-// import axios from "axios";
+import { useExchangePostStore } from "@/store/useExchangePostStore";
+import { useRoute, useRouter} from 'vue-router';
+import { mapStores } from 'pinia';
+import { useChatRoomStore } from "@/store/useChatRoomStore";
+import { useMemberStore } from "@/store/useMemberStore";
 
 export default {
-    name: 'ExPostReadComponent',
+    name: 'ExPostReadPase',
     data() {
+        const route = useRoute();
         return { 
             message: "test",
-         }
+            postIdx: route.params.postIdx,
+            post : {
+                postIdx: { type: Number, required : true },
+                postType: { type: String,required : true },
+                status: { type: Boolean, required : true },
+                memberIdx: { type: Number, required : true },
+                memberNickname: { type: String,required : true },
+                timeStamp: { type: String,required : true },
+                modifyTime: { type: String,required : true },
+                title:{ type: String,required : true },
+                contents: { type: String,required : true },
+                giveCategory: { type: Number, required : true },
+                giveBtmCategory: { type: String,required : true },
+                takeCategory: { type: Number, required : true },
+                takeBtmCategory: { type: Boolean, required : true },
+            }
+        }
+    },
+    computed:{
+        ...mapStores(useExchangePostStore),
+        ...mapStores(useChatRoomStore)
+    },
+    async mounted() {
+        await this.getPostInfo(this.postIdx);
+    },
+    methods: {
+        async getPostInfo(postIdx) {
+            // console.log(postIdx);
+            
+            await this.exchangePostStore.getExchangeRead(postIdx);
+            this.post = this.exchangePostStore.exchangePost;
+        },
+
+        async createChatRoom(postIdx) {
+            
+            const memberStore = useMemberStore();
+
+            // 본인 글이면 오류 메시지 띄우기
+            if (memberStore.userIdx === this.post.memberIdx) {
+                alert("본인 글에서는 채팅을 열 수 없습니다! 리스트에서 들어가 주세요. 감사합니다.");
+                //리스트로 라우팅? 고려 중
+                return;
+            }
+
+            // 본인 글이 아니면 채팅방 생성
+            await this.chatRoomStore.CreateChatRoom(postIdx);
+
+            // 채팅방 생성 후 채팅방으로 이동
+            const router = useRouter(); // router 추가
+            router.push({ name: 'ChatRoomPage', params: { roomIdx: this.chatRoomStore.roomIdx } });
+
+        }
     }
 }
 </script>

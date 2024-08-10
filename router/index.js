@@ -6,14 +6,12 @@ import ChatListPage from "@/pages/chat/ChatListPage.vue";
 import ChatRoomPage from "@/pages/chat/ChatRoomPage.vue";
 import MyPage from "@/pages/member/MyPage.vue";
 import PoatCreate from "@/pages/post/PostCreat.vue";
-import ExPostReadComponent from "@/components/post/ExPostReadComponent.vue";
+import ExPostReadPage from "@/pages/post/ExPostReadPage.vue";
 import ShPostReadComponent from "@/components/post/ShPostReadComponent.vue";
 import SharePage from "@/pages/post/SharePage.vue";
 import ExchangePage from "@/pages/post/ExchangePage.vue";
 import MyPostPage from "@/pages/post/MyPostPage.vue";
 import MainPage from "@/pages/MainPage.vue";
-import ExPostListComponent from "@/components/post/ExPostListComponent.vue";
-import ShPostListComponent from "@/components/post/ShPostListComponent.vue";
 import SelectCategory from "@/pages/SelectCategory.vue"
 
 
@@ -26,16 +24,14 @@ const router = createRouter({
                 { path: "/login", component: LoginPage },
                 { path: "/signup", component: SignupPage },
                 { path: "/chat", component: ChatListPage },
-                { name: "chat-room", path: "/chat-room/:roomIdx", component: ChatRoomPage },
+                { name: "/chat-room", path: "/chat-room/:roomIdx", component: ChatRoomPage },
                 { path: "/mypage", component: MyPage },
                 { path: "/myposts", component: MyPostPage },
                 { name: "postcreate", path: "/postcreate/:postType", component: PoatCreate },
                 { path: "/exchange", component: ExchangePage },
                 { path: "/share", component: SharePage },
-                { path: "/expostread", component: ExPostReadComponent },
+                { name: "/expostread", path: "/expostread/:postIdx", component: ExPostReadPage },
                 { path: "/shpostread", component: ShPostReadComponent },
-                { path:"/expostlist", component: ExPostListComponent},
-                { path:"/shpostlist", component: ShPostListComponent},
             ]
         },
         { path:"/select-category", component: SelectCategory},
