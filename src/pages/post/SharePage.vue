@@ -1,7 +1,7 @@
 <template>
   <div id="app-body">
     <div data-v-c05eb1ae class="community-container container">
-      <div data-v-0352d1b6 data-v-05eb1ae class="soomgo-life-container">
+      <div data-v-0352d1b6="" data-v-4963761a="" class="soomgo-life-container">
         <section
           data-v-4b40be3a=""
           data-v-0352d1b6=""
@@ -29,117 +29,15 @@
                 data-testid="community-main"
                 class="community-title"
               >
-                나의 글
+                나눔글
               </h1>
               <!---------------------------------- 글쓰기 버튼------------------------------------------>
-              <div data-v-74db39ba="" data-v-71844fb9="">
-                <div data-v-32970c25="" class="write-button-desktop">
-                  <!--------------------------------------- 글쓰기버튼 & 클릭시 리스트 --------------------------------------------->
-                  <div
-                    data-v-32970c25=""
-                    class="dropdown b-dropdown btn-group"
-                    id="__BVID__410"
-                  >
-                    <button
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      type="button"
-                      class="btn dropdown-toggle btn-primary"
-                      id="__BVID__410__BV_toggle_"
-                      @click="toggle"
-                    >
-                      글쓰기
-                    </button>
-                    <ul
-                      role="menu"
-                      tabindex="-1"
-                      class="dropdown-menu dropdown-menu-right show"
-                      aria-labelledby="__BVID__410__BV_toggle_"
-                      style="
-                        position: absolute;
-                        will-change: transform;
-                        top: 0px;
-                        left: 0px;
-                        transform: translate3d(-200px, 44px, 0px);
-                      "
-                      v-if="active"
-                    >
-                      <li data-v-32970c25="" role="presentation">
-                        <router-link
-                          :to="{
-                            name: 'postcreate',
-                            params: { postType: 'exchange' },
-                          }"
-                          role="menuitem"
-                          target="_self"
-                          class="dropdown-item"
-                        >
-                          <div data-v-32970c25="" class="dropdown-menu-item">
-                            <div
-                              data-v-32970c25=""
-                              class="dropdown-menu-item-text"
-                            >
-                              <span
-                                data-v-746dd3c0=""
-                                data-v-32970c25=""
-                                class="legacy-typography headline-subhead5 gray-900 text-align-left"
-                                >나눔글</span
-                              ><span
-                                data-v-746dd3c0=""
-                                data-v-32970c25=""
-                                class="legacy-typography interface-description gray-500 text-align-left"
-                              ></span>
-                            </div>
-                            <i
-                              data-v-32970c25=""
-                              class="dropdown-menu-item-icon"
-                            ></i>
-                          </div>
-                        </router-link>
-                      </li>
-                      <li data-v-32970c25="" role="presentation">
-                        <router-link
-                          role="menuitem"
-                          :to="{
-                            name: 'postcreate',
-                            params: { postType: 'share' },
-                          }"
-                          target="_self"
-                          class="dropdown-item"
-                        >
-                          <div data-v-32970c25="" class="dropdown-menu-item">
-                            <div
-                              data-v-32970c25=""
-                              class="dropdown-menu-item-text"
-                            >
-                              <span
-                                data-v-746dd3c0=""
-                                data-v-32970c25=""
-                                class="legacy-typography headline-subhead5 gray-900 text-align-left"
-                                >교환글</span
-                              ><span
-                                data-v-746dd3c0=""
-                                data-v-32970c25=""
-                                class="legacy-typography interface-description gray-500 text-align-left"
-                              ></span>
-                            </div>
-                            <i
-                              data-v-32970c25=""
-                              class="dropdown-menu-item-icon"
-                            ></i>
-                          </div>
-                        </router-link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
             </section>
           </div>
           <!---------------------------------------------- 레이아웃 ------------------------------------------------------->
           <div data-v-4b40be3a="" class="community-layout">
             <!------------------------------------------- 레이아웃 왼쪽 카테고리 ----------------------------------------------------------------------->
-            <SidebarComponent></SidebarComponent>
+            <CategorySidebarComponent></CategorySidebarComponent>
 
             <!----------------------------------------- 레이아웃 오른쪽 리스트  -------------------------------------------------------------->
             <div
@@ -157,20 +55,8 @@
                   id="observer-e5774ab7-33f8-4f41-b55d-72c81f973aee"
                 ></div>
               </div>
-              <div>
-                <MyPostsShareListComponent v-if="myPostStore.isShowShare" />
-                <MyPostsExchangeListComponent
-                  v-if="myPostStore.isShowExchange"
-                />
-              </div>
-              <div>
-                <MyPostsJoinShareListComponent
-                  v-if="myPostStore.isShowJoinShare"
-                />
-                <MyPostsJoinExchangeListComponent
-                  v-if="myPostStore.isShowJoinExchange"
-                />
-              </div>
+
+              <SharePostListComponent />
             </div>
           </div>
           <!----------------------------------------- 위로올라가기 버튼-------------------------------------------------------------->
@@ -197,22 +83,14 @@
 </template>
 
 <script>
-import SidebarComponent from "@/components/sidebar/SidebarComponent.vue";
-import MyPostsExchangeListComponent from "@/components/list/MyPostsExchangeListComponent.vue";
-import MyPostsShareListComponent from "@/components/list/MyPostsShareListComponent.vue";
-import MyPostsJoinExchangeListComponent from "@/components/list/MyPostsJoinExchangeListComponent.vue";
-import MyPostsJoinShareListComponent from "@/components/list/MyPostsJoinShareListComponent.vue";
-import { mapStores } from "pinia";
-import { useMyPostStore } from "@/store/useMyPostStore";
+import CategorySidebarComponent from "@/components/sidebar/CategorySidebarComponent.vue";
+import SharePostListComponent from "@/components/list/SharePostListComponent.vue";
 
 export default {
-  name: "MyPostPage",
+  name: "SharePage",
   components: {
-    SidebarComponent,
-    MyPostsShareListComponent,
-    MyPostsExchangeListComponent,
-    MyPostsJoinShareListComponent,
-    MyPostsJoinExchangeListComponent,
+    CategorySidebarComponent,
+    SharePostListComponent,
   },
   data() {
     return {
@@ -222,15 +100,7 @@ export default {
       active: false,
     };
   },
-  computed: {
-    ...mapStores(useMyPostStore),
-  },
-  created() {},
   methods: {
-    divide() {},
-    toggle() {
-      this.active = !this.active;
-    },
     scrollUp() {
       window.scrollTo(0, 0);
     },
@@ -243,15 +113,6 @@ export default {
 
 
 <style scoped>
-html {
-  scroll-behavior: smooth;
-}
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
 * {
   word-break: break-word;
 }
@@ -351,6 +212,7 @@ h1 {
   height: 100%;
   position: relative;
   flex-grow: 1;
+  margin-top: 4.5rem;
 }
 
 #app #app-body,
@@ -387,14 +249,6 @@ a:hover {
 a {
   color: #323232;
   background-color: transparent;
-}
-img,
-svg {
-  vertical-align: middle;
-}
-
-img {
-  border-style: none;
 }
 
 .write-button-desktop
@@ -476,20 +330,26 @@ img {
 }
 
 .soomgo-life-container[data-v-0352d1b6] {
-  /* width: 60.625rem; */
+  width: 60.625rem;
   max-width: 100%;
   height: 100%;
 }
 
-.soomgo-life-container[data-v-0352d1b6][data-v-45ac653f] {
+.soomgo-life-container[data-v-0352d1b6][data-v-4963761a][data-v-4963761a] {
   width: 60.625rem;
   max-width: 100%;
   height: 100%;
   margin: auto;
 }
 
-.community[data-v-4b40be3a] {
-  /* width: 60.625rem; */
+.soomgo-life-container[data-v-0352d1b6][data-v-4963761a] {
+  width: 60.625rem;
+  max-width: 100%;
+  height: 100%;
+}
+
+.community[data-v-4b40be3a][data-v-0352d1b6] {
+  width: 60.625rem;
   padding-bottom: 5rem;
   margin: auto;
 }
@@ -505,6 +365,15 @@ img {
 
 .community-header .community-title[data-v-74db39ba] {
   font-size: 2.125rem;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: normal;
+  margin: 0;
+  color: #323232;
+}
+
+.community-header .community-title2[data-v-74db39ba] {
+  font-size: 1rem;
   font-weight: 500;
   line-height: normal;
   letter-spacing: normal;
@@ -530,9 +399,9 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 7.5rem;
+  width: 1.5rem;
   height: 2.75rem;
-  background-color: #00c7ae;
+  background-color: #000;
   border: none;
   border-radius: 6px;
 }
@@ -652,10 +521,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 7.5rem;
-  height: 2.75rem;
-  background-color: #00c7ae;
-  border: none;
+  width: 4.5rem;
+  height: 1.75rem;
+  background-color: #fff;
+  border: 1px solid #363636;
+  color: #000;
   border-radius: 6px;
 }
 
@@ -773,44 +643,43 @@ button {
     padding-top: 0;
     margin-left: 5.3125rem;
   }
+}
 
-  /********************************* 위로가기버튼 ***************************************/
-  .community .top-btn[data-v-4b40be3a] {
-    right: 1rem;
-    bottom: 6rem;
-    z-index: 9;
-  }
+/********************************* 위로가기버튼 ***************************************/
+.community .top-btn[data-v-4b40be3a] {
+  right: 1rem;
+  bottom: 6rem;
+  z-index: 9;
+}
 
-  .top-btn[data-v-14e78883] {
-    position: fixed;
-    right: 1.5rem;
-    bottom: 2rem;
-    z-index: 50;
-    width: 3rem;
-    height: 3rem;
-    cursor: pointer;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 0.125rem 0.375rem 0 rgba(0, 0, 0, 0.2);
-  }
+.top-btn[data-v-14e78883] {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 2rem;
+  z-index: 50;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0.125rem 0.375rem 0 rgba(0, 0, 0, 0.2);
+}
+a:not([href]),
+a:not([href]):hover {
+  color: inherit;
+  text-decoration: none;
+}
 
-  a:not([href]),
-  a:not([href]):hover {
-    color: inherit;
-    text-decoration: none;
-  }
+.clickable,
+[role="button"] {
+  cursor: pointer;
+}
 
-  .clickable,
-  [role="button"] {
-    cursor: pointer;
-  }
-
-  .top-btn img[data-v-14e78883] {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-  }
+.top-btn img[data-v-14e78883] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 }
 </style>
 

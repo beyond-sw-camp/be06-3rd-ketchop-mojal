@@ -13,27 +13,27 @@
                         <div data-v-84c28776="" class="user-info">
                             <div data-v-84c28776="" class="user-status-wrapper">
                                 <div data-v-84c28776="" class="user-status">
-                                    <h5 data-v-ac555544="" data-v-84c28776="" title="이효진" class="prisma-typography body2:semibold primary"> {{nickname}} </h5>
+                                    <h5 data-v-ac555544="" data-v-84c28776="" title="이효진" class="prisma-typography body2:semibold primary">글 작성자 : {{room.postWriterNickname}}</h5>
                                 </div>
                             </div>
                             <div data-v-84c28776="" class="service-info">
-                                <span data-v-ac555544="" data-v-84c28776="" title="웹 개발 ∙ 전국" class="prisma-typography body4:regular primary"> 웹 개발 ∙ 전국 </span>
+                                <span data-v-ac555544="" data-v-84c28776="" title="웹 개발 ∙ 전국" class="prisma-typography body4:regular primary"> {{room.giveBtmCategory}} </span>
                             </div>
                         </div>
                     </div>
                     <div data-v-84c28776="" class="chat-msg-wrapper">
                         <div data-v-5fd8df5a="" data-v-84c28776="" class="notice">
-                            <span data-v-ac555544="" data-v-5fd8df5a="" title="상대방이 채팅방을 나갔습니다." class="prisma-typography body3:regular primary"> {{title}} </span>
+                            <span data-v-ac555544="" data-v-5fd8df5a="" title="상대방이 채팅방을 나갔습니다." class="prisma-typography body3:regular primary"> {{room.title}} </span>
                         </div>
                         <div data-v-84c28776="" class="chat-msg-info">
                             <div data-v-84c28776="" class="dot"></div>
-                            <span data-v-ac555544="" data-v-84c28776="" title="2024. 01. 22" class="prisma-typography body4:regular tertiary"> 2024. 01. 22 </span>
+                            <span data-v-ac555544="" data-v-84c28776="" title="2024. 01. 22" class="prisma-typography body4:regular tertiary"> {{room.lastMessageTimeStamp}} </span>
                         </div>
                     </div>
                 </div>
                 <hr data-v-84c28776="" class="divider">
                 <div data-v-84c28776="" class="chat-sub-info">
-                    <p data-v-ac555544="" data-v-84c28776="" title="총 200,000원 부터~" class="prisma-typography body3:semibold primary"> 총 200,000원 부터~</p>
+                    <p data-v-ac555544="" data-v-84c28776="" title="총 200,000원 부터~" class="prisma-typography body3:semibold primary"> {{room.giveBtmCategory}} >> {{room.takeBtmCategory}}</p>
                 </div>
             </div>
         </div>
@@ -43,18 +43,41 @@
 export default {
     name: 'ChatElement',
     props: {
-        idx:{
-            type: Number,
-            required : true
-        },
-        title: {
-            type: String,
-            required: true
-        },
-        nickname: {
-            type: String,
-            required: true
+        room : {
+            postWriterNickname:{ //작성자 닉네임
+                type: String,
+                required : true
+            },
+            participantNickname: { //참여자 닉네임
+                type: String,
+                required: true
+            },
+            title: { //글 제목
+                type: String,
+                required: true
+            },
+            giveBtmCategory: { //줄 상세 카테고리
+                type: String,
+                required: true
+            },
+            takeBtmCategory: { //받을 상세 카테고리
+                type: String,
+                required: true
+            },
+            status: { //글 상태
+                type: Boolean,
+                required: true
+            },
+            lastMessageTimeStamp: { //최근 메시지 시간
+                type: String,
+                required: true
+            },
+            roomIdx: { //채팅방 idx
+                type: Number,
+                required: true
+            }
         }
+
     }
 };
 </script>

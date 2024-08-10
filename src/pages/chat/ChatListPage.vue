@@ -16,9 +16,9 @@
                             <span><ChatElement/></span>
                         </router-link>
                     </li>  -->
-                    <li v-for="chat in chatList" :key="chat.idx">
-                        <router-link :to="{ name: 'chat-room', params: { roomIdx: chat.idx } }">
-                            <span><ChatElement :idx="chat.idx" :nickname="chat.nickname" :title="chat.title"/></span>
+                    <li v-for="room in chatRoomStore.chatRooms" :key="room.roomIdx">
+                        <router-link :to="{ name: '/chat-room', params: { roomIdx: room.roomIdx } }">
+                            <span><ChatElement :room="room"/></span>
                         </router-link>
                     </li> 
                 </ul>
@@ -27,7 +27,7 @@
     </div>
 </template>
 <script>
-import ChatElement from '../components/ChatElement.vue';
+import ChatElement from '../../components/chat/ChatElement.vue';
 import { mapStores } from 'pinia';
 import {useChatRoomStore} from '@/store/useChatRoomStore';
 
@@ -37,18 +37,7 @@ export default {
     },
     data(){
         return{
-            chatList: [
-                { idx : 1, nickname: "User1", title: "Chat Title 1" },
-                { idx : 2, nickname: "User2", title: "Chat Title 2" },
-                { idx : 3, nickname: "User3", title: "Chat Title 3" },
-                { idx : 4, nickname: "User4", title: "Chat Title 4" },
-                { idx : 5, nickname: "User5", title: "Chat Title 5" },
-                { idx : 6, nickname: "User6", title: "Chat Title 6" },
-                { idx : 7, nickname: "User7", title: "Chat Title 7" },
-                { idx : 8, nickname: "User8", title: "Chat Title 8" },
-                { idx : 9, nickname: "User9", title: "Chat Title 9" },
-                { idx : 10, nickname: "User10", title: "Chat Title 10" }
-            ]
+            
         }
     },
     computed:{
@@ -58,9 +47,16 @@ export default {
         this.getChatList();
     },
     methods: {
-        getChatList() {
+        async getChatList() {
             // const response = this.useChatRoomStore.getChatList();
             // this.chatList = response.data;
+
+            await this.chatRoomStore.initWebSocketHandling(); //스톰프초기화
+
+            await this.chatRoomStore.connect()// 웹소켓 연결 후 데이터 받아오기
+
+            //위에서 다 갔다오기도 전에 밑에 코드가 실행되어 await를 걸어줬당
+            
         }
     }
 };

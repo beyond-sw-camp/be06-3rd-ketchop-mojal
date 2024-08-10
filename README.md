@@ -1,4 +1,4 @@
-# vue01
+# mojal-project-front
 
 ## Project setup
 ```

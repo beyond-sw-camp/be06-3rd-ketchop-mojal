@@ -7,7 +7,7 @@
     class="feed-item"
     @click="routeTo"
   >
-    <a data-v-0f448764="" href="" class="" data-testid="soomgo-life-feed-item">
+    <router-link :to="{ name: '/expostread', params: { postIdx: this.item.postIdx } }" data-v-0f448764="" href="" class="" data-testid="soomgo-life-feed-item">
       <p
         data-v-746dd3c0=""
         data-v-0f448764=""
@@ -74,7 +74,7 @@
           </p>
         </div>
       </div>
-    </a>
+    </router-link>
   </li>
 </template>
 

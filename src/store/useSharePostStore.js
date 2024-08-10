@@ -16,7 +16,7 @@ export const useSharePostStore = defineStore("sharePost", {
         // 나눔글전체리스트
         async getShareListAll() {
             try {
-                let url = `http://localhost:8080/share/list`;
+                let url = `/proxy/share/list`;
                 let response = await axios.get(url);
                 this.shareListAll = response.data.result;
                 console.log("나눔글전체리스트:", this.shareListAll);
@@ -28,7 +28,7 @@ export const useSharePostStore = defineStore("sharePost", {
         //해당idx나눔글
         async getSharePost(shareIdx) {
             try {
-                let url = `http://localhost:8080/share/read?idx=${shareIdx}`;
+                let url = `/proxy/share/read?idx=${shareIdx}`;
                 let response = await axios.get(url);
                 this.sharePost = response.data.result;
                 console.log("스토어 해당나눔글:", this.sharePost);

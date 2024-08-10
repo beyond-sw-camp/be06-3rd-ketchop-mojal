@@ -1,12 +1,7 @@
 <template>
   <div id="app-body">
     <div data-v-c05eb1ae class="community-container container">
-      <div
-        data-v-4963761a=""
-        data-v-0352d1b6=""
-        data-v-6eb1ae=""
-        class="soomgo-life-container"
-      >
+      <div data-v-0352d1b6 data-v-05eb1ae class="soomgo-life-container">
         <section
           data-v-4b40be3a=""
           data-v-0352d1b6=""
@@ -34,15 +29,125 @@
                 data-testid="community-main"
                 class="community-title"
               >
-                교환글
+                나의 글
               </h1>
               <!---------------------------------- 글쓰기 버튼------------------------------------------>
+              <div data-v-74db39ba="" data-v-71844fb9="">
+                <div data-v-32970c25="" class="write-button-desktop">
+                  <!--------------------------------------- 글쓰기버튼 & 클릭시 리스트 --------------------------------------------->
+                  <div
+                    data-v-32970c25=""
+                    class="dropdown b-dropdown btn-group"
+                    id="__BVID__410"
+                  >
+                    <button
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      type="button"
+                      class="btn dropdown-toggle btn-primary"
+                      id="__BVID__410__BV_toggle_"
+                      @click="toggle"
+                    >
+                      글쓰기
+                    </button>
+                    <ul
+                      role="menu"
+                      tabindex="-1"
+                      class="dropdown-menu dropdown-menu-right show"
+                      aria-labelledby="__BVID__410__BV_toggle_"
+                      style="
+                        position: absolute;
+                        will-change: transform;
+                        top: 0px;
+                        left: 0px;
+                        transform: translate3d(-200px, 44px, 0px);
+                      "
+                      v-if="active"
+                    >
+                      <li data-v-32970c25="" role="presentation">
+<<<<<<< HEAD:src/pages/MyPostPage.vue
+                        <router-link
+                          :to="{
+                            name: 'postcreate',
+                            params: { postType: 'exchange' },
+                          }"
+=======
+                        <router-link :to="{ name: 'postcreate', params: { postType: 'share' } }"
+>>>>>>> dc5efe3d7bfdc3fa2f0e3ed59cc28e438997afad:src/pages/post/MyPostPage.vue
+                          role="menuitem"
+                          target="_self"
+                          class="dropdown-item"
+                        >
+                          <div data-v-32970c25="" class="dropdown-menu-item">
+                            <div
+                              data-v-32970c25=""
+                              class="dropdown-menu-item-text"
+                            >
+                              <span
+                                data-v-746dd3c0=""
+                                data-v-32970c25=""
+                                class="legacy-typography headline-subhead5 gray-900 text-align-left"
+                                >나눔글</span
+                              ><span
+                                data-v-746dd3c0=""
+                                data-v-32970c25=""
+                                class="legacy-typography interface-description gray-500 text-align-left"
+                              ></span>
+                            </div>
+                            <i
+                              data-v-32970c25=""
+                              class="dropdown-menu-item-icon"
+                            ></i>
+                          </div>
+                        </router-link>
+                      </li>
+                      <li data-v-32970c25="" role="presentation">
+<<<<<<< HEAD:src/pages/MyPostPage.vue
+                        <router-link
+=======
+                        <router-link :to="{ name: 'postcreate', params: { postType: 'exchange' } }"
+>>>>>>> dc5efe3d7bfdc3fa2f0e3ed59cc28e438997afad:src/pages/post/MyPostPage.vue
+                          role="menuitem"
+                          :to="{
+                            name: 'postcreate',
+                            params: { postType: 'share' },
+                          }"
+                          target="_self"
+                          class="dropdown-item"
+                        >
+                          <div data-v-32970c25="" class="dropdown-menu-item">
+                            <div
+                              data-v-32970c25=""
+                              class="dropdown-menu-item-text"
+                            >
+                              <span
+                                data-v-746dd3c0=""
+                                data-v-32970c25=""
+                                class="legacy-typography headline-subhead5 gray-900 text-align-left"
+                                >교환글</span
+                              ><span
+                                data-v-746dd3c0=""
+                                data-v-32970c25=""
+                                class="legacy-typography interface-description gray-500 text-align-left"
+                              ></span>
+                            </div>
+                            <i
+                              data-v-32970c25=""
+                              class="dropdown-menu-item-icon"
+                            ></i>
+                          </div>
+                        </router-link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </section>
           </div>
           <!---------------------------------------------- 레이아웃 ------------------------------------------------------->
           <div data-v-4b40be3a="" class="community-layout">
             <!------------------------------------------- 레이아웃 왼쪽 카테고리 ----------------------------------------------------------------------->
-            <CategorySidebarComponent></CategorySidebarComponent>
+            <SidebarComponent></SidebarComponent>
 
             <!----------------------------------------- 레이아웃 오른쪽 리스트  -------------------------------------------------------------->
             <div
@@ -60,7 +165,20 @@
                   id="observer-e5774ab7-33f8-4f41-b55d-72c81f973aee"
                 ></div>
               </div>
-              <ExchangePostListComponent />
+              <div>
+                <MyPostsShareListComponent v-if="myPostStore.isShowShare" />
+                <MyPostsExchangeListComponent
+                  v-if="myPostStore.isShowExchange"
+                />
+              </div>
+              <div>
+                <MyPostsJoinShareListComponent
+                  v-if="myPostStore.isShowJoinShare"
+                />
+                <MyPostsJoinExchangeListComponent
+                  v-if="myPostStore.isShowJoinExchange"
+                />
+              </div>
             </div>
           </div>
           <!----------------------------------------- 위로올라가기 버튼-------------------------------------------------------------->
@@ -87,14 +205,22 @@
 </template>
 
 <script>
-import CategorySidebarComponent from "@/components/sidebar/CategorySidebarComponent.vue";
-import ExchangePostListComponent from "@/components/list/ExchangePostListComponent.vue";
+import SidebarComponent from "@/components/sidebar/SidebarComponent.vue";
+import MyPostsExchangeListComponent from "@/components/list/MyPostsExchangeListComponent.vue";
+import MyPostsShareListComponent from "@/components/list/MyPostsShareListComponent.vue";
+import MyPostsJoinExchangeListComponent from "@/components/list/MyPostsJoinExchangeListComponent.vue";
+import MyPostsJoinShareListComponent from "@/components/list/MyPostsJoinShareListComponent.vue";
+import { mapStores } from "pinia";
+import { useMyPostStore } from "@/store/useMyPostStore";
 
 export default {
   name: "MyPostPage",
   components: {
-    CategorySidebarComponent,
-    ExchangePostListComponent,
+    SidebarComponent,
+    MyPostsShareListComponent,
+    MyPostsExchangeListComponent,
+    MyPostsJoinShareListComponent,
+    MyPostsJoinExchangeListComponent,
   },
   data() {
     return {
@@ -104,7 +230,12 @@ export default {
       active: false,
     };
   },
+  computed: {
+    ...mapStores(useMyPostStore),
+  },
+  created() {},
   methods: {
+    divide() {},
     toggle() {
       this.active = !this.active;
     },
@@ -120,6 +251,15 @@ export default {
 
 
 <style scoped>
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 * {
   word-break: break-word;
 }
@@ -256,6 +396,14 @@ a {
   color: #323232;
   background-color: transparent;
 }
+img,
+svg {
+  vertical-align: middle;
+}
+
+img {
+  border-style: none;
+}
 
 .write-button-desktop
   .b-dropdown[data-v-32970c25]
@@ -336,9 +484,10 @@ a {
 }
 
 .soomgo-life-container[data-v-0352d1b6] {
-  /* width: 60.625rem; */
+  width: 60.625rem;
   max-width: 100%;
   height: 100%;
+  margin: auto;
 }
 
 .soomgo-life-container[data-v-0352d1b6][data-v-45ac653f] {
@@ -633,43 +782,44 @@ button {
     padding-top: 0;
     margin-left: 5.3125rem;
   }
-}
 
-/********************************* 위로가기버튼 ***************************************/
-.community .top-btn[data-v-4b40be3a] {
-  right: 1rem;
-  bottom: 6rem;
-  z-index: 9;
-}
+  /********************************* 위로가기버튼 ***************************************/
+  .community .top-btn[data-v-4b40be3a] {
+    right: 1rem;
+    bottom: 6rem;
+    z-index: 9;
+  }
 
-.top-btn[data-v-14e78883] {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 2rem;
-  z-index: 50;
-  width: 3rem;
-  height: 3rem;
-  cursor: pointer;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 0.125rem 0.375rem 0 rgba(0, 0, 0, 0.2);
-}
-a:not([href]),
-a:not([href]):hover {
-  color: inherit;
-  text-decoration: none;
-}
+  .top-btn[data-v-14e78883] {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 2rem;
+    z-index: 50;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0.125rem 0.375rem 0 rgba(0, 0, 0, 0.2);
+  }
 
-.clickable,
-[role="button"] {
-  cursor: pointer;
-}
+  a:not([href]),
+  a:not([href]):hover {
+    color: inherit;
+    text-decoration: none;
+  }
 
-.top-btn img[data-v-14e78883] {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
+  .clickable,
+  [role="button"] {
+    cursor: pointer;
+  }
+
+  .top-btn img[data-v-14e78883] {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+  }
 }
 </style>
 

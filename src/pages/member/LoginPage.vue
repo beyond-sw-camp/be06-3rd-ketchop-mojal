@@ -31,25 +31,28 @@
                         </div>
                         <div data-v-5467bada="" class="reset-password-or-signup-wrapper col-12">
                             <div data-v-5467bada="">
-                                <a data-v-5467bada="" href="/find-email?from=start_sign-in" class="">이메일 찾기</a>
+                                <!-- <a data-v-5467bada="" href="/find-email?from=start_sign-in" class="">이메일 찾기</a>
                                 <div data-v-5467bada="" class="line"></div>
                                 <a data-v-5467bada="" href="/find-password/" class="">비밀번호 찾기</a>
-                                <div data-v-5467bada="" class="line"></div>
-                                <a data-v-5467bada="" href="/sign-up?from=loginpage" class="">회원가입</a>
+                                <div data-v-5467bada="" class="line"></div> -->
+                                <router-link to="signup" class="go-to-signup">회원가입</router-link>
                             </div>
                         </div>
                         <div data-v-5467bada="" class="col-12">
-                            <button data-v-3998184b="" data-v-5467bada="" type="button" class="btn kakao-login-btn btn-secondary">
-                                <img data-v-3998184b="" src="https://assets.cdn.soomgo.com/icons/icon-login-kakaotalk-btn.svg" alt="카카오 로그인">
-                                <span data-v-3998184b="">카카오로 시작</span>
-                            </button>
+                            <!-- <button data-v-3998184b="" data-v-5467bada="" @click="kakaoLogin" type="button" class="btn kakao-login-btn btn-secondary"> -->
+                                <a id="kakao-login-btn" href="http://localhost:8080/oauth2/authorization/kakao">
+                                    <img data-v-3998184b="" src="https://assets.cdn.soomgo.com/icons/icon-login-kakaotalk-btn.svg" alt="카카오 로그인">
+                                    <span data-v-3998184b="">카카오로 시작</span>
+                                </a>
+                            <!-- </button> -->
+                            <p id="token-result"></p>
                         </div>
-                        <div data-v-5467bada="" class="col-12">
+                        <!-- <div data-v-5467bada="" class="col-12">
                             <button data-v-d2f0a4f0="" data-v-5467bada="" type="button" class="btn naver-id-login btn-secondary">
                                 <img data-v-d2f0a4f0="" src="https://assets.cdn.soomgo.com/icons/icon-login-naver-btn.svg">
                                 <span data-v-d2f0a4f0=""> 네이버로 시작 </span>
                             </button>
-                        </div>                      
+                        </div>                       -->
                     </div>
                 </form>
             </div> 
@@ -110,46 +113,17 @@ export default {
 </script>
 
 <style scoped>
-:root {
-    --blue: #4785ff;
-    --indigo: #6610f2;
-    --purple: #6f42c1;
-    --pink: #e83e8c;
-    --red: #ff3131;
-    --orange: #fd7e14;
-    --yellow: #ffce21;
-    --green: #28a745;
-    --teal: #20c997;
-    --cyan: #17a2b8;
-    --white: #fff;
-    --gray: #999;
-    --gray-dark: #525252;
-    --primary: #00c7ae;
-    --secondary: #e1e1e1;
-    --success: #00c7ae;
-    --info: #17a2b8;
-    --warning: #ffce21;
-    --danger: #ff3131;
-    --light: #fafafa;
-    --dark: #525252;
-    --breakpoint-xs: 0;
-    --breakpoint-sm: 36rem;
-    --breakpoint-md: 48rem;
-    --breakpoint-lg: 62rem;
-    --breakpoint-xl: 75rem;
-    --font-family-sans-serif: "Noto Sans KR", "Malgun Gothic", -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
+
 #app #app-body, #app #app-header {
     opacity: 1;
     transition: opacity .3s ease-in;
     text-align: center;
-    min-height: 100%;
+    min-height: 100vh;
 }
 .login-page[data-v-ac2db00e] {
     padding: 10rem 0;
     background-color: #fafafa;
-    height: 100%;
+    height: 100vh;
 }
 .card[data-v-ac2db00e] {
     width: 100%;
@@ -213,7 +187,7 @@ export default {
 .login-form .text-input[data-v-5467bada] {
     padding: .75rem;
     border: .0625rem solid #e1e1e1;
-    border-radius: 4px;
+    border-radius: 5rem;
 }
 .login-form .btn[data-v-5467bada] {
     width: 100%;
@@ -236,6 +210,11 @@ export default {
     font-size: .875rem;
 }
 .login-form .reset-password-or-signup-wrapper>div>a[data-v-5467bada] {
+    padding: .375rem .5rem;
+    font-weight: 400;
+    color: #737373;
+}
+.go-to-signup{
     padding: .375rem .5rem;
     font-weight: 400;
     color: #737373;
@@ -386,15 +365,14 @@ input {
 }
 .btn-primary {
     color: #fff;
-    background-color: #00c7ae;
-    border-color: #00c7ae;
+    background : linear-gradient(65deg, #B69CE5, #0066D5);
+    border-radius: 5rem;
+    border: none;
     width: 100%;
     text-align: center;
     vertical-align: middle;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: .25rem;
-    border: .0625rem solid transparent;
     padding: .6875rem .75rem;
     margin-bottom: .75rem;
     margin-top: 1.5rem;
@@ -461,5 +439,23 @@ button[data-v-27635330] {
 
 .left-align {
     text-align: left;
+}
+.email-verify{
+    display: flex;
+}
+.email-verify button{
+    width: 40%;
+    color: #fff;
+    background-color: #00c7ae;
+    border-color: #00c7ae;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    border: .0625rem solid transparent;
+    padding: .6875rem .75rem;
+    margin-bottom: .75rem;
+    margin-left: .3rem;
 }
 </style>

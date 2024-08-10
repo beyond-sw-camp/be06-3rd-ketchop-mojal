@@ -14,25 +14,36 @@ import SharePage from "@/pages/SharePage.vue";
 import ExchangePage from "@/pages/ExchangePage.vue";
 import MyPostPage from "@/pages/MyPostPage.vue";
 import MainPage from "@/pages/MainPage.vue";
+import SelectCategory from "@/pages/SelectCategory.vue"
+import RedirectPage from "@/pages/RedirectPage.vue"
+import HomePage from '@/pages/HomePage.vue'
+
 
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: "/login", component: LoginPage },
-        { path: "/", component: MainPage },
-        { path: "/signup", component: SignupPage },
-        { path: "/chat", component: ChatListPage },
-        { name: "chat-room", path: "/chat-room/:roomIdx", component: ChatRoomPage },
-        { path: "/mypage", component: MyPage },
-        { path: "/myposts", component: MyPostPage },
-        { path: "/expostcreate", component: ExPostCreateComponent },
-        { name: "postcreate", path: "/postcreate/:postType", component: PoatCreate },
-        { path: "/writecate", component: WriteCateModal },
-        { path: "/exchange", component: ExchangePage },
-        { path: "/share", component: SharePage },
-        { name: "expostdetail", path: "/expostread/:id", component: ExPostReadPage },
-        { name: "sharedetail", path: "/sharedetail/:id", component: SharePostReadPage },
+        {
+            path: "/",
+            component: MainPage,
+            children: [
+                { path: "", component: HomePage },
+                { path: "/login", component: LoginPage },
+                { path: "/signup", component: SignupPage },
+                { path: "/chat", component: ChatListPage },
+                { name: "/chat-room", path: "/chat-room/:roomIdx", component: ChatRoomPage },
+                { path: "/mypage", component: MyPage },
+                { path: "/myposts", component: MyPostPage },
+                { name: "postcreate", path: "/postcreate/:postType", component: PoatCreate },
+                { path: "/exchange", component: ExchangePage },
+                { path: "/share", component: SharePage },
+                { path: "/writecate", component: WriteCateModal },
+                { name: "/expostread", path: "/expostread/:postIdx", component: ExPostReadPage },
+                { name: "expostdetail", path: "/expostread/:id", component: ExPostReadPage },
+                { name: "sharedetail", path: "/sharedetail/:id", component: SharePostReadPage },
+            ]
+        },
+        { path: "/redirect", component: RedirectPage },
     ],
 });
 

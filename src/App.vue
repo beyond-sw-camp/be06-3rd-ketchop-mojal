@@ -1,27 +1,40 @@
 <template>
-  <HeaderComponent/>
   <router-view></router-view>
 </template>
 
 <script>
-import HeaderComponent from './components/HeaderComponent.vue'
+// import HeaderComponent from '@/components/header/HeaderComponent.vue'
+import { useCategoryStore } from '@/store/useCategoryStore'; 
+import { mapStores } from 'pinia';
 
 export default {
   name: 'App',
   components: {
-    HeaderComponent,
+    // HeaderComponent,
   },
+  computed: {
+        ...mapStores(useCategoryStore),
+    },
   created(){
     console.log("      ██╗ ██╗      ███║   ████║        ████╗     ██╗");
     console.log("     ██║██ ██║   ██║  ██║  ██║        ██║ ██║    ██║");
     console.log("    ██║ ██║ ██║  ██║  ██║  ██║ ███╗  ██ ██ ██║   ██║");
     console.log("   ██║       ██║   ███║     ████║   ██║     ██║  ██████║");
+  },
+  mounted(){
+    this.getCategories();
+  },
+  methods:{
+    async getCategories(){
+      await this.categoryStore.getCategories();
+    }
   }
 }
 </script>
 
 <style>
 a{
+  color: black;
   text-decoration: none;
 }
 li, ul{
@@ -40,6 +53,7 @@ button{
 }
 #app{
   width: 100%;
+  height: 100vh;
 }
 :root {
     --blue: #4785ff;
