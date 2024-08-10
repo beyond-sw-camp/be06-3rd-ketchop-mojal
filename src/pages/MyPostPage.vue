@@ -65,9 +65,12 @@
                       v-if="active"
                     >
                       <li data-v-32970c25="" role="presentation">
-                        <a
+                        <router-link
+                          :to="{
+                            name: 'postcreate',
+                            params: { postType: 'exchange' },
+                          }"
                           role="menuitem"
-                          href="/writeSharePage"
                           target="_self"
                           class="dropdown-item"
                         >
@@ -92,12 +95,15 @@
                               class="dropdown-menu-item-icon"
                             ></i>
                           </div>
-                        </a>
+                        </router-link>
                       </li>
                       <li data-v-32970c25="" role="presentation">
-                        <a
+                        <router-link
                           role="menuitem"
-                          href="/writeExchange"
+                          :to="{
+                            name: 'postcreate',
+                            params: { postType: 'share' },
+                          }"
                           target="_self"
                           class="dropdown-item"
                         >
@@ -122,7 +128,7 @@
                               class="dropdown-menu-item-icon"
                             ></i>
                           </div>
-                        </a>
+                        </router-link>
                       </li>
                     </ul>
                   </div>
@@ -151,9 +157,20 @@
                   id="observer-e5774ab7-33f8-4f41-b55d-72c81f973aee"
                 ></div>
               </div>
-
-              <MyPostsShareListComponent />
-              <MyPostsExchangeListComponent />
+              <div>
+                <MyPostsShareListComponent v-if="myPostStore.isShowShare" />
+                <MyPostsExchangeListComponent
+                  v-if="myPostStore.isShowExchange"
+                />
+              </div>
+              <div>
+                <MyPostsJoinShareListComponent
+                  v-if="myPostStore.isShowJoinShare"
+                />
+                <MyPostsJoinExchangeListComponent
+                  v-if="myPostStore.isShowJoinExchange"
+                />
+              </div>
             </div>
           </div>
           <!----------------------------------------- 위로올라가기 버튼-------------------------------------------------------------->
@@ -183,6 +200,10 @@
 import SidebarComponent from "@/components/sidebar/SidebarComponent.vue";
 import MyPostsExchangeListComponent from "@/components/list/MyPostsExchangeListComponent.vue";
 import MyPostsShareListComponent from "@/components/list/MyPostsShareListComponent.vue";
+import MyPostsJoinExchangeListComponent from "@/components/list/MyPostsJoinExchangeListComponent.vue";
+import MyPostsJoinShareListComponent from "@/components/list/MyPostsJoinShareListComponent.vue";
+import { mapStores } from "pinia";
+import { useMyPostStore } from "@/store/useMyPostStore";
 
 export default {
   name: "MyPostPage",
@@ -190,6 +211,8 @@ export default {
     SidebarComponent,
     MyPostsShareListComponent,
     MyPostsExchangeListComponent,
+    MyPostsJoinShareListComponent,
+    MyPostsJoinExchangeListComponent,
   },
   data() {
     return {
@@ -198,6 +221,9 @@ export default {
       password: "",
       active: false,
     };
+  },
+  computed: {
+    ...mapStores(useMyPostStore),
   },
   created() {},
   methods: {

@@ -16,5 +16,8 @@ export const useCategoryStore = defineStore("category", {
             let response = await axios.get(url); //응답 받아서 저장
             this.categoryAll = response.data;
         },
+        selectCategory(categoryIdx) {
+            this.selectedCategoryIdx = categoryIdx;
+        },
     },
 });

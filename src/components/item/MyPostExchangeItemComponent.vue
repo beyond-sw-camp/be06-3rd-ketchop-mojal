@@ -88,7 +88,6 @@ export default {
   },
   methods: {
     isItemExist() {},
-    routeTo() {},
   },
   props: {
     item: { Object },

@@ -4,8 +4,10 @@ import { defineStore } from "pinia";
 export const useMyPostStore = defineStore("myPost", {
     state: () => (
         {
-            isShowShare: false,
-            isShowExchange: false,
+            isShowShare: true,
+            isShowExchange: true,
+            isShowJoinShare: false,
+            isShowJoinExchange: false,
             selectedIdx: null,
             myShareListAll: [],
             myExchangeListAll: [],
@@ -61,6 +63,31 @@ export const useMyPostStore = defineStore("myPost", {
                 console.log("exchange:", this.myJoinExchangeListAll);
             } catch (error) {
                 console.log(error);
+            }
+        },
+        selectCategory(idx) {
+            this.selectedCategoryIdx = idx;
+            // 상태 초기화
+            this.isShowShare = false;
+            this.isShowExchange = false;
+            this.isShowJoinShare = false;
+            this.isShowJoinExchange = false;
+
+            // 클릭했을 때 showShare showExchange가 변동
+            if (idx === 0) {
+                this.isShowShare = true;
+                this.isShowExchange = true;
+            } else if (idx === 1) {
+                this.isShowShare = true;
+            } else if (idx === 2) {
+                this.isShowExchange = true;
+            } else if (idx === 3) {
+                this.isShowJoinShare = true;
+                this.isShowJoinExchange = true;
+            } else if (idx === 4) {
+                this.isShowJoinShare = true;
+            } else if (idx === 5) {
+                this.isShowJoinExchange = true;
             }
         },
     },
