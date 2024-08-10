@@ -8,8 +8,8 @@ import MyPage from "@/pages/MyPage.vue";
 import ExPostCreateComponent from "@/pages/ExPostCreateComponent.vue";
 import PoatCreate from "@/pages/PostCreat.vue";
 import WriteCateModal from "@/components/WriteCateModal.vue";
-import ExPostReadComponent from "@/pages/ExPostReadComponent.vue";
-import ShPostReadComponent from "@/pages/ShPostReadComponent.vue";
+import ExPostReadPage from "@/pages/ExPostReadPage.vue";
+import SharePostReadPage from "@/pages/SharePostReadPage.vue";
 import SharePage from "@/pages/SharePage.vue";
 import ExchangePage from "@/pages/ExchangePage.vue";
 import MyPostPage from "@/pages/MyPostPage.vue";
@@ -31,8 +31,8 @@ const router = createRouter({
         { path: "/writecate", component: WriteCateModal },
         { path: "/exchange", component: ExchangePage },
         { path: "/share", component: SharePage },
-        { path: "/expostread", component: ExPostReadComponent },
-        { path: "/shpostread", component: ShPostReadComponent },
+        { name: "expostdetail", path: "/expostread/:id", component: ExPostReadPage },
+        { name: "sharedetail", path: "/sharedetail/:id", component: SharePostReadPage },
     ],
 });
 
