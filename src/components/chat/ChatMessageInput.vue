@@ -47,11 +47,13 @@ export default {
 </script>
 <style scoped>
 .chat-message-input[data-v-c96edda4] {
-    position: relative;
+    position: sticky;
+    bottom: 0;
     width: 100%;
     margin-bottom: 0;
     transition: margin-bottom .2s ease-out;
     will-change: margin-bottom;
+    z-index: 1000; /* 추가: 입력창이 다른 요소들 위에 나타나도록 설정 */
 }
 @media (min-width: 768px) {
     .message-input-form[data-v-c96edda4] {

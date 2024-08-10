@@ -1,5 +1,5 @@
 <template lang="">
-    <div data-v-abea0528="" data-name="chat-messages">
+    <div data-v-abea0528="" class="chat-messages-main">
         <div data-v-19f19603="" data-v-abea0528="" class="chat-messages-container">
             <div data-v-19f19603="">
                 <div data-v-19f19603="" class="chat-messages">
@@ -67,4 +67,9 @@ export default {
 .sender-message{
     text-align: right;
 }
+
+.chat-messages-main {
+    padding-bottom: 54.39px;
+}
+
 </style>
