@@ -80,8 +80,8 @@
           v-for="items in this.list"
           :key="items.id"
           data-v-8aaac69a=""
-          @click="selectCategory(items.idx)"
-          :class="{ selected: selectedId === items.idx }"
+          @click="selectCategory(items.id)"
+          :class="{ selected: selectedId === items.id }"
         >
           <a data-v-8aaac69a="" class="topic-link-item">{{ items.name }}</a>
         </li>
@@ -133,10 +133,10 @@ export default {
   },
   methods: {
     selectCategory(idx) {
-      this.selectedId = idx;
+      this.myPostStore.selectCategory(idx);
     },
-    isSelect(Idx) {
-      return this.myPostStore.selectedCategoryIdx === Idx;
+    isSelect(idx) {
+      return this.myPostStore.selectedIdx === idx;
     },
   },
 };
@@ -218,6 +218,12 @@ a {
   }
 }
 
+.selected {
+  border-radius: 8px;
+  background-color: #eafaf9;
+  font-weight: 700;
+}
+
 .topic-list-menu ul[data-v-8aaac69a] {
   width: 100%;
   display: flex;
@@ -290,5 +296,12 @@ a {
 }
 .topic-list-tab ul .topic-tab-observer > li[data-v-f7ed0496] {
   flex: 0 0 auto;
+}
+
+.topic-list-chip ul .topic-chip-observer li[data-v-4763e57b] {
+  height: 2rem;
+  border-radius: 20px;
+  border: 0.0625rem solid #e1e1e1;
+  font-size: 0.875rem;
 }
 </style>

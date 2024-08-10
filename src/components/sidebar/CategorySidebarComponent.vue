@@ -64,7 +64,9 @@
             @click="selectCategory(items.idx)"
             :class="{ selected: selectedId === items.idx }"
           >
-            {{ items.name }}
+            <a data-v-f7ed0496="" class="" data-v-71844fb9="">
+              {{ items.name }}
+            </a>
           </li>
         </div>
       </ul>
@@ -213,18 +215,18 @@ a {
   }
 }
 
+.selected {
+  border-radius: 8px;
+  background-color: #eafaf9;
+  font-weight: 700;
+}
+
 .topic-list-menu ul[data-v-8aaac69a] {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   margin: 0;
-}
-
-.selected {
-  border-radius: 8px;
-  background-color: #eafaf9;
-  font-weight: 700;
 }
 
 .topic-list-menu ul li .selected[data-v-4763e57b] {
