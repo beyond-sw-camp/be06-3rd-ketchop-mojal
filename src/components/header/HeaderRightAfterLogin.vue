@@ -24,7 +24,7 @@
             </div>
             <div data-v-35a09b99="" class="usermenu-dropdown" :class="{'usermenu-off':!isUserMenuOn}" >
                 <div data-v-35a09b99="" data-name="user-info">
-                    <h4 data-v-35a09b99="" data-name="name">{{memberStore.userName}} 고객님</h4>
+                    <h4 data-v-35a09b99="" data-name="name">{{memberStore.member.userName}} 고객님</h4>
                 </div>
                 <div data-v-35a09b99="" data-name="usermenu-control">
                     <div data-v-35a09b99="" class="col">

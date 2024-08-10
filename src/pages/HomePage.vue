@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page" :class="{'before-login-background':!memberStore.member.isLogined}" >
+  <div class="home-page before-login-background">
     <div class="home-text-container">
       <div class="main-text">넌 모잘해?</div>
       <div class="main-text">난 모잘해!</div>

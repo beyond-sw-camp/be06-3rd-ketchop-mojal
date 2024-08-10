@@ -23,14 +23,23 @@ export const useMemberStore = defineStore('member', {
             let url = `/proxy/member/login`;
 
             let response = await axios.post(url, member); //응답 받아서 저장
-            console.log(response);
             if(response.data.isSuccess){
                 this.member.isLogined=true;
                 this.member.userIdx=response.data.idx;
                 this.member.userName=response.data.nickname;
                 this.member.userEmail=response.data.email;
-                member.isLogined=true;
+                this.member.isLogined=true;
+
+                if(response.data.firstLogin){
+                    let newMember = {
+                        idx:this.member.userIdx,
+                        nickname:this.member.userName,
+                        firstLogin:false
+                    }
+                    this.modify(newMember);
+                }
             }
+            return response.data.firstLogin;
         },
         async signup(member){
             let url = '/proxy/member/signup';
@@ -65,7 +74,8 @@ export const useMemberStore = defineStore('member', {
             console.log(response);
         },
         logout() {
-            this.isLogined = false;
+            this.member.isLogined = false;
+            alert(this.member.isLogined);
         },
         async getUserCategories(){
             let url = `/proxy/my/category`;
@@ -73,6 +83,12 @@ export const useMemberStore = defineStore('member', {
             let response = await axios.get(url); 
             console.log(response);
             this.userCategories = response.data.result;
+        },
+        async modify(member){
+            let url = `/proxy/member/modify`;
+
+            let response = await axios.post(url, member);
+            console.log(response);
         }
     }
 })

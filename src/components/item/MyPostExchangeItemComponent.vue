@@ -16,11 +16,11 @@
       >
         <!-- eslint-disable -->
         <span>{{ item.giveCategory }}</span>
-        <span>></span>
+        <span></span>
         <span>{{ item.giveBtmCategory }}</span>
         <span><-></span>
         <span>{{ item.takeCategory }}</span>
-        <span>></span>
+        <span></span>
         <span>{{ item.takeBtmCategory }}</span>
       </p>
       <div data-v-0f448764="" class="feed-content">

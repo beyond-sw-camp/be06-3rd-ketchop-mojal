@@ -120,7 +120,7 @@ export default {
             const response = this.memberStore.signup(this.member);
             console.log(response);
             alert("회원가입 성공.")
-            this.$router.push("/redirect");
+            this.$router.push("/login");
             // if (response.status==200) {
             //     alert("회원가입 성공.")
             //     this.$router.push("/redirect");
@@ -129,8 +129,9 @@ export default {
         async sendEmail(){
             const response = await this.memberStore.sendEmail(this.member.email);
             console.log(response);
+            alert("인증 메일 전송 성공.");
             this.isMailSended=true;
-                alert("인증 메일 전송 성공.");
+                
             // if(response){
             //     this.isMailSended=true;
             //     alert("인증 메일 전송 성공.");
@@ -141,7 +142,7 @@ export default {
         },
         async verify(){
             const response = await this.memberStore.verify(this.member);
-console.log(response);
+            console.log(response);
             alert("이메일 인증 성공");
                 this.isVerified=true;
             // if(response.status==200){

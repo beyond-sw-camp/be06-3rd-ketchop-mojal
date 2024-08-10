@@ -16,15 +16,16 @@ import ExPostListComponent from "@/components/post/ExPostListComponent.vue";
 import ShPostListComponent from "@/components/post/ShPostListComponent.vue";
 import RedirectPage from "@/pages/RedirectPage.vue"
 import HomePage from '@/pages/HomePage.vue'
+import MainComponent from '@/components/MainComponent.vue'
 
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        {   path: "/", 
+        {   path: "/main", 
             component: MainPage,
             children:[
-                { path: "", component: HomePage}, 
+                { path: "", component: MainComponent },
                 { path: "/login", component: LoginPage },
                 { path: "/signup", component: SignupPage },
                 { path: "/chat", component: ChatListPage },
@@ -40,6 +41,7 @@ const router = createRouter({
                 { path:"/shpostlist", component: ShPostListComponent},
             ]
         },
+        { path: "/", component: HomePage},
         { path:"/redirect", component: RedirectPage},
     ],
 });

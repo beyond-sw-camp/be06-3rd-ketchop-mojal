@@ -49,7 +49,7 @@ export default {
         async saveCategories(){
             console.log(this.selected);
 
-            let url = "/proxy/member/add/category";
+            let url = "/proxy/add/category";
             let requestData = { categories: this.selected };
             try {
                 let response = await axios.post(url, requestData);

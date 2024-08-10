@@ -193,9 +193,9 @@
         <div data-v-26153660="" class="desktop-header">
           <div data-v-26153660="" class="left-section">
             <div data-v-26153660="" class="logo">
-              <a data-v-26153660="" href="/?from=logo" class="">
+              <router-link data-v-26153660="" to="/main" class="">
                 <img src="/mojalLogo.png"/>
-              </a>
+              </router-link>
             </div>
             <nav data-v-26153660="">
               <ul data-v-26153660="" class="nav-list">
@@ -214,7 +214,7 @@
                   >
                 </li>
                 <li
-                  v-if="memberStore.isLogined"
+                  v-if="memberStore.member.isLogined"
                   data-v-26153660=""
                   class="nav-item left-section-item"
                 >
