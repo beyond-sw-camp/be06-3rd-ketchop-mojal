@@ -1,12 +1,12 @@
 <template lang="">
     <div data-v-157a9d34="" data-v-abea0528="" class="chat-header">
         <div data-v-157a9d34="" class="info-area">
-            <router-link to="chat">
+            <router-link to="/chat">
                 <img data-v-157a9d34="" data-v-cbc4fb12="" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iIzMyMzIzMiIgZmlsbC1ydWxlPSJub256ZXJvIj4KICAgICAgICAgICAgPHBhdGggZD0iTTEyLjczMyAzLjQ0djE0LjA4bDYuNjM3LTYuNTgxIDEuMTI3IDEuMTM2LTguNTY0IDguNDkyLTguNTYzLTguNDkyIDEuMTI3LTEuMTM2IDYuNjM2IDYuNTgxVjMuNDRoMS42eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE2LjAwMDAwMCwgLTExMC4wMDAwMDApIHRyYW5zbGF0ZSgxNi4wMDAwMDAsIDExMC4wMDAwMDApIHRyYW5zbGF0ZSgxMS45MzMzMzMsIDEyLjAwMzMxNCkgcm90YXRlKC0yNzAuMDAwMDAwKSB0cmFuc2xhdGUoLTExLjkzMzMzMywgLTEyLjAwMzMxNCkiLz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="뒤로 가기">
             </router-link>
             <div data-v-157a9d34="" class="info-section">
                 <div data-v-157a9d34="" class="base">
-                    <div data-v-157a9d34="" class="partner-name">{{ roomTitle }}</div>
+                    <div data-v-157a9d34="" class="partner-name">[{{ roomTitle }}]게시글 보러가기👉</div>
                     <router-link :to="{ name: '/expostread', params: { postIdx: this.postIdx } }">
                         <button data-v-cbc4fb12="" data-v-157a9d34="" type="button" class="btn icon-button list-arrow btn-secondary btn-md sg-button">
                             <img data-v-157a9d34="" data-v-cbc4fb12="" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICAgICAgICA8ZyBzdHJva2U9IiNlMWUxZTEiIHN0cm9rZS13aWR0aD0iMS41Ij4KICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTUgMTBMMCA1IDUgMCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTM0MS4wMDAwMDAsIC0zMTEuMDAwMDAwKSB0cmFuc2xhdGUoMTYuMDAwMDAwLCAyNzIuMDAwMDAwKSB0cmFuc2xhdGUoMzI1LjAwMDAwMCwgMzkuMDAwMDAwKSB0cmFuc2xhdGUoNy4wMDAwMDAsIDQuMDAwMDAwKSB0cmFuc2xhdGUoMi41MDAwMDAsIDUuMDAwMDAwKSBzY2FsZSgtMSwgMSkgdHJhbnNsYXRlKC0yLjUwMDAwMCwgLTUuMDAwMDAwKSIvPgogICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==" alt="프로필 보기">
@@ -40,12 +40,14 @@
             </div>
         </div>
         <div data-v-157a9d34="" class="button-area">
-            <ButtonComponent :buttonName="buttonName"/>
+            <ButtonComponent @click="matchingCheckEx()" :buttonName="buttonName"/>
         </div>
     </div>
 </template>
 <script>
 import ButtonComponent from '@/components/ButtonComponent.vue';
+import { useMatchingCheckStore } from '@/store/useMatchingCheckStore';
+import { useChatRoomStore } from '@/store/useChatRoomStore';
 
 export default {
     components:{
@@ -64,6 +66,27 @@ export default {
     methods:{
         menuClick(){
             this.isMenuOn=!this.isMenuOn;
+        },
+
+        async matchingCheckEx() {
+            const matchingCheckStore = useMatchingCheckStore();
+            await matchingCheckStore.ExchangeCheck();
+
+            if(matchingCheckStore.data.isSuccess == false) {
+                if(matchingCheckStore.data.message) {
+                    // 서버에서 전송한 에러 메시지를 사용
+                    alert(`${matchingCheckStore.data.message}`);
+                } else{
+                    // 서버의 응답이 없는 경우 또는 다른 에러
+                    alert('예기치 않은 오류가 발생했습니다. 다시 시도해 주세요.');
+                }
+            } else{
+                // 성공적으로 요청이 완료된 경우
+                const chatRoomStore = useChatRoomStore();
+                const room = chatRoomStore.chatRooms.find(room => room.roomIdx === parseInt(matchingCheckStore.currentRoomIdx)); //채팅방 배열에서 맞는 방 찾기
+
+                alert(`${room.postWriterNickname}님과 ${room.participantNickname}의 ${room.giveBtmCategory} <-> ${room.takeBtmCategory} 교환이 확정되었습니다!`);
+            }
         }
     },
     data(){

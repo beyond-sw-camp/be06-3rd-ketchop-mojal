@@ -38,9 +38,7 @@
               data-v-0f448764=""
               class="content legacy-typography interface-body2 gray-500 text-align-left"
             >
-              {{
-                item.contents
-              }}교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용
+              {{ item.contents }}
             </p>
           </section>
         </div>
@@ -55,7 +53,7 @@
       </div>
       <!---->
       <div>
-        <div v-if="item.status === true">
+        <div v-if="item.status === false">
           <p
             data-v-746dd3c0=""
             data-v-0f448764=""

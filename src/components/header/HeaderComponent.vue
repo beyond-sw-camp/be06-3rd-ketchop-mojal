@@ -202,14 +202,14 @@
                 <li data-v-26153660="" class="nav-item left-section-item">
                   <a data-v-26153660="" href="/category-home?from=web_gnb"
                     ><span data-v-26153660=""
-                      ><router-link to="exchange" :class="{'before-login-color':!memberStore.member.isLogined}">교환글</router-link></span
+                      ><router-link to="/exchange" :class="{'before-login-color':!memberStore.member.isLogined}">교환글</router-link></span
                     ></a
                   >
                 </li>
                 <li data-v-26153660="" class="nav-item left-section-item">
                   <a data-v-26153660="" href="/search/pro?from=web_gnb"
                     ><span data-v-26153660=""
-                      ><router-link to="share" :class="{'before-login-color':!memberStore.member.isLogined}">나눔글</router-link></span
+                      ><router-link to="/share" :class="{'before-login-color':!memberStore.member.isLogined}">나눔글</router-link></span
                     ></a
                   >
                 </li>
@@ -220,7 +220,7 @@
                 >
                   <a data-v-26153660="" href="/market/"
                     ><span data-v-26153660=""
-                      ><router-link to="myposts" :class="{'before-login-color':!memberStore.member.isLogined}">나의글</router-link></span
+                      ><router-link to="/myposts" :class="{'before-login-color':!memberStore.member.isLogined}">나의글</router-link></span
                     ></a
                   >
                 </li>

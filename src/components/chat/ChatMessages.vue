@@ -57,7 +57,7 @@ export default {
         },
 
         isSender(senderIdx) {
-            return this.memberStore.userIdx === senderIdx;
+            return this.memberStore.member.userIdx === senderIdx;
         }
     }
     

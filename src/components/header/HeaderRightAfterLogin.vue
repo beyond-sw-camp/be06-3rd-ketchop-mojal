@@ -1,6 +1,6 @@
 <template lang="">
     <div data-v-26153660="" class="right-section-logined">
-        <router-link to="chat">
+        <router-link to="/chat">
             <span data-v-26153660="" class="gnb-link">채팅</span>
         </router-link>
         <div data-v-4c66cf88="" data-v-26153660="" class="notification-counter notification-counter right-section-item has-badge">
