@@ -1,7 +1,4 @@
 <template>
-hello mojal
-<router-link to="select-category">gogo</router-link>
-  <!-- <HeaderComponent/> -->
   <router-view></router-view>
 </template>
 
@@ -56,6 +53,7 @@ button{
 }
 #app{
   width: 100%;
+  height: 100vh;
 }
 :root {
     --blue: #4785ff;

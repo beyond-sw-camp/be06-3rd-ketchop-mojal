@@ -2,7 +2,9 @@
   <div class="carousel-continer">
       <Carousel>
         <Slide v-for="slide in 3" :key="slide">
-          <div class="carousel__item">{{ slide }}</div>
+          <div class="carousel__item">
+            <SelectCategory/>
+          </div>
         </Slide>
     
         <template #addons>
@@ -16,6 +18,7 @@
 <script>
 import { defineComponent } from 'vue'
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
+import SelectCategory from '@/components/SelectCategory.vue'
 
 import 'vue3-carousel/dist/carousel.css'
 
@@ -25,6 +28,7 @@ export default defineComponent({
     Slide,
     Pagination,
     Navigation,
+    SelectCategory
   },
 })
 </script>

@@ -7,12 +7,16 @@ import ChatRoomPage from "@/pages/chat/ChatRoomPage.vue";
 import MyPage from "@/pages/member/MyPage.vue";
 import PoatCreate from "@/pages/post/PostCreat.vue";
 import ExPostReadPage from "@/pages/post/ExPostReadPage.vue";
-import ShPostReadComponent from "@/components/post/ShPostReadComponent.vue";
+import ShPostReadComponent from "@/components/post/ShPostReadComponent.vue"; //이름이 ~page로 바뀌어서 삭제필요
+import ShPostListComponent from "@/components/post/ShPostListComponent.vue"; //삭제필요
 import SharePage from "@/pages/post/SharePage.vue";
 import ExchangePage from "@/pages/post/ExchangePage.vue";
 import MyPostPage from "@/pages/post/MyPostPage.vue";
 import MainPage from "@/pages/MainPage.vue";
 import SelectCategory from "@/pages/SelectCategory.vue"
+import RedirectPage from "@/pages/RedirectPage.vue"
+import HomePage from '@/pages/HomePage.vue'
+
 
 
 const router = createRouter({
@@ -21,6 +25,7 @@ const router = createRouter({
         {   path: "/", 
             component: MainPage,
             children:[
+                { path: "", component: HomePage}, 
                 { path: "/login", component: LoginPage },
                 { path: "/signup", component: SignupPage },
                 { path: "/chat", component: ChatListPage },
@@ -34,7 +39,7 @@ const router = createRouter({
                 { path: "/shpostread", component: ShPostReadComponent },
             ]
         },
-        { path:"/select-category", component: SelectCategory},
+        { path:"/redirect", component: RedirectPage},
     ],
 });
 

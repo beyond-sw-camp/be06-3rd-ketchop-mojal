@@ -7,7 +7,7 @@ export const useImageStore = defineStore('image', {
     }),
     actions:{
         async uploadImages(postType, files){
-            let url = `http://localhost:8082/api/upload/image`;
+            let url = `/proxy/api/upload/image`;
 
             const formData = new FormData();
             for (let i = 0; i < files.length; i++) {

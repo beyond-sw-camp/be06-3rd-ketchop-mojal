@@ -212,6 +212,7 @@ h1 {
   height: 100%;
   position: relative;
   flex-grow: 1;
+  margin-top: 4.5rem;
 }
 
 #app #app-body,

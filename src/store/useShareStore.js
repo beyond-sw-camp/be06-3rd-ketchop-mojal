@@ -20,7 +20,7 @@ export const useShareStore = defineStore('share', {
             console.log(type);
         },
         async createSharePost() {
-            const url = 'http://localhost:8082/api/share/create';
+            const url = '/proxy/share/create';
 
             const req = {
                 title: this.request.title,

@@ -51,7 +51,7 @@ export default {
         ...mapStores(useShareStore, useMemberStore),
     },
     mounted(){
-        this.getUserCategories
+        this.getUserCategories();
     },
     methods:{
         modalOff(){

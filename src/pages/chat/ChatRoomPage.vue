@@ -28,7 +28,7 @@ export default {
         return{
             roomIdx : route.params.roomIdx,
             roomTitle : '',
-            postIdx : 34
+            postIdx : 0,
         }
     },
     async mounted() {
@@ -40,9 +40,9 @@ export default {
             const room = chatRoomStore.chatRooms.find(room => room.roomIdx === parseInt(this.roomIdx)); //채팅방 배열에서 맞는 방 찾기
             if (room) {
                 this.roomTitle = room.title;
-                console.log(room.title);
+                // console.log(room.title);
                 this.postIdx = room.postIdx;
-                console.log(room.postIdx);
+                // console.log(room.postIdx);
             } else {
                 console.error(`Room with roomIdx ${this.roomIdx} not found.`);
             }
