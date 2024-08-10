@@ -9,7 +9,7 @@ export const useExchangeStore = defineStore('exchange', {
             takeCategoryIdx:null,
             takeBtmCategory:"",
             title:"",
-            contentㄴ:"",
+            content:"",
             images:[]
         },
         
