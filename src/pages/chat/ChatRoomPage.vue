@@ -49,7 +49,7 @@ export default {
         },
 
         isSender(senderIdx) {
-            return this.memberStore.userIdx === senderIdx;
+            return this.memberStore.member.userIdx === senderIdx;
         }
     }
 }
@@ -58,6 +58,7 @@ export default {
 <style scoped>
 .no-gutters{
     position: relative;
+    margin-top: 100px; /* 임시 */
     height: 100%;
     overflow: hidden;
     box-sizing: border-box;

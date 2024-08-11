@@ -12,7 +12,6 @@ import ShPostReadComponent from "@/components/post/ShPostReadComponent.vue"; //ì
 import SharePage from "@/pages/post/SharePage.vue";
 import ExchangePage from "@/pages/post/ExchangePage.vue";
 import MyPostPage from "@/pages/post/MyPostPage.vue";
-import MainPage from "@/pages/MainPage.vue";
 // import SelectCategory from "@/components/SelectCategory.vue"
 import RedirectPage from "@/pages/RedirectPage.vue"
 import HomePage from '@/pages/HomePage.vue'
@@ -33,7 +32,7 @@ const router = createRouter({
                 { name: "/chat-room", path: "/chat-room/:roomIdx", component: ChatRoomPage },
                 { path: "/mypage", component: MyPage },
                 { path: "/myposts", component: MyPostPage },
-                { name: "postcreate", path: "/postcreate/:postType", component: PoatCreate },
+                { name: "/postcreate", path: "/postcreate/:postType", component: PoatCreate },
                 { path: "/exchange", component: ExchangePage },
                 { path: "/share", component: SharePage },
                 { name: "/expostread", path: "/expostread/:postIdx", component: ExPostReadPage },
