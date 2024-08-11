@@ -29,7 +29,8 @@ export default {
 }
 .soomgo-pay-btn[data-v-157a9d34] {
     padding: .625rem .75rem;
-    background-image: linear-gradient(90deg, #00c7ae 0, #4cc8e5);
+    /* background-image: linear-gradient(90deg, #00c7ae 0, #4cc8e5); */
+    background : linear-gradient(65deg, #B69CE5, #0066D5);
     border: 0;
 }
 .btn[data-v-157a9d34] {
@@ -38,8 +39,8 @@ export default {
 }
 .btn-primary[data-v-cbc4fb12], .btn-primary[data-v-cbc4fb12]:focus {
     color: #fff;
-    background-color: #00c7ae;
-    border-color: #00c7ae;
+    background-color: #0066D5;
+    border-color: #0066D5;
 }
 .btn-block[data-v-cbc4fb12] {
     display: flex;

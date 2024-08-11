@@ -17,8 +17,9 @@ export const useChatRoomStore = defineStore('chatRoom', {
         reconnectDelay: 5000, // 재시도 대기 시간 (밀리초 단위)
 
         chatRooms: [],
-        postIdx:0,
-        roomIdx:0,
+        postIdx: 0,
+        roomIdx: 0,
+        data: [],
 
     }),
     // persist:{
@@ -35,7 +36,7 @@ export const useChatRoomStore = defineStore('chatRoom', {
             this.userIdx = memberStore.member.userIdx;
 
             let roomCreateReq = {
-                postIdx : postIdx,
+                postIdx: postIdx,
                 participants: this.userIdx // 현재 로그인한 사용자의 idx
             };
 
@@ -46,11 +47,17 @@ export const useChatRoomStore = defineStore('chatRoom', {
                             "Content-Type": "application/json",
                         }
                     });
-                    
-                    const LongRoomIdx = response.data; // 서버에서 반환한 Long 값 저장
-                    console.log('서버로부터 받은 Long roomIdx 값:', LongRoomIdx);
-                    this.roomIdx = LongRoomIdx;
-                    
+
+                    const responseData = response.data;
+
+                    if (typeof responseData === 'number') {
+                        // 서버로부터 받은 값이 Long일 경우
+                        // console.log('서버로부터 받은 Long roomIdx 값:', responseData);
+                        this.roomIdx = responseData;
+                    } else {
+                        this.data = responseData;
+                    }
+
                 } catch (error) {
                     console.error('채팅방 생성 중 오류 발생:', error);
                 }
