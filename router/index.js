@@ -16,6 +16,8 @@ import MyPostPage from "@/pages/post/MyPostPage.vue";
 import RedirectPage from "@/pages/RedirectPage.vue"
 import HomePage from '@/pages/HomePage.vue'
 import MainComponent from '@/components/MainComponent.vue'
+import MainPage from '@/pages/MainPage.vue'
+
 
 
 
@@ -32,7 +34,7 @@ const router = createRouter({
                 { name: "/chat-room", path: "/chat-room/:roomIdx", component: ChatRoomPage },
                 { path: "/mypage", component: MyPage },
                 { path: "/myposts", component: MyPostPage },
-                { name: "/postcreate", path: "/postcreate/:postType", component: PoatCreate },
+                { name: "postcreate", path: "/postcreate/:postType", component: PoatCreate },
                 { path: "/exchange", component: ExchangePage },
                 { path: "/share", component: SharePage },
                 { name: "/expostread", path: "/expostread/:postIdx", component: ExPostReadPage },
@@ -40,7 +42,7 @@ const router = createRouter({
             ]
         },
         { path: "/", component: HomePage},
-        { path:"/redirect", component: RedirectPage},
+        { name:"redirect", path:"/redirect/:userName", component: RedirectPage},
     ],
 });
 

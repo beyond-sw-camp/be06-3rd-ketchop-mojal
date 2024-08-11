@@ -104,7 +104,7 @@ export default {
             const result = await this.memberStore.login(this.member);
             console.log("result:"+result);
             if (result) {
-                this.$router.push("/redirect");
+                this.$router.push(`/redirect/${this.memberStore.member.userName}`);
             }else{
                 this.memberStore.getUserCategories();
                 console.log(this.memberStore.userCategories);

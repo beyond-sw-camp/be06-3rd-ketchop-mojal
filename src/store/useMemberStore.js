@@ -20,9 +20,9 @@ export const useMemberStore = defineStore('member', {
     },
     actions:{
         async login(member){
-            let url = `http://localhost:8080/member/login`;
+            let url = `/proxy/member/login`;
 
-            let response = await axios.post(url, member); //응답 받아서 저장
+            let response = await axios.post(url, member, {withCredentials:false}); //응답 받아서 저장
             if(response.data.isSuccess){
                 this.member.isLogined=true;
                 this.member.userIdx=response.data.idx;
@@ -80,7 +80,7 @@ export const useMemberStore = defineStore('member', {
         async getUserCategories(){
             let url = `/proxy/my/category`;
 
-            let response = await axios.get(url); 
+            let response = await axios.get(url,{withCredentials:true}); 
             console.log(response);
             this.userCategories = response.data.result;
         },
