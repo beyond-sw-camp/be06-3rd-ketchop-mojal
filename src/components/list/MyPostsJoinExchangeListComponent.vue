@@ -48,7 +48,7 @@ import { useMyPostStore } from "@/store/useMyPostStore";
 import { mapStores } from "pinia";
 
 export default {
-  name: "MyPostsExchangeListComponent",
+  name: "MyPostsJoinExchangeListComponent",
   components: {
     MyPostExchangeItemComponent,
   },

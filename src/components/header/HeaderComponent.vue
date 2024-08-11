@@ -8,8 +8,8 @@
     id="app-header"
     class="global-header hide-border-bottom"
     :class="{
-      'before-login-background':!memberStore.member.isLogined,
-      'after-login-background': memberStore.member.isLogined
+      'before-login-background': !memberStore.member.isLogined,
+      'after-login-background': memberStore.member.isLogined,
     }"
     data-v-8cc44300=""
   >
@@ -103,7 +103,9 @@
                         data-v-4c0deb88=""
                         data-testid="btn-logout"
                         class="btn btn-border"
-                        :class="{'before-login-color':!memberStore.member.isLogined}"
+                        :class="{
+                          'before-login-color': !memberStore.member.isLogined,
+                        }"
                       >
                         로그아웃
                       </button>
@@ -153,7 +155,12 @@
                       data-v-4c0deb88=""
                       href="/category-home?from=mobile_web_hamburger"
                       class="lnb-link"
-                      ><span data-v-4c0deb88="" class="menu-title" :class="{'before-login-color':!memberStore.member.isLogined}"
+                      ><span
+                        data-v-4c0deb88=""
+                        class="menu-title"
+                        :class="{
+                          'before-login-color': !memberStore.member.isLogined,
+                        }"
                         >교환글</span
                       ></a
                     ><!---->
@@ -163,7 +170,12 @@
                       data-v-4c0deb88=""
                       href="/search/pro?from=mobile_web_hamburger"
                       class="lnb-link"
-                      ><span data-v-4c0deb88="" class="menu-title" :class="{'before-login-color':!memberStore.member.isLogined}"
+                      ><span
+                        data-v-4c0deb88=""
+                        class="menu-title"
+                        :class="{
+                          'before-login-color': !memberStore.member.isLogined,
+                        }"
                         >나눔글</span
                       ></a
                     ><!---->
@@ -194,7 +206,7 @@
           <div data-v-26153660="" class="left-section">
             <div data-v-26153660="" class="logo">
               <router-link data-v-26153660="" to="/main" class="">
-                <img src="/mojalLogo.png"/>
+                <img src="/mojalLogo.png" />
               </router-link>
             </div>
             <nav data-v-26153660="">
@@ -202,14 +214,26 @@
                 <li data-v-26153660="" class="nav-item left-section-item">
                   <a data-v-26153660="" href="/category-home?from=web_gnb"
                     ><span data-v-26153660=""
-                      ><router-link to="/exchange" :class="{'before-login-color':!memberStore.member.isLogined}">교환글</router-link></span
+                      ><router-link
+                        to="/exchange"
+                        :class="{
+                          'before-login-color': !memberStore.member.isLogined,
+                        }"
+                        >교환글</router-link
+                      ></span
                     ></a
                   >
                 </li>
                 <li data-v-26153660="" class="nav-item left-section-item">
                   <a data-v-26153660="" href="/search/pro?from=web_gnb"
                     ><span data-v-26153660=""
-                      ><router-link to="/share" :class="{'before-login-color':!memberStore.member.isLogined}">나눔글</router-link></span
+                      ><router-link
+                        to="/share"
+                        :class="{
+                          'before-login-color': !memberStore.member.isLogined,
+                        }"
+                        >나눔글</router-link
+                      ></span
                     ></a
                   >
                 </li>
@@ -220,7 +244,13 @@
                 >
                   <a data-v-26153660="" href="/market/"
                     ><span data-v-26153660=""
-                      ><router-link to="/myposts" :class="{'before-login-color':!memberStore.member.isLogined}">나의글</router-link></span
+                      ><router-link
+                        to="/myposts"
+                        :class="{
+                          'before-login-color': !memberStore.member.isLogined,
+                        }"
+                        >나의글</router-link
+                      ></span
                     ></a
                   >
                 </li>
@@ -228,12 +258,27 @@
             </nav>
           </div>
           <div data-v-26153660="" class="center-section">
-            <div data-v-deb28fc4="" data-v-26153660="" @click="searchClick" class="service-searcher-desktop service-search-container is-located-gnb">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="css-14be4in e4jlfpt1">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M16.509 17.018a8.512 8.512 0 1 1 1.057-1.064l4.455 4.455a.75.75 0 1 1-1.06 1.06l-4.452-4.45Zm1.523-6.506a7.012 7.012 0 1 1-14.023 0 7.012 7.012 0 0 1 14.023 0Z"
-                    fill="currentColor"
-                  ></path>
-                </svg>
+            <div
+              data-v-deb28fc4=""
+              data-v-26153660=""
+              @click="searchClick"
+              class="service-searcher-desktop service-search-container is-located-gnb"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="css-14be4in e4jlfpt1"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M16.509 17.018a8.512 8.512 0 1 1 1.057-1.064l4.455 4.455a.75.75 0 1 1-1.06 1.06l-4.452-4.45Zm1.523-6.506a7.012 7.012 0 1 1-14.023 0 7.012 7.012 0 0 1 14.023 0Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
             </div>
             <div data-v-26153660="" class="right-section">
               <div v-if="!memberStore.member.isLogined">
@@ -260,41 +305,41 @@ import HeaderRightBeforeLogin from "../header/HeaderRightBeforeLogin.vue";
 import SearchComponent from "../SearchComponent.vue";
 import { mapStores } from "pinia";
 import { useMemberStore } from "@/store/useMemberStore";
-import { useCategoryStore } from '@/store/useCategoryStore'; 
+import { useCategoryStore } from "@/store/useCategoryStore";
 
 export default {
   name: "HeaderComponent",
   data() {
-    return { 
+    return {
       message: "test",
-      isSearchOn : false,
-      isLogined : false,
+      isSearchOn: false,
+      isLogined: false,
     };
   },
-  computed:{
-      ...mapStores(useMemberStore, useCategoryStore)
+  computed: {
+    ...mapStores(useMemberStore, useCategoryStore),
   },
   components: {
     HeaderRightBeforeLogin,
     HeaderRightAfterLogin,
-    SearchComponent
+    SearchComponent,
   },
-  methods:{
-    searchClick(){
-      this.isSearchOn=true;
+  methods: {
+    searchClick() {
+      this.isSearchOn = true;
     },
-    searchOff(){
+    searchOff() {
       this.isSearchOn = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-.left-section-item{
+.left-section-item {
   /* font-size: 22px; */
 }
-header{
+header {
   position: fixed;
   left: 0;
   top: 0;
@@ -302,17 +347,17 @@ header{
   z-index: 1000;
 }
 
-.desktop-header .logo img{
+.desktop-header .logo img {
   height: 3rem;
   position: relative; /* 상대 위치를 설정 */
   top: -0.9rem; /* 이미지를 위로 2px 이동 */
 }
 
 /* 필수 css? */
-.before-login{
+.before-login {
   display: none;
 }
-.search-off{
+.search-off {
   display: none;
 }
 element.style {
@@ -420,7 +465,7 @@ template {
 .global-header[data-v-8cc44300] {
   z-index: 1020;
   display: block;
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 article,
@@ -1173,7 +1218,7 @@ ul li {
 }
 
 /*  */
-.d-xl-block{
+.d-xl-block {
   width: 60%;
 }
 

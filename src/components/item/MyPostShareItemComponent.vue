@@ -1,9 +1,9 @@
 <template>
   <h3 v-if="!item">작성한 글이 존재하지 않습니다.</h3>
   <li v-else data-v-0f448764="" data-v-fbeed1e4="" class="feed-item">
-    <a
+    <router-link
+      :to="{ name: 'sharedetail', params: { id: item.postIdx } }"
       data-v-0f448764=""
-      href="/community/soomgo-life/posts/66a226fad6c16392df180979-%EB%A0%88%EC%9D%BC%EB%93%B1-%EC%A0%84%EC%9B%90%EB%AC%B8%EC%A0%9C(%EA%B5%90%EC%B2%B4--)"
       class=""
       data-testid="soomgo-life-feed-item"
     >
@@ -37,7 +37,7 @@
             </div>
           </section>
           <div>
-            <div v-if="item.status === true">
+            <div v-if="item.status === false">
               <p
                 data-v-746dd3c0=""
                 data-v-0f448764=""
@@ -94,7 +94,7 @@
           >{{ item.timeStamp.slice(0, 10) }}</span
         >
       </div>
-    </a>
+    </router-link>
   </li>
 </template>
 

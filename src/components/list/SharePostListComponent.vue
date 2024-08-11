@@ -96,8 +96,10 @@
         v-for="items in this.sharePostStore.shareListAll"
         :key="items.postIdx"
         :item="items"
+        @click="getSharePostDetail"
       >
       </MyPostShareItemComponent>
+
       <div
         v-if="this.sharePostStore.shareListAll.length == 0"
         class="item-none"
@@ -138,11 +140,15 @@ export default {
     return {
       active: false,
       postLength: 0,
+      itemidx: 0,
     };
   },
   computed: {
     ...mapStores(useCategoryStore),
     ...mapStores(useSharePostStore),
+  },
+  created() {
+    this.itemidx = this.$route.params.id;
   },
   mounted() {
     this.getData();
@@ -153,10 +159,12 @@ export default {
     },
     async getData() {
       await this.sharePostStore.getShareListAll();
-      // this.getshareListAll = this.sharePostStore.shareListAll;
-      // this.postLength = this.sharePostStore.shareListAll.length;
       console.log("와라와라ㅏㅏㅏㅏㅏ");
       console.log(this.sharePostStore.shareListAll);
+    },
+    async getSharePostDetail() {
+      await this.sharePostStore.getSharePost(this.itemidx);
+      console.log(this.sharePostStore.sharePost);
     },
   },
 };

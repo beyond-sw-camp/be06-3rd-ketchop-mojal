@@ -26,14 +26,14 @@
         >
           <li
             v-for="category in categoryStore.categories"
-            :key="category.idx" 
+            :key="category.idx"
             data-v-4763e57b=""
             data-v-71844fb9=""
             data-observe="topic-all"
             class=" "
             id="topic-all"
             @click="selectCategory(category.idx)"
-            :class="{ 'selected': selectedId === category.idx }"
+            :class="{ selected: selectedId === category.idx }"
           >
             <a data-v-4763e57b="" href="/" class="" data-v-71844fb9="">
               {{ category.name }}
@@ -62,7 +62,7 @@
             class=""
             id="topic-all"
             @click="selectCategory(category.idx)"
-            :class="{ 'selected': selectedId === category.idx }"
+            :class="{ selected: selectedId === category.idx }"
           >
             {{ category.name }}
           </li>
@@ -118,17 +118,13 @@ export default {
   },
 
   created() {},
-  mounted() {
-  },
+  mounted() {},
   methods: {
     categoryClick() {},
     selectCategory(idx) {
       this.selectedId = idx;
       this.sharePostStore.getSharePostByCategory(idx);
       this.exchangePostStore.getExchangePostByCategory(idx);
-    },
-    isSelect(Idx) {
-      return this.sharePostStore.selectedCategoryIdx === Idx;
     },
   },
 };
@@ -210,18 +206,18 @@ a {
   }
 }
 
+.selected {
+  border-radius: 8px;
+  background-color: #eafaf9;
+  font-weight: 700;
+}
+
 .topic-list-menu ul[data-v-8aaac69a] {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   margin: 0;
-}
-
-.selected {
-  border-radius: 8px;
-  background-color: #eafaf9;
-  font-weight: 700;
 }
 
 .topic-list-menu ul li .selected[data-v-4763e57b] {
