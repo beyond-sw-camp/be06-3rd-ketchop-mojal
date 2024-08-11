@@ -65,15 +65,11 @@
                       v-if="active"
                     >
                       <li data-v-32970c25="" role="presentation">
-<<<<<<< HEAD:src/pages/MyPostPage.vue
                         <router-link
                           :to="{
                             name: 'postcreate',
                             params: { postType: 'exchange' },
                           }"
-=======
-                        <router-link :to="{ name: 'postcreate', params: { postType: 'share' } }"
->>>>>>> dc5efe3d7bfdc3fa2f0e3ed59cc28e438997afad:src/pages/post/MyPostPage.vue
                           role="menuitem"
                           target="_self"
                           class="dropdown-item"
@@ -102,11 +98,7 @@
                         </router-link>
                       </li>
                       <li data-v-32970c25="" role="presentation">
-<<<<<<< HEAD:src/pages/MyPostPage.vue
                         <router-link
-=======
-                        <router-link :to="{ name: 'postcreate', params: { postType: 'exchange' } }"
->>>>>>> dc5efe3d7bfdc3fa2f0e3ed59cc28e438997afad:src/pages/post/MyPostPage.vue
                           role="menuitem"
                           :to="{
                             name: 'postcreate',
