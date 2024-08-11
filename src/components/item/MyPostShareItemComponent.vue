@@ -37,7 +37,7 @@
             </div>
           </section>
           <div>
-            <div v-if="item.status === true">
+            <div v-if="item.status === false">
               <p
                 data-v-746dd3c0=""
                 data-v-0f448764=""

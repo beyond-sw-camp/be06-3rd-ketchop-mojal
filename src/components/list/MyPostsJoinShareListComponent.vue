@@ -10,7 +10,7 @@
     <ul data-v-fbeed1e4="" class="feed-list">
       <MyPostShareItemComponent
         v-for="items in this.myPostStore.myJoinShareListAll"
-        v-bind:key="items.postIdx"
+        :key="items.postIdx"
         :item="items"
       >
       </MyPostShareItemComponent>
@@ -44,7 +44,8 @@
 
 <script>
 import MyPostShareItemComponent from "@/components/item/MyPostShareItemComponent.vue";
-import axios from "axios";
+import { useMyPostStore } from "@/store/useMyPostStore";
+import { mapStores } from "pinia";
 
 export default {
   name: "MyPostsJoinShareListComponent",
@@ -61,6 +62,9 @@ export default {
       exchange: false,
       getshareList: [],
     };
+  },
+  computed: {
+    ...mapStores(useMyPostStore),
   },
   mounted() {
     this.getMySharedList();
