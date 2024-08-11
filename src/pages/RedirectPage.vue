@@ -34,17 +34,21 @@
           </section>
         </slide>
         
-        <slide class="info-slide">
+        <!-- <slide class="info-slide">
           <section class="no-data">
             <SelectCategory :selectType="2"/>
           </section>
-        </slide>
+        </slide> -->
 
-        <slide class="info-slide">
+        <!-- <slide class="info-slide">
           <section class="no-data">
-           <router-link to="/main">mojal 시작하기</router-link>
+            <router-link to="/main">
+              <button @click="saveMyCategories" data-v-5467bada="" data-testid="btn-login" class="btn-login btn-primary">
+                <span data-v-5467bada="">MOJAL 시작하기</span>
+              </button>
+            </router-link>
           </section>
-        </slide>
+        </slide> -->
 
         <template #addons>
           <Navigation />
@@ -59,16 +63,21 @@
 import { defineComponent } from 'vue'
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import SelectCategory from '@/components/SelectCategory.vue'
+import { useMemberStore } from '@/store/useMemberStore'; 
+import { mapStores } from 'pinia';
 
 import 'vue3-carousel/dist/carousel.css'
 
 export default defineComponent({
+  computed:{
+    ...mapStores(useMemberStore),
+  },
   components: {
     Carousel,
     Slide,
     Pagination,
     Navigation,
-    SelectCategory
+    SelectCategory,
   },
 })
 </script>
@@ -117,5 +126,19 @@ export default defineComponent({
   margin-top: 2rem;
   font-size: 1rem;
   font-weight: 500;
+}
+.btn-primary {
+    color: #fff;
+    background : linear-gradient(65deg, #B69CE5, #0066D5);
+    border-radius: 5rem;
+    border: none;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: .6875rem 1.5rem;
+    margin-bottom: .75rem;
+    margin-top: 1.5rem;
 }
 </style>

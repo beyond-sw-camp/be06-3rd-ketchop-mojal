@@ -12,6 +12,9 @@ export const useMemberStore = defineStore('member', {
             uuid:""
         },
 
+        electedMyCategories: [],  // 빈 배열로 초기화
+        selectedLikeCategories: [],  // 빈 배열로 초기화
+
         userCategories:[]
     }),
     // persist: true,
