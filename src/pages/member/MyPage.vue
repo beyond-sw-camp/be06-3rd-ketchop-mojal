@@ -35,8 +35,10 @@
                         </div>
                     </div>
                     <ul data-v-a9f85b62="" class="location-list" id="category-list">
-                        <li class="location-item">IT/Programming</li>
-                        <li class="location-item">IT/Programming</li>
+                        <li v-for="category in memberStore.userCategories" :key="category.idx" class="location-item">
+                            {{category.name}}
+                        </li>
+                        <!-- <li class="location-item">IT/Programming</li> -->
                     </ul>
                 </div>
             </div>
@@ -51,6 +53,9 @@ export default {
     computed:{
         ...mapStores(useMemberStore)
     },
+    mounted(){
+        // this.memberStore.getUserCategories();
+    }
 }
 </script>
 <style scoped>
@@ -94,7 +99,8 @@ export default {
 }
 .container-md{
     width: 100%;
-    padding-top: 4.5rem;
+    height: 100%;
+    padding-top: 10rem;
     padding-right: .9375rem;
     padding-left: .9375rem;
     margin-right: auto;

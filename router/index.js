@@ -12,8 +12,7 @@ import ShPostReadComponent from "@/components/post/ShPostReadComponent.vue"; //ì
 import SharePage from "@/pages/post/SharePage.vue";
 import ExchangePage from "@/pages/post/ExchangePage.vue";
 import MyPostPage from "@/pages/post/MyPostPage.vue";
-import MainPage from "@/pages/MainPage.vue";
-// import SelectCategory from "@/pages/SelectCategory.vue"
+// import SelectCategory from "@/components/SelectCategory.vue"
 import RedirectPage from "@/pages/RedirectPage.vue"
 import HomePage from '@/pages/HomePage.vue'
 import MainComponent from '@/components/MainComponent.vue'

@@ -322,7 +322,7 @@ h1 {
 }
 
 #app #app-body {
-  height: 100vh;
+  height: 100%;
   position: relative;
   flex-grow: 1;
 }

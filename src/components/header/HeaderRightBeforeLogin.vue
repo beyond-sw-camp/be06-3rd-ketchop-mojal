@@ -53,6 +53,7 @@ span{
     color: #FFF;
 }
 .button-container{
-    font-size: 22px;
+    /* font-size: 22px; */
+    font-size: 1rem;
 }
 </style>

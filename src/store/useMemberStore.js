@@ -20,7 +20,7 @@ export const useMemberStore = defineStore('member', {
     },
     actions:{
         async login(member){
-            let url = `/proxy/member/login`;
+            let url = `http://localhost:8080/member/login`;
 
             let response = await axios.post(url, member); //응답 받아서 저장
             if(response.data.isSuccess){
@@ -42,7 +42,7 @@ export const useMemberStore = defineStore('member', {
             return response.data.firstLogin;
         },
         async signup(member){
-            let url = '/proxy/member/signup';
+            let url = 'http://localhost:8080/member/signup';
 
             let response = await axios.post(url, member, {withCredentials:false});
             console.log(response);
@@ -56,7 +56,7 @@ export const useMemberStore = defineStore('member', {
 
             // console.log(emailAuthReq);
 
-            let url = `/proxy/email/send`
+            let url = `http://localhost:8080/email/send`
 
             let response = await axios.post(url, emailAuthReq);
             console.log(response);
@@ -68,7 +68,7 @@ export const useMemberStore = defineStore('member', {
                 uuid:member.uuid
             }
 
-            let url = `/proxy/email/verify`;
+            let url = `http://localhost:8080/email/verify`;
 
             let response = await axios.post(url, emailAuthReq);
             console.log(response);
@@ -85,7 +85,7 @@ export const useMemberStore = defineStore('member', {
             this.userCategories = response.data.result;
         },
         async modify(member){
-            let url = `/proxy/member/modify`;
+            let url = `http://localhost:8080/member/modify`;
 
             let response = await axios.post(url, member);
             console.log(response);

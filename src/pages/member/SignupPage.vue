@@ -191,6 +191,7 @@ export default {
     opacity: 1;
     transition: opacity .3s ease-in;
     text-align: center;
+    height: 100vh;
 }
 .login-page[data-v-ac2db00e] {
     padding: 10rem 0;

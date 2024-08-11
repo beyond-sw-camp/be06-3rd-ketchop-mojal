@@ -18,12 +18,13 @@
 </template>
 <script>
 import { useCategoryStore } from '@/store/useCategoryStore'; 
+import { useMemberStore } from '@/store/useMemberStore'; 
 import { mapStores } from 'pinia';
 import axios from 'axios';
 
 export default {
     computed: {
-        ...mapStores(useCategoryStore),
+        ...mapStores(useCategoryStore, useMemberStore),
     },
     data(){
         return{
@@ -53,7 +54,9 @@ export default {
             let requestData = { categories: this.selected };
             try {
                 let response = await axios.post(url, requestData);
-                console.log(response.data); // 서버 응답 출력
+                console.log(response.data);
+                this.memberStore.getUserCategories();
+
             } catch (error) {
                 console.error('Error:', error);
             }
