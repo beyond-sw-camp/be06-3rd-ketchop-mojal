@@ -106,6 +106,8 @@ export default {
             if (result) {
                 this.$router.push("/redirect");
             }else{
+                this.memberStore.getUserCategories();
+                console.log(this.memberStore.userCategories);
                 this.$router.push("/main");
             }
         }

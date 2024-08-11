@@ -67,7 +67,7 @@ export default {
     },
     methods:{
         async getMyCategories(){
-            await this.memberStore.getUserCategories();
+            // await this.memberStore.getUserCategories();
         },
         modalOff() {
             this.isModalClick = false;

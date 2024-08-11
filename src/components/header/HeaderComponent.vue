@@ -292,7 +292,7 @@ export default {
 
 <style scoped>
 .left-section-item{
-  font-size: 22px;
+  /* font-size: 22px; */
 }
 header{
   position: fixed;
@@ -303,7 +303,7 @@ header{
 }
 
 .desktop-header .logo img{
-  height: 4rem;
+  height: 3rem;
   position: relative; /* 상대 위치를 설정 */
   top: -0.9rem; /* 이미지를 위로 2px 이동 */
 }
@@ -420,6 +420,7 @@ template {
 .global-header[data-v-8cc44300] {
   z-index: 1020;
   display: block;
+  background-color: #FFF;
 }
 
 article,
@@ -455,7 +456,7 @@ section {
   position: relative;
   display: flex;
   justify-content: center;
-  height: 6rem;
+  height: 4.5rem;
   padding: 1rem;
   margin: 0 auto;
   text-align: center;

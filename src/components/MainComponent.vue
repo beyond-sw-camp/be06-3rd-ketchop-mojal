@@ -2,7 +2,7 @@
     <div class="main-component-container">
         <div class="left-content">
             <div>
-                <div class="content-title">내 재능</div>
+                <h3 class="content-title">내 재능</h3>
                 <div>
                     <div data-v-a9f85b62="" data-v-713cd9e8="" class="main-pro-locations">
                         <ul data-v-a9f85b62="" class="location-list" id="category-list">
@@ -17,7 +17,7 @@
             </div>
             <div>
                 <div class="box"></div>
-                <div class="content-title">내 관심 카테고리</div>
+                <h3 class="content-title">내 관심 카테고리</h3>
                 <div>
                     <div>
                         <div data-v-a9f85b62="" data-v-713cd9e8="" class="main-pro-locations">
@@ -34,7 +34,9 @@
             </div>
         </div>
         <div class="right-content">
-            <div class="content-title">추천글</div>
+            <h3 class="content-title">추천글</h3>
+            <div>
+            </div>
         </div>
     </div>
 </template>
@@ -47,7 +49,7 @@ export default {
         ...mapStores(useMemberStore)
     },
     mounted(){
-        this.memberStore.getUserCategories();
+        // this.memberStore.getUserCategories();
     }
 }
 </script>
@@ -57,7 +59,7 @@ export default {
     height: 1rem;
 }
 .left-content{
-    border-right: 1px solid #525252;
+    border-right: 1px solid #8e8e8e;
     padding: 1rem 2rem;
 }
 .left-content >div{
@@ -70,11 +72,12 @@ export default {
     padding: 10rem 0;
     margin: 0 auto;
     height: 100%;
-    width: 60rem;
+    width: 80rem;
     display: flex;
+    color: #303030;
 }
 .main-component-container >div:nth-of-type(1){
-    width: 50%;
+    width: 45%;
 }
 .main-pro-locations{
     height: auto;
@@ -96,7 +99,7 @@ export default {
     height: 100%;
 }
 .content-title{
-    font-size: 2rem;
+    /* font-size: 2rem; */
     margin-bottom: 1.5rem;
 }
 </style>
