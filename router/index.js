@@ -40,7 +40,7 @@ const router = createRouter({
                 { name: "exchange", path: "/exchange", component: ExchangePage },
                 { name: "share", path: "/share", component: SharePage },
                 // { path: "/writecate", component: WriteCateModal },
-                { name: "expostdetail", path: "/expostread/:id", component: ExPostReadPage },
+                { name: "expostdetail", path: "/expostdetail/:id", component: ExPostReadPage },
                 { name: "sharedetail", path: "/sharedetail/:id", component: SharePostReadPage },
 
             ]
