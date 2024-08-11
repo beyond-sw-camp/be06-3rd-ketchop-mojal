@@ -63,7 +63,7 @@
             </section>
         </div>
     </div>
-    <div class="category-container" :class="{'modal-close':!isModalClick}">
+    <!-- <div class="category-container" :class="{'modal-close':!isModalClick}">
         <div class="modal-background">
             <div class="category-box">
                 <div>
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </template>
 <script>
 import ShareCreateInfoInput from '@/components/post/ShareCreateInfoInput.vue';

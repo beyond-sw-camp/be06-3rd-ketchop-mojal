@@ -86,6 +86,9 @@ export default {
 };
 </script>
 <style scoped>
+a {
+    text-decoration:none
+}
 .chat-item[data-v-84c28776] {
     padding: 1rem;
     cursor: pointer;

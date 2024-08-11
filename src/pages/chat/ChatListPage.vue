@@ -64,15 +64,18 @@ export default {
 <style scoped>
     .chat-list-container[data-v-31ad20b6] {
         /* padding-top: 7.5rem; */
-        padding: 10rem 2.5rem;
+        padding: 7rem 2.5rem;
     }
     .chat-list-container .container[data-v-31ad20b6] {
         max-width: 37.5rem;
         height: 100vh;
 
     }
+    .page-header{
+        height: 100px;
+    }
     a{
-        text-decoration: none;
+        text-decoration: none !important;
     }
 
     @media (min-width: 992px) {
