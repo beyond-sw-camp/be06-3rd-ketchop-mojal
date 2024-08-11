@@ -132,9 +132,6 @@ export default {
       this.sharePostStore.getSharePostByCategory(idx);
       this.exchangePostStore.getExchangePostByCategory(idx);
     },
-    isSelect(Idx) {
-      return this.sharePostStore.selectedCategoryIdx === Idx;
-    },
   },
 };
 </script>

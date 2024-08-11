@@ -135,9 +135,6 @@ export default {
     selectCategory(idx) {
       this.myPostStore.selectCategory(idx);
     },
-    isSelect(idx) {
-      return this.myPostStore.selectedIdx === idx;
-    },
   },
 };
 </script>
