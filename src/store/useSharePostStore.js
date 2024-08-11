@@ -9,6 +9,7 @@ export const useSharePostStore = defineStore("sharePost", {
             selectedIdx: null,
             shareListAll: [],
             sharePost: {},
+            shareDetail: {},
 
         }
     ),
@@ -60,13 +61,13 @@ export const useSharePostStore = defineStore("sharePost", {
                 this.selectedIdx = selectedIdx;
                 let response = await axios.get(url, { withCredentials: true }); //응답 받아서 저장
                 this.isSuccess = response.data.isSuccess
-
-                if (this.isSuccess === false) {
-                    alert(response.data.message)
-                } else alert("참여신청완료")
-                console.log("스토어 나눔글참여하기", response);
+                this.shareDetail = response.data
+                // if (this.isSuccess === false) {
+                //     alert(response.data.message)
+                // } else alert("참여신청완료")
+                // console.log("스토어 나눔글참여하기", response);
             } catch (error) {
-                console.log(error)
+                console.log("스토어 나눔글참여 에러", error)
             }
 
         },
