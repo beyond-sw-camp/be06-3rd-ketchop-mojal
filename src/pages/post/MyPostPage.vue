@@ -406,6 +406,8 @@ img {
 
 .community-container[data-v-c05eb1ae] {
   max-width: 100%;
+  min-height: 100%;
+  padding: 8rem 0;
 }
 
 @media (min-width: 992px) {
@@ -585,8 +587,8 @@ button:not(:disabled) {
 
 .btn-primary {
   color: #fff;
-  background-color: #00c7ae;
-  border-color: #00c7ae;
+  background-color: #0066D5;
+  border-color: none;
 }
 
 .btn {
@@ -655,7 +657,7 @@ button {
   justify-content: center;
   width: 7.5rem;
   height: 2.75rem;
-  background-color: #00c7ae;
+  background-color: #0066D5;
   border: none;
   border-radius: 6px;
 }

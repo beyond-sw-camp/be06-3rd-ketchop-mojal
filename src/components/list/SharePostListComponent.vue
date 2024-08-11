@@ -104,7 +104,7 @@
         v-if="this.sharePostStore.shareListAll.length == 0"
         class="item-none"
       >
-        작성한 글이 존재하지 않습니다
+        해당 카테고리 글이 존재하지 않습니다
       </div>
       <a href="/myPostExchange.html">
         <p style="text-align: center; cursor: pointer">

@@ -25,18 +25,18 @@
           class="observer-container topic-chip-observer"
         >
           <li
-            v-for="items in this.categoryStore.categoryAll"
-            :key="items.idx"
+            v-for="category in categoryStore.categories"
+            :key="category.idx"
             data-v-4763e57b=""
             data-v-71844fb9=""
             data-observe="topic-all"
             class=" "
             id="topic-all"
-            @click="selectCategory(items.idx)"
-            :class="{ selected: selectedId === items.idx }"
+            @click="selectCategory(category.idx)"
+            :class="{ selected: selectedId === category.idx }"
           >
             <a data-v-4763e57b="" href="/" class="" data-v-71844fb9="">
-              {{ items.name }}
+              {{ category.name }}
             </a>
           </li>
         </div>
@@ -54,19 +54,17 @@
           class="observer-container topic-tab-observer"
         >
           <li
-            v-for="items in this.categoryStore.categoryAll"
-            :key="items.idx"
+            v-for="category in categoryStore.categories"
+            :key="category.idx"
             data-v-4763e57b=""
             data-v-71844fb9=""
             data-observe="topic-all"
             class=""
             id="topic-all"
-            @click="selectCategory(items.idx)"
-            :class="{ selected: selectedId === items.idx }"
+            @click="selectCategory(category.idx)"
+            :class="{ selected: selectedId === category.idx }"
           >
-            <a data-v-f7ed0496="" class="" data-v-71844fb9="">
-              {{ items.name }}
-            </a>
+            {{ category.name }}
           </li>
         </div>
       </ul>
@@ -78,18 +76,18 @@
     >
       <ul data-v-8aaac69a="">
         <li
-          v-for="items in this.categoryStore.categoryAll"
-          :key="items.id"
+          v-for="category in categoryStore.categories"
+          :key="category.id"
           data-v-4763e57b=""
           data-v-71844fb9=""
           data-observe="topic-all"
           class=""
           id="topic-all"
-          @click="selectCategory(items.idx)"
-          :class="{ selected: selectedId === items.idx }"
+          @click="selectCategory(category.idx)"
+          :class="{ selected: selectedId === category.idx }"
         >
           <a data-v-4763e57b="" class="topic-link-item" data-v-71844fb9="">
-            {{ items.name }}
+            {{ category.name }}
           </a>
         </li>
       </ul>
@@ -107,7 +105,6 @@ export default {
   name: "CategorySidebarComponent",
   data() {
     return {
-      categoryAll: [],
       categorySharePosts: [],
       categoryExchangePosts: [],
       isClick: false,
@@ -121,10 +118,7 @@ export default {
   },
 
   created() {},
-  mounted() {
-    this.categoryStore.getCategoryAll();
-    this.categoryAll = this.categoryStore.categoryAll;
-  },
+  mounted() {},
   methods: {
     categoryClick() {},
     selectCategory(idx) {

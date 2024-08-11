@@ -23,11 +23,11 @@
                     </div>
                     <div data-v-84c28776="" class="chat-msg-wrapper">
                         <div data-v-5fd8df5a="" data-v-84c28776="" class="notice">
-                            <span data-v-ac555544="" data-v-5fd8df5a="" title="상대방이 채팅방을 나갔습니다." class="prisma-typography body3:regular primary"> {{room.title}} </span>
+                            <span data-v-ac555544="" data-v-5fd8df5a="" title="상대방이 채팅방을 나갔습니다." class="prisma-typography body3:regular primary"> [{{room.title}}] </span>
                         </div>
                         <div data-v-84c28776="" class="chat-msg-info">
                             <div data-v-84c28776="" class="dot"></div>
-                            <span data-v-ac555544="" data-v-84c28776="" title="2024. 01. 22" class="prisma-typography body4:regular tertiary"> {{room.lastMessageTimeStamp}} </span>
+                            <span data-v-ac555544="" data-v-84c28776="" title="2024. 01. 22" class="prisma-typography body4:regular tertiary">📨 {{room.lastMessage}} {{room.lastMessageTimeStamp}} </span>
                         </div>
                     </div>
                 </div>
@@ -66,6 +66,10 @@ export default {
             },
             status: { //글 상태
                 type: Boolean,
+                required: true
+            },
+            lastMessage: { //최근 메시지 내용
+                type: String,
                 required: true
             },
             lastMessageTimeStamp: { //최근 메시지 시간

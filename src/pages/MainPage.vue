@@ -27,6 +27,8 @@ export default {
 <style scoped>
 .app-container{
   box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }
 
 </style>

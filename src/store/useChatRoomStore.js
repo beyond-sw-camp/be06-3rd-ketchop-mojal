@@ -32,7 +32,7 @@ export const useChatRoomStore = defineStore('chatRoom', {
             this.postIdx = postIdx;
 
             const memberStore = useMemberStore();
-            this.userIdx = memberStore.userIdx;
+            this.userIdx = memberStore.member.userIdx;
 
             let roomCreateReq = {
                 postIdx : postIdx,
@@ -72,7 +72,7 @@ export const useChatRoomStore = defineStore('chatRoom', {
             this.reconnectAttempts = 0; // 재시도 횟수 초기화
 
             const memberStore = useMemberStore();
-            this.userIdx = memberStore.userIdx;
+            this.userIdx = memberStore.member.userIdx;
 
             await axios.get(`/proxy/api/chat/rooms`, {
                 params: {

@@ -1,7 +1,13 @@
 <template>
     <div>
-        <h5>너 뭐 잘해? 너 뭐 돼?</h5>
-        <h3>카테고리를 선택해주세요</h3>
+        <div v-if="selectType===1">
+            <h5>너 뭐 잘해? 너 뭐 돼?</h5>
+            <h3>나의 재능 카테고리를 선택해주세요</h3>
+        </div>
+        <div v-else>
+            <h5>너 뭐 잘해? 너 뭐 돼?</h5>
+            <h3>관심 카테고리를 선택해주세요</h3>
+        </div>
         <div data-v-a9f85b62="" data-v-713cd9e8="" class="main-pro-locations">
             <ul data-v-a9f85b62="" class="location-list" id="category-list">
                 <li v-for="category in categoryStore.categories" 
@@ -18,12 +24,19 @@
 </template>
 <script>
 import { useCategoryStore } from '@/store/useCategoryStore'; 
+import { useMemberStore } from '@/store/useMemberStore'; 
 import { mapStores } from 'pinia';
 import axios from 'axios';
 
 export default {
+    props:{
+        selectType:{
+            type: Number,
+            required: true
+        }
+    },
     computed: {
-        ...mapStores(useCategoryStore),
+        ...mapStores(useCategoryStore, useMemberStore),
     },
     data(){
         return{
@@ -49,14 +62,20 @@ export default {
         async saveCategories(){
             console.log(this.selected);
 
-            let url = "/proxy/member/add/category";
+            let url = "/proxy/add/category";
             let requestData = { categories: this.selected };
             try {
                 let response = await axios.post(url, requestData);
-                console.log(response.data); // 서버 응답 출력
+                console.log(response.data);
+                alert("start")
+                this.memberStore.getUserCategories();
+
             } catch (error) {
                 console.error('Error:', error);
             }
+        },
+        user(){
+            this.memberStore.getUserCategories();
         }
     }
     

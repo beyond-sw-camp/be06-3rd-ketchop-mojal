@@ -41,7 +41,7 @@
         v-if="this.exchangePostStore.exchangeListAll.length == 0"
         class="item-none"
       >
-        작성한 글이 존재하지 않습니다
+        해당 카테고리 글이 존재하지 않습니다
       </div>
       <a
         v-if="this.exchangePostStore.exchangeListAll.length !== 0"
@@ -81,6 +81,20 @@ export default {
       active: false,
       getexchangeListAll: [],
       postLength: 0,
+      // 리턴 수정 귀찮아서 냅둠, 주석으로 item 이름 부분 참고
+      // contents : "content1"
+      // giveBtmCategory : "give btm category"
+      // giveCategory : "사회적 기술과 커뮤니케이션"
+      // memberIdx : 1
+      // memberNickname : null
+      // modifyTime : "2024-07-24T09:08:48.915401"
+      // postIdx : 1
+      // postType : "exchange"
+      // status : true
+      // takeBtmCategory : "give btm category"
+      // takeCategory : "요리와 제과"
+      // timeStamp : "2024-07-24T09:08:48.915401"
+      // title : "title1"
     };
   },
   computed: {
