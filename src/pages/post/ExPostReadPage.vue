@@ -83,7 +83,7 @@
                                                 src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0yMC43NyAxNS4xNzRjLjM3IDAgLjY3NS4yNzYuNzIzLjYzNGwuMDA3LjA5OXY1Ljg2YzAgLjM3MS0uMjc1LjY3OC0uNjMyLjcyNmwtLjA5OS4wMDdIMy4yMzFhLjczMi43MzIgMCAwIDEtLjcyNC0uNjMzbC0uMDA3LS4xdi01Ljg2YS43MzIuNzMyIDAgMCAxIDEuNDU1LS4xbC4wMDcuMXY1LjEyOGgxNi4wNzZ2LTUuMTI4YzAtLjM3LjI3NS0uNjc3LjYzMi0uNzI2bC4xLS4wMDd6TTEyLjQxMiAxLjYyOGwuMDkuMDcyIDYuMzc3IDYuMDVhLjczNC43MzQgMCAwIDEgLjAyOCAxLjAzNi43My43MyAwIDAgMS0uOTQ5LjA5OGwtLjA4NC0uMDY5LTUuMTQ1LTQuODgxdjExLjk3M2EuNzMyLjczMiAwIDAgMS0xLjQ1NC4xbC0uMDA3LS4xVjMuOTMzTDYuMTI1IDguODE1YS43My43MyAwIDAgMS0uOTUzLjA0NWwtLjA4LS4wNzRhLjczNC43MzQgMCAwIDEtLjA0NS0uOTU1bC4wNzMtLjA4IDYuMzc4LTYuMDUuMDQ2LS4wMzlhLjczNC43MzQgMCAwIDEgLjAxNC0uMDFsLS4wNi4wNDhhLjczLjczIDAgMCAxIC4yMTMtLjE0Yy4wMDUgMCAuMDA5LS4wMDIuMDEzLS4wMDRhLjcyNC43MjQgMCAwIDEgLjY5LjA3MnoiIGZpbGw9IiMyRDJEMkQiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4K"
                                                 alt="공유하기" class="icon">
                                             <div data-v-5bbf4b7a="" class="dropdown b-dropdown btn-group"
-                                                data-v-71844fb9="" id="__BVID__2354">
+                                                data-v-71844fb9="" id="__BVID__2354" style="margin-top: 10px; width: 50px;">
                                                 <!---->
                                                 <button aria-haspopup="true" aria-expanded="false" type="button"
                                                     class="btn dropdown-toggle btn-secondary"
@@ -338,7 +338,6 @@ export default {
     },
     computed:{
         ...mapStores(useExchangePostStore),
-        ...mapStores(useChatRoomStore)
     },
     async mounted() {
         await this.getPostInfo(this.postIdx);
@@ -363,11 +362,21 @@ export default {
             }
 
             // 본인 글이 아니면 채팅방 생성
-            await this.chatRoomStore.CreateChatRoom(postIdx);
-
-            // 채팅방 생성 후 채팅방으로 이동
-            // const router = useRouter(); // router 추가
-            this.$router.push({ name: '/chat-room', params: { roomIdx: parseInt(this.chatRoomStore.roomIdx) } });
+            const chatRoomStore = useChatRoomStore();
+            await chatRoomStore.CreateChatRoom(postIdx);
+            
+            if(chatRoomStore.roomIdx == 0) { //방 생성 안 되고 에러가 저장됐다는 뜻
+                if(chatRoomStore.data.message) {
+                    alert(`${chatRoomStore.data.message}`); // 서버에서 전송한 에러 메시지를 사용 (아마 카테고리 이슈)
+                } else{
+                    alert('예기치 않은 오류가 발생했습니다. 다시 시도해 주세요.'); //// 서버의 응답이 없는 경우 또는 다른 에러
+                }
+            } else {
+                // 채팅방 생성 후 채팅방으로 이동
+                // const router = useRouter(); // router 추가
+                alert(`채팅방이 생성되었습니다!`);
+                this.$router.push({ name: '/chat-room', params: { roomIdx: parseInt(chatRoomStore.roomIdx) } });
+            }
 
         }
     }
@@ -852,7 +861,19 @@ button,input,optgroup,select,textarea {
 }
 
 button {
-    border-radius: 0;
+    /* border-radius: 0; */
+    color: #fff;
+    background : linear-gradient(65deg, #B69CE5, #0066D5);
+    border-radius: 15px;
+    border: none;
+    width: 6rem;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: .5000rem .40rem;
+    /* margin-bottom: .75rem;
+    margin-top: 0.5rem; */
 }
 
 .dropdown-menu-right {
