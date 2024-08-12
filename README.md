@@ -149,7 +149,8 @@ ketchop팀에서는 서비스의 연속성이 있고 데이터 유실이 거의 
 <summary> <h3>2. 요구사항 정의서</h3> </summary>
 -->
 
-
+# 배포 링크
+[mojal 이용하기](http://3.36.131.52/)
 
 # 👍기능테스트
 [시연영상](https://youtu.be/rzBV5B_kKbU)
