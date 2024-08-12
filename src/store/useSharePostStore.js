@@ -17,7 +17,7 @@ export const useSharePostStore = defineStore("sharePost", {
         // 나눔글전체리스트
         async getShareListAll() {
             try {
-                let url = `http://localhost:8080/share/list`;
+                let url = `/proxy/share/list`;
                 let response = await axios.get(url);
                 this.shareListAll = response.data.result;
                 console.log("나눔글전체리스트:", this.shareListAll);
@@ -29,7 +29,7 @@ export const useSharePostStore = defineStore("sharePost", {
         //해당idx나눔글
         async getSharePost(shareIdx) {
             try {
-                let url = `http://localhost:8080/share/read?idx=${shareIdx}`;
+                let url = `/proxy/share/read?idx=${shareIdx}`;
                 let response = await axios.get(url);
                 this.sharePost = response.data.result;
                 console.log("스토어 해당나눔글:", this.sharePost);
@@ -41,7 +41,7 @@ export const useSharePostStore = defineStore("sharePost", {
         // 선택한 나눔글,교환글 카테고리만 픽미픽미해서 가져오기
         async getSharePostByCategory(selectedCategoryIdx) {
             try {
-                let url = `http://localhost:8080/search/category?idx=${selectedCategoryIdx}`;
+                let url = `/proxy/search/category?idx=${selectedCategoryIdx}`;
                 this.selectedCategoryIdx = selectedCategoryIdx;
                 let response = await axios.get(url); //응답 받아서 저장
                 this.shareListAll = response.data.result.sharePosts;
@@ -57,7 +57,7 @@ export const useSharePostStore = defineStore("sharePost", {
         //나눔글참여하기
         async getAttendSharePost(selectedIdx) {
             try {
-                let url = `http://localhost:8080/share/join?idx=${selectedIdx}`;
+                let url = `/proxy/share/join?idx=${selectedIdx}`;
                 this.selectedIdx = selectedIdx;
                 let response = await axios.get(url, { withCredentials: true }); //응답 받아서 저장
                 this.isSuccess = response.data.isSuccess
