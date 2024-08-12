@@ -166,12 +166,14 @@ ketchop팀에서는 서비스의 연속성이 있고 데이터 유실이 거의 
 <br><br><br>
 
 # 🔍주요기술
-<a href="https://github.com/Ketchop-Mojal-Project/front/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EC%88%A0">주요기술</a>
+<a href="https://github.com/beyond-sw-camp/be06-3rd-ketchop-mojal/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EC%88%A0">주요기술</a>
 <br><br><br>
 
+<!--
 # ✔️코드 컨벤션
 <a href="https://github.com/Ketchop-Mojal-Project/front/wiki/%EC%BD%94%EB%93%9C%EC%BB%A8%EB%B2%A4%EC%85%98">코드 컨벤션</a>
 <br><br><br>
+-->
 
 <!-- 
 # 성능개선
