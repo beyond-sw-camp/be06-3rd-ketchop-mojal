@@ -40,7 +40,7 @@
                         </div>
                         <div data-v-5467bada="" class="col-12">
                             <!-- <button data-v-3998184b="" data-v-5467bada="" @click="kakaoLogin" type="button" class="btn kakao-login-btn btn-secondary"> -->
-                                <a id="kakao-login-btn" href="http://localhost:8080/oauth2/authorization/kakao">
+                                <a id="kakao-login-btn" href="/proxy/oauth2/authorization/kakao">
                                     <img data-v-3998184b="" src="https://assets.cdn.soomgo.com/icons/icon-login-kakaotalk-btn.svg" alt="카카오 로그인">
                                     <span data-v-3998184b="">카카오로 시작</span>
                                 </a>

@@ -320,6 +320,21 @@ export default {
             message: "test",
             postIdx: this.$route.params.id,
             post : {
+<<<<<<< HEAD
+                postIdx: 0,
+                postType: "",
+                status: "",
+                memberIdx: 0,
+                memberNickname: "",
+                timeStamp: "",
+                modifyTime: "",
+                title: "",
+                contents: "",
+                giveCategory: 0,
+                giveBtmCategory: "",
+                takeCategory: 0,
+                takeBtmCategory: "",
+=======
                 // postIdx: { type: Number, required : true },
                 // postType: { type: String,required : true },
                 // status: { type: Boolean, required : true },
@@ -333,6 +348,7 @@ export default {
                 // giveBtmCategory: { type: String,required : true },
                 // takeCategory: { type: Number, required : true },
                 // takeBtmCategory: { type: Boolean, required : true },
+>>>>>>> df3cde9aca2bf8cc2b2dfd39efcbf7675fbc6847
             }
         }
     },
@@ -343,8 +359,12 @@ export default {
         await this.getPostInfo();
     },
     methods: {
+<<<<<<< HEAD
+        async getPostInfo(postIdx) {
+=======
         async getPostInfo() {
             // console.log(postIdx);
+>>>>>>> df3cde9aca2bf8cc2b2dfd39efcbf7675fbc6847
             
             await this.exchangePostStore.getExchangeRead(this.$route.params.id);
             this.post = this.exchangePostStore.exchangePost;
@@ -375,7 +395,11 @@ export default {
                 // 채팅방 생성 후 채팅방으로 이동
                 // const router = useRouter(); // router 추가
                 alert(`채팅방이 생성되었습니다!`);
-                this.$router.push({ name: '/chat-room', params: { roomIdx: parseInt(chatRoomStore.roomIdx) } });
+                
+                // 2초 후에 라우터 이동
+                setTimeout(() => {
+                    this.$router.push({ name: 'chat-room', params: { roomIdx: parseInt(chatRoomStore.roomIdx) } });
+                }, 1000); // 2000 밀리초 = 2초
             }
 
         }

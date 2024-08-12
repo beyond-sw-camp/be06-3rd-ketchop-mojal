@@ -45,7 +45,7 @@ export const useMemberStore = defineStore('member', {
             return response.data.firstLogin;
         },
         async signup(member){
-            let url = 'http://localhost:8080/member/signup';
+            let url = '/proxy/member/signup';
 
             let response = await axios.post(url, member, {withCredentials:false});
             console.log(response);
@@ -59,7 +59,7 @@ export const useMemberStore = defineStore('member', {
 
             // console.log(emailAuthReq);
 
-            let url = `http://localhost:8080/email/send`
+            let url = `/proxy/email/send`
 
             let response = await axios.post(url, emailAuthReq);
             console.log(response);
@@ -71,7 +71,7 @@ export const useMemberStore = defineStore('member', {
                 uuid:member.uuid
             }
 
-            let url = `http://localhost:8080/email/verify`;
+            let url = `/proxy/email/verify`;
 
             let response = await axios.post(url, emailAuthReq);
             console.log(response);
@@ -88,7 +88,7 @@ export const useMemberStore = defineStore('member', {
             this.userCategories = response.data.result;
         },
         async modify(member){
-            let url = `http://localhost:8080/member/modify`;
+            let url = `/proxy/member/modify`;
 
             let response = await axios.post(url, member);
             console.log(response);
