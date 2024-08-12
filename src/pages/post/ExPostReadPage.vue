@@ -318,7 +318,7 @@ export default {
         // const route = useRoute();
         return { 
             message: "test",
-            postIdx: this.$route.params.postIdx,
+            postIdx: this.$route.params.id,
             post : {
                 // postIdx: { type: Number, required : true },
                 // postType: { type: String,required : true },
@@ -340,13 +340,13 @@ export default {
         ...mapStores(useExchangePostStore),
     },
     async mounted() {
-        await this.getPostInfo(this.postIdx);
+        await this.getPostInfo();
     },
     methods: {
-        async getPostInfo(postIdx) {
+        async getPostInfo() {
             // console.log(postIdx);
             
-            await this.exchangePostStore.getExchangeRead(postIdx);
+            await this.exchangePostStore.getExchangeRead(this.$route.params.id);
             this.post = this.exchangePostStore.exchangePost;
         },
 

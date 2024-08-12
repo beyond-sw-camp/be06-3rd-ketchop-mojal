@@ -20,13 +20,13 @@ export const useExchangePostStore = defineStore("exchangePost", {
 
         // 상세글 조회
         async getExchangeRead(postIdx) {
-            try {
+            try { 
                 // console.log("in");
                 
-                this.postIdx = postIdx;
+                // this.postIdx = postIdx;
 
                 // let url = `/proxy/exchange/read?idx=${this.postIdx}`;
-                let url = `http://localhost:8080/exchange/read?idx=${this.postIdx}`;
+                let url = `http://localhost:8080/exchange/read?idx=${postIdx}`;
                 const response = await axios.get(url);
 
                 this.exchangePost = response.data.result;
@@ -52,6 +52,7 @@ export const useExchangePostStore = defineStore("exchangePost", {
 
                     // this.exchangeListAll = response.data.result; 
                     this.exchangeListAll = [...this.exchangeListAll, ...response.data.result];
+                    console.log(this.exchangeListAll);
 
                     this.currentPage++;
                 } catch (error) {
