@@ -28,7 +28,7 @@ export const useMyPostStore = defineStore("myPost", {
         }
     ),
     actions: {
-        // 내가 작성한 나눔글 전체리스트
+        // 내가 작성한 나눔글 전체리스트$
         async getMyShareListAll() {
             try {
                 let url = `/proxy/share/my/list?page=0&size=10`;
