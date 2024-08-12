@@ -68,7 +68,7 @@
                         <router-link
                           :to="{
                             name: 'postcreate',
-                            params: { postType: 'exchange' },
+                            params: { postType: 'share' },
                           }"
                           role="menuitem"
                           target="_self"
@@ -102,7 +102,7 @@
                           role="menuitem"
                           :to="{
                             name: 'postcreate',
-                            params: { postType: 'share' },
+                            params: { postType: 'exchange' },
                           }"
                           target="_self"
                           class="dropdown-item"
@@ -535,7 +535,7 @@ img {
   justify-content: center;
   width: 7.5rem;
   height: 2.75rem;
-  background-color: #00c7ae;
+  background: linear-gradient(65deg, #b69ce5, #0066d5);
   border: none;
   border-radius: 6px;
 }
@@ -587,7 +587,7 @@ button:not(:disabled) {
 
 .btn-primary {
   color: #fff;
-  background-color: #0066D5;
+  background-color: #0066d5;
   border-color: none;
 }
 
@@ -657,7 +657,7 @@ button {
   justify-content: center;
   width: 7.5rem;
   height: 2.75rem;
-  background-color: #0066D5;
+  background-color: #0066d5;
   border: none;
   border-radius: 6px;
 }

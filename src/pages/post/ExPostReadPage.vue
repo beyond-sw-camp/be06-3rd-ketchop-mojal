@@ -320,6 +320,7 @@ export default {
             message: "test",
             postIdx: this.$route.params.id,
             post : {
+<<<<<<< HEAD
                 postIdx: 0,
                 postType: "",
                 status: "",
@@ -333,6 +334,21 @@ export default {
                 giveBtmCategory: "",
                 takeCategory: 0,
                 takeBtmCategory: "",
+=======
+                // postIdx: { type: Number, required : true },
+                // postType: { type: String,required : true },
+                // status: { type: Boolean, required : true },
+                // memberIdx: { type: Number, required : true },
+                // memberNickname: { type: String,required : true },
+                // timeStamp: { type: String,required : true },
+                // modifyTime: { type: String,required : true },
+                // title:{ type: String,required : true },
+                // contents: { type: String,required : true },
+                // giveCategory: { type: Number, required : true },
+                // giveBtmCategory: { type: String,required : true },
+                // takeCategory: { type: Number, required : true },
+                // takeBtmCategory: { type: Boolean, required : true },
+>>>>>>> df3cde9aca2bf8cc2b2dfd39efcbf7675fbc6847
             }
         }
     },
@@ -340,12 +356,17 @@ export default {
         ...mapStores(useExchangePostStore),
     },
     async mounted() {
-        await this.getPostInfo(this.postIdx);
+        await this.getPostInfo();
     },
     methods: {
+<<<<<<< HEAD
         async getPostInfo(postIdx) {
+=======
+        async getPostInfo() {
+            // console.log(postIdx);
+>>>>>>> df3cde9aca2bf8cc2b2dfd39efcbf7675fbc6847
             
-            await this.exchangePostStore.getExchangeRead(postIdx);
+            await this.exchangePostStore.getExchangeRead(this.$route.params.id);
             this.post = this.exchangePostStore.exchangePost;
         },
 
