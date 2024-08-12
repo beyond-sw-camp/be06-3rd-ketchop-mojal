@@ -2,7 +2,7 @@
 <br><br>
 
 <div align=center>
-<img src="src/assets/mojalLogo.png" alt="모잘로고" width="30%">
+<img src="src/assets/mojalLogo.svg" alt="모잘로고" width="30%">
 	<h3>"너 뭐 잘해?"</h3>
 	<h4>
  		우리의 mojal 서비스에서는 각자의 재능을 교환하거나 나눔으로써 공유의 장을 생성할 수 있고, <br>
@@ -157,7 +157,7 @@ ketchop팀에서는 서비스의 연속성이 있고 데이터 유실이 거의 
 <br><br><br>
 
 # 화면 설계서
-<a href="https://www.figma.com/design/peBClrXDY5PRJ8ZsMpO7cj/idation?node-id=0-1">[Figma]화면설계서</a>
+<a href="https://www.figma.com/design/peBClrXDY5PRJ8ZsMpO7cj/idation?node-id=1290-838&t=DjE0qtvwg9Snuo6h-1">[Figma]화면설계서</a>
 <br><br><br>
 
 
