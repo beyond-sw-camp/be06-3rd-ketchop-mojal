@@ -100,11 +100,15 @@ export default {
                 this.login();
             }
         },
-        login() {
-            const result = this.memberStore.login(this.member);
+        async login() {
+            const result = await this.memberStore.login(this.member);
+            console.log("result:"+result);
             if (result) {
-                // window.location.href = "/";
-                this.$router.push("/");
+                this.$router.push(`/redirect/${this.memberStore.member.userName}`);
+            }else{
+                this.memberStore.getUserCategories();
+                console.log(this.memberStore.userCategories);
+                this.$router.push("/main");
             }
         }
     }

@@ -17,7 +17,7 @@
                         </router-link>
                     </li>  -->
                     <li v-for="room in chatRoomStore.chatRooms" :key="room.roomIdx">
-                        <router-link :to="{ name: 'chat-room', params: { roomIdx: room.roomIdx } }">
+                        <router-link :to="{ name: '/chat-room', params: { roomIdx: room.roomIdx } }">
                             <span><ChatElement :room="room"/></span>
                         </router-link>
                     </li> 
@@ -64,14 +64,18 @@ export default {
 <style scoped>
     .chat-list-container[data-v-31ad20b6] {
         /* padding-top: 7.5rem; */
-        padding: .5rem 2.5rem;
+        padding: 7rem 2.5rem;
     }
     .chat-list-container .container[data-v-31ad20b6] {
         max-width: 37.5rem;
-        padding: 0;
+        height: 100vh;
+
+    }
+    .page-header{
+        height: 100px;
     }
     a{
-        text-decoration: none;
+        text-decoration: none !important;
     }
 
     @media (min-width: 992px) {

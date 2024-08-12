@@ -96,19 +96,21 @@
         v-for="items in this.sharePostStore.shareListAll"
         :key="items.postIdx"
         :item="items"
+        @click="getSharePostDetail"
       >
       </MyPostShareItemComponent>
+
       <div
         v-if="this.sharePostStore.shareListAll.length == 0"
         class="item-none"
       >
-        작성한 글이 존재하지 않습니다
+        해당 카테고리 글이 존재하지 않습니다
       </div>
-      <a href="/myPostExchange.html">
-        <p style="text-align: center; cursor: pointer">
-          <span>더보기 ></span>
-        </p>
-      </a>
+      <div>
+          <p v-if="this.sharePostStore.hasMore" style="text-align: center; cursor: pointer">
+            <span @click="loadData">더보기 ></span>
+          </p>
+      </div>
     </ul>
 
     <div data-v-68994f89="" data-v-fbeed1e4="">
@@ -138,25 +140,32 @@ export default {
     return {
       active: false,
       postLength: 0,
+      itemidx: 0,
     };
   },
   computed: {
     ...mapStores(useCategoryStore),
     ...mapStores(useSharePostStore),
   },
+  created() {
+    this.itemidx = this.$route.params.id;
+  },
   mounted() {
-    this.getData();
+    this.loadData();
   },
   methods: {
     toggle() {
       this.active = !this.active;
     },
-    async getData() {
-      await this.sharePostStore.getShareListAll();
-      // this.getshareListAll = this.sharePostStore.shareListAll;
-      // this.postLength = this.sharePostStore.shareListAll.length;
-      console.log("와라와라ㅏㅏㅏㅏㅏ");
-      console.log(this.sharePostStore.shareListAll);
+    async loadData() {
+      await this.sharePostStore.getShareListAll(
+        this.sharePostStore.currentPage,
+        this.sharePostStore.pageSize
+      );
+    },
+    async getSharePostDetail() {
+      await this.sharePostStore.getSharePost(this.itemidx);
+      console.log(this.sharePostStore.sharePost);
     },
   },
 };

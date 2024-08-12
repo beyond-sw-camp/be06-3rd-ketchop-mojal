@@ -1,6 +1,6 @@
 <template lang="">
     <div data-v-26153660="" class="right-section-logined">
-        <router-link to="chat">
+        <router-link to="/chat">
             <span data-v-26153660="" class="gnb-link">채팅</span>
         </router-link>
         <div data-v-4c66cf88="" data-v-26153660="" class="notification-counter notification-counter right-section-item has-badge">
@@ -24,7 +24,7 @@
             </div>
             <div data-v-35a09b99="" class="usermenu-dropdown" :class="{'usermenu-off':!isUserMenuOn}" >
                 <div data-v-35a09b99="" data-name="user-info">
-                    <h4 data-v-35a09b99="" data-name="name">{{memberStore.userName}} 고객님</h4>
+                    <h4 data-v-35a09b99="" data-name="name">{{memberStore.member.userName}} 고객님</h4>
                 </div>
                 <div data-v-35a09b99="" data-name="usermenu-control">
                     <div data-v-35a09b99="" class="col">

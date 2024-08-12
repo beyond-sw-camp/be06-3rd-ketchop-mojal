@@ -24,19 +24,28 @@
           data-v-4763e57b=""
           class="observer-container topic-chip-observer"
         >
+        <!-- 수정중 -->
           <li
-            v-for="items in this.categoryStore.categoryAll"
-            :key="items.idx"
             data-v-4763e57b=""
             data-v-71844fb9=""
             data-observe="topic-all"
             class=" "
             id="topic-all"
-            @click="selectCategory(items.idx)"
-            :class="{ selected: selectedId === items.idx }"
+            @click="selectCategory(category.idx)"> 전체
+          </li>
+          <li
+            v-for="category in categoryStore.categories"
+            :key="category.idx"
+            data-v-4763e57b=""
+            data-v-71844fb9=""
+            data-observe="topic-all"
+            class=" "
+            id="topic-all"
+            @click="selectCategory(category.idx)"
+            :class="{ selected: selectedId === category.idx }"
           >
             <a data-v-4763e57b="" href="/" class="" data-v-71844fb9="">
-              {{ items.name }}
+              {{ category.name }}
             </a>
           </li>
         </div>
@@ -54,17 +63,17 @@
           class="observer-container topic-tab-observer"
         >
           <li
-            v-for="items in this.categoryStore.categoryAll"
-            :key="items.idx"
+            v-for="category in categoryStore.categories"
+            :key="category.idx"
             data-v-4763e57b=""
             data-v-71844fb9=""
             data-observe="topic-all"
             class=""
             id="topic-all"
-            @click="selectCategory(items.idx)"
-            :class="{ selected: selectedId === items.idx }"
+            @click="selectCategory(category.idx)"
+            :class="{ selected: selectedId === category.idx }"
           >
-            {{ items.name }}
+            {{ category.name }}
           </li>
         </div>
       </ul>
@@ -76,18 +85,18 @@
     >
       <ul data-v-8aaac69a="">
         <li
-          v-for="items in this.categoryStore.categoryAll"
-          :key="items.id"
+          v-for="category in categoryStore.categories"
+          :key="category.id"
           data-v-4763e57b=""
           data-v-71844fb9=""
           data-observe="topic-all"
           class=""
           id="topic-all"
-          @click="selectCategory(items.idx)"
-          :class="{ selected: selectedId === items.idx }"
+          @click="selectCategory(category.idx)"
+          :class="{ selected: selectedId === category.idx }"
         >
           <a data-v-4763e57b="" class="topic-link-item" data-v-71844fb9="">
-            {{ items.name }}
+            {{ category.name }}
           </a>
         </li>
       </ul>
@@ -105,7 +114,6 @@ export default {
   name: "CategorySidebarComponent",
   data() {
     return {
-      categoryAll: [],
       categorySharePosts: [],
       categoryExchangePosts: [],
       isClick: false,
@@ -119,19 +127,13 @@ export default {
   },
 
   created() {},
-  mounted() {
-    this.categoryStore.getCategoryAll();
-    this.categoryAll = this.categoryStore.categoryAll;
-  },
+  mounted() {},
   methods: {
     categoryClick() {},
     selectCategory(idx) {
       this.selectedId = idx;
       this.sharePostStore.getSharePostByCategory(idx);
       this.exchangePostStore.getExchangePostByCategory(idx);
-    },
-    isSelect(Idx) {
-      return this.sharePostStore.selectedCategoryIdx === Idx;
     },
   },
 };
@@ -213,18 +215,18 @@ a {
   }
 }
 
+.selected {
+  border-radius: 8px;
+  background-color: #eafaf9;
+  font-weight: 700;
+}
+
 .topic-list-menu ul[data-v-8aaac69a] {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   margin: 0;
-}
-
-.selected {
-  border-radius: 8px;
-  background-color: #eafaf9;
-  font-weight: 700;
 }
 
 .topic-list-menu ul li .selected[data-v-4763e57b] {

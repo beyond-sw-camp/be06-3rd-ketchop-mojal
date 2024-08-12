@@ -65,9 +65,12 @@
                       v-if="active"
                     >
                       <li data-v-32970c25="" role="presentation">
-                        <router-link :to="{ name: 'postcreate', params: { postType: 'share' } }"
+                        <router-link
+                          :to="{
+                            name: 'postcreate',
+                            params: { postType: 'share' },
+                          }"
                           role="menuitem"
-                          href="/writeSharePage"
                           target="_self"
                           class="dropdown-item"
                         >
@@ -95,9 +98,12 @@
                         </router-link>
                       </li>
                       <li data-v-32970c25="" role="presentation">
-                        <router-link :to="{ name: 'postcreate', params: { postType: 'exchange' } }"
+                        <router-link
                           role="menuitem"
-                          href="/writeExchange"
+                          :to="{
+                            name: 'postcreate',
+                            params: { postType: 'exchange' },
+                          }"
                           target="_self"
                           class="dropdown-item"
                         >
@@ -151,9 +157,20 @@
                   id="observer-e5774ab7-33f8-4f41-b55d-72c81f973aee"
                 ></div>
               </div>
-
-              <MyPostsShareListComponent />
-              <MyPostsExchangeListComponent />
+              <div>
+                <MyPostsShareListComponent v-if="myPostStore.isShowShare" />
+                <MyPostsExchangeListComponent
+                  v-if="myPostStore.isShowExchange"
+                />
+              </div>
+              <div>
+                <MyPostsJoinShareListComponent
+                  v-if="myPostStore.isShowJoinShare"
+                />
+                <MyPostsJoinExchangeListComponent
+                  v-if="myPostStore.isShowJoinExchange"
+                />
+              </div>
             </div>
           </div>
           <!----------------------------------------- 위로올라가기 버튼-------------------------------------------------------------->
@@ -183,6 +200,10 @@
 import SidebarComponent from "@/components/sidebar/SidebarComponent.vue";
 import MyPostsExchangeListComponent from "@/components/list/MyPostsExchangeListComponent.vue";
 import MyPostsShareListComponent from "@/components/list/MyPostsShareListComponent.vue";
+import MyPostsJoinExchangeListComponent from "@/components/list/MyPostsJoinExchangeListComponent.vue";
+import MyPostsJoinShareListComponent from "@/components/list/MyPostsJoinShareListComponent.vue";
+import { mapStores } from "pinia";
+import { useMyPostStore } from "@/store/useMyPostStore";
 
 export default {
   name: "MyPostPage",
@@ -190,6 +211,8 @@ export default {
     SidebarComponent,
     MyPostsShareListComponent,
     MyPostsExchangeListComponent,
+    MyPostsJoinShareListComponent,
+    MyPostsJoinExchangeListComponent,
   },
   data() {
     return {
@@ -198,6 +221,9 @@ export default {
       password: "",
       active: false,
     };
+  },
+  computed: {
+    ...mapStores(useMyPostStore),
   },
   created() {},
   methods: {
@@ -380,6 +406,8 @@ img {
 
 .community-container[data-v-c05eb1ae] {
   max-width: 100%;
+  min-height: 100%;
+  padding: 8rem 0;
 }
 
 @media (min-width: 992px) {
@@ -507,7 +535,7 @@ img {
   justify-content: center;
   width: 7.5rem;
   height: 2.75rem;
-  background-color: #00c7ae;
+  background: linear-gradient(65deg, #b69ce5, #0066d5);
   border: none;
   border-radius: 6px;
 }
@@ -559,8 +587,8 @@ button:not(:disabled) {
 
 .btn-primary {
   color: #fff;
-  background-color: #00c7ae;
-  border-color: #00c7ae;
+  background-color: #0066d5;
+  border-color: none;
 }
 
 .btn {
@@ -629,7 +657,7 @@ button {
   justify-content: center;
   width: 7.5rem;
   height: 2.75rem;
-  background-color: #00c7ae;
+  background-color: #0066d5;
   border: none;
   border-radius: 6px;
 }

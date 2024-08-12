@@ -42,7 +42,7 @@
           <!---------------------------------------------- 레이아웃 ------------------------------------------------------->
           <div data-v-4b40be3a="" class="community-layout">
             <!------------------------------------------- 레이아웃 왼쪽 카테고리 ----------------------------------------------------------------------->
-            <CategoryListComponent></CategoryListComponent>
+            <CategorySidebarComponent></CategorySidebarComponent>
 
             <!----------------------------------------- 레이아웃 오른쪽 리스트  -------------------------------------------------------------->
             <div
@@ -87,13 +87,13 @@
 </template>
 
 <script>
-import CategoryListComponent from "@/components/sidebar/CategorySidebarComponent.vue";
+import CategorySidebarComponent from "@/components/sidebar/CategorySidebarComponent.vue";
 import ExchangePostListComponent from "@/components/list/ExchangePostListComponent.vue";
 
 export default {
   name: "MyPostPage",
   components: {
-    CategoryListComponent,
+    CategorySidebarComponent,
     ExchangePostListComponent,
   },
   data() {
@@ -219,7 +219,7 @@ h1 {
   height: 100%;
   position: relative;
   flex-grow: 1;
-  margin-top: 4.5rem;
+  margin-top: 10rem;
 }
 
 #app #app-body,

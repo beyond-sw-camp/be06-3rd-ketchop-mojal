@@ -4,12 +4,12 @@ import { defineStore } from "pinia";
 export const useExchangeStore = defineStore('exchange', {
     state: () => ({
         request: {
-            giveCategoryIdx:null,
+            giveCategoryIdx:0,
             giveBtmCategory:"",
-            takeCategoryIdx:null,
+            takeCategoryIdx:0,
             takeBtmCategory:"",
             title:"",
-            contentㄴ:"",
+            content:"",
             images:[]
         },
         
@@ -19,11 +19,9 @@ export const useExchangeStore = defineStore('exchange', {
             const url = '/proxy/exchange/create';
 
             const req = {
-                // giveCategoryIdx: this.request.giveCategoryIdx,
-                giveCategoryIdx: 1,
+                giveCategoryIdx: this.request.giveCategoryIdx,
                 giveBtmCategory:this.request.giveBtmCategory,
-                // takeCategoryIdx:this.request.takeCategoryIdx,
-                takeCategoryIdx:4,
+                takeCategoryIdx:this.request.takeCategoryIdx,
                 takeBtmCategory:this.request.takeBtmCategory,
                 title:this.request.title,
                 contents:this.request.content,

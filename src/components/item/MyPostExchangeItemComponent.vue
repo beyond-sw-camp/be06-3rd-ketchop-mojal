@@ -7,7 +7,13 @@
     class="feed-item"
     @click="routeTo"
   >
-    <a data-v-0f448764="" href="" class="" data-testid="soomgo-life-feed-item">
+    <router-link
+      :to="{ name: 'expostdetail', params: { id: this.item.postIdx } }"
+      data-v-0f448764=""
+      href=""
+      class=""
+      data-testid="soomgo-life-feed-item"
+    >
       <p
         data-v-746dd3c0=""
         data-v-0f448764=""
@@ -16,11 +22,11 @@
       >
         <!-- eslint-disable -->
         <span>{{ item.giveCategory }}</span>
-        <span>></span>
+        <span></span>
         <span>{{ item.giveBtmCategory }}</span>
         <span><-></span>
         <span>{{ item.takeCategory }}</span>
-        <span>></span>
+        <span></span>
         <span>{{ item.takeBtmCategory }}</span>
       </p>
       <div data-v-0f448764="" class="feed-content">
@@ -38,9 +44,7 @@
               data-v-0f448764=""
               class="content legacy-typography interface-body2 gray-500 text-align-left"
             >
-              {{
-                item.contents
-              }}교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용교환글내용
+              {{ item.contents }}
             </p>
           </section>
         </div>
@@ -55,7 +59,7 @@
       </div>
       <!---->
       <div>
-        <div v-if="item.status === true">
+        <div v-if="item.status === false">
           <p
             data-v-746dd3c0=""
             data-v-0f448764=""
@@ -74,7 +78,7 @@
           </p>
         </div>
       </div>
-    </a>
+    </router-link>
   </li>
 </template>
 
@@ -88,7 +92,6 @@ export default {
   },
   methods: {
     isItemExist() {},
-    routeTo() {},
   },
   props: {
     item: { Object },

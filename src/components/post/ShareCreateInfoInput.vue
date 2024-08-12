@@ -51,7 +51,7 @@ export default {
         ...mapStores(useShareStore, useMemberStore),
     },
     mounted(){
-        this.getUserCategories();
+        // this.getUserCategories();
     },
     methods:{
         modalOff(){
@@ -68,9 +68,9 @@ export default {
             this.shareStore.request.categoryIdx = category.idx;
             this.modalOff();
         },
-        async getUserCategories(){
-            await this.memberStore.getUserCategories();
-        }
+        // async getUserCategories(){
+        //     await this.memberStore.getUserCategories();
+        // }
     }
 }
 </script>
